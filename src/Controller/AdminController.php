@@ -9,7 +9,7 @@
 
 namespace App\Controller;
 
-class HomeController extends AbstractController
+class AdminController extends AbstractController
 {
     /**
      * Display home page
@@ -19,12 +19,8 @@ class HomeController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
+    public function admin()
     {
-        return $this->twig->render('Visiteur/index.html.twig');
-    }
-    public function locations()
-    {
-        return $this->twig->render('Visiteur/locations.html.twig');
+        return $this->twig->render('Admin/loggin.html.twig');
     }
 }
