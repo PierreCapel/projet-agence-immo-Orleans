@@ -21,10 +21,26 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Visiteur/index.html.twig');
+        return $this->twig->render('Home/index.html.twig');
     }
     public function locations()
     {
-        return $this->twig->render('Visiteur/locations.html.twig');
+        return $this->twig->render('Home/locations.html.twig');
+    }
+    public function ventes()
+    {
+        return $this->twig->render('Home/ventes.html.twig');
+    }
+    public function agence()
+    {
+        return $this->twig->render('Home/agence.html.twig');
+    }
+    public function contact()
+    {
+        return $this->twig->render('Home/contact.html.twig');
+    }
+    public function annonce()
+    {
+        return $this->twig->render('Home/annonce.html.twig');
     }
 }

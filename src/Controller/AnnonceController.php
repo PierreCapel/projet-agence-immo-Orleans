@@ -4,19 +4,8 @@ namespace App\Controller;
 
 use App\Model\ItemManager;
 
-class ItemController extends AbstractController
+class AnnonceController extends AbstractController
 {
-    /**
-     * List items
-     */
-    public function index(): string
-    {
-        $itemManager = new ItemManager();
-        $items = $itemManager->selectAll('title');
-
-        return $this->twig->render('Item/index.html.twig', ['items' => $items]);
-    }
-
 
     /**
      * Show informations for a specific item

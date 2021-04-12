@@ -2,12 +2,12 @@
 
 namespace App\Model;
 
-class ItemManager extends AbstractManager
+class AnnonceManager extends AbstractManager
 {
     public const TABLE = 'item';
 
     /**
-     * Insert new item in database
+     * Insert new item in database TODO
      */
     public function insert(array $item): int
     {
@@ -19,10 +19,10 @@ class ItemManager extends AbstractManager
     }
 
     /**
-     * Update item in database
+     * Update item in database TODO
      */
     public function update(array $item): bool
-    {
+    {   
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
         $statement->bindValue('id', $item['id'], \PDO::PARAM_INT);
         $statement->bindValue('title', $item['title'], \PDO::PARAM_STR);
