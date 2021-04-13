@@ -2,20 +2,19 @@
 
 namespace App\Controller;
 
-use App\Model\ItemManager;
+use App\Model\AnnonceManager;
 
 class AnnonceController extends AbstractController
 {
-
     /**
      * Show informations for a specific item
      */
     public function show(int $id): string
     {
-        $itemManager = new ItemManager();
-        $item = $itemManager->selectOneById($id);
+        $itemManager = new AnnonceManager();
+        $annonce = $annonceManager->selectOneById($id);
 
-        return $this->twig->render('Item/show.html.twig', ['item' => $item]);
+        return $this->twig->render('Home/annonce.html.twig', ['annonce' => $annonce]);
     }
 
 
