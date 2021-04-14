@@ -1,5 +1,5 @@
 {% extends 'layout.visiteur.html.twig' %}
-
+{% block title %}Contactez-nous{% endblock %}
 {% block content %}
 <div class="container mb-5">
     <div class="row">
@@ -20,14 +20,15 @@
     
 </div>
 
-<div class="container text-primary">
+<div class="container text-primary d-flex justify-content-center">
         <div class="row">
 
-        <div class="col">
+        <div class="mb-5 col-12 col-sm-6">
             {% include 'Components/_form.html.twig' %}
         </div>
 
-        <div class="col">
+        <div id="adress" class="col-12 col-sm-6">
+            <h5><b>Le club de l'immo - Orléans</b></h5>
             <p>
                 28 Rue du Colombiers 45000 Orléans</br>
                 </br>
