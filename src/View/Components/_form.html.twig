@@ -1,26 +1,26 @@
 {# TODO : manage errors display #}
 
-<div class="container">
+<div class="container d-flex justify-content-start">
 	<form action="" method="post">
 
 		<div>
-			<input type="text" name="lastname" placeholder="NOM"></input>
+			<input class="mb-3 form-control border border-primary" cols="50" type="text" name="lastname" placeholder="NOM"></input>
 		</div>
 
 		<div>
-			<input type="text" name="firstname" placeholder="Prénom"></input>
+			<input class="mb-3 form-control border border-primary" type="text" name="firstname" placeholder="Prénom"></input>
 		</div>
 
 		<div>
-			<input type="email" name="user_email" placeholder="Email"></input>
+			<input class="mb-3 form-control border border-primary" type="email" name="user_email" placeholder="Email"></input>
 		</div>
 
 		<div>
-			<input type="number" name="phone_number" placeholder="Numéro de téléphone"></input>
+			<input class="mb-3 form-control border border-primary" type="number" name="phone_number" placeholder="Numéro de téléphone"></input>
 		</div>
 		<div>
-			<select id="subject" name="subject">
-				<option value="null">Veuillez choisir un sujet</option>
+			<select class="mb-3 form-select border border-primary"  id="subject" name="subject">
+				<option selected>Veuillez choisir un sujet</option>
 				<option value="loc">Location</option>
 				<option value="achat">Achat</option>
 				<option value="rdv">Prise de rendez-vous</option>
@@ -29,11 +29,11 @@
 		</div>
 
 		<div>
-			<textarea name="message" placeholder="Votre message" rows="10" cols="30"></textarea>
+			<textarea class="mb-3 form-control border border-primary"name="message" placeholder="Votre message" rows="10" cols="50"></textarea>
 		</div>
 
 		<div>
-			<button type="submit">Envoyer votre message</button>
+			<button class="btn btn-primary" type="submit">Envoyer votre message</button>
 		</div>
 
 	</form>
