@@ -1,6 +1,35 @@
 {% extends 'layout.visiteur.html.twig' %}
 
 {% block content %}
-    <h1>Utilisez le formulaire ci dessous pour nous contacter</h1>
-    {% include 'Components/_form.html.twig' %}
+<div class="container">
+    <div class="row">
+            <div class="col-12">
+                <h2 class="text-primary text-center">Contacter notre agence</h2>
+            </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <p class="text-center">
+                Besoin de renseignement supplémentaire ou vous souhaitez nous présenter votre bien ?</br>
+                Remplissez ce formulaire, l'agence vous contactera dans les plus brefs délais !
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container">
+        <div class="row">
+
+        <div class="col">
+            {% include 'Components/_form.html.twig' %}
+        </div>
+
+        <div class="col">
+
+         </div>
+    </div>
+</div>
 {% endblock %}
