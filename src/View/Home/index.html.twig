@@ -10,9 +10,9 @@
 <div id="slogans">
     <h1 class="text-primary">Notre agence</h1>
     <div class="container">
-        <div class="row mt-5 mb-5">
-            <div class='col'>
-                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+        <div class="row mt-4 mb-5">
+            <div class='col-12 col-md-6 col-lg-3'>
+                <div class="card bg-secondary pt-4 h-100 shadow-sm">
                     <img src="/../assets/images/index/experience.svg" class="card-img-top" alt="Experience"
                         height="100">
                     <div class="card-body">
@@ -20,25 +20,28 @@
                     </div>
                 </div>
             </div>
-            <div class='col'>
-                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+            <div class='col-12 col-md-6 col-lg-3'>
+                <div class="card bg-secondary pt-4 h-100 shadow-sm">
                     <img src="/../assets/images/index/client.svg" class="card-img-top" alt="Client" height="100">
                     <div class="card-body">
                         <p class="card-text">Un suivi personnalisé et un interlocuteur unique</p>
                     </div>
                 </div>
             </div>
-            <div class='col'>
-                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+            <div class='col-12 col-md-6 col-lg-3'>
+                <div class="card bg-secondary pt-4 h-100 shadow-sm">
                     <img src="/../assets/images/index/appointment.svg" class="card-img-top" alt="Appointment"
                         height="100">
                     <div class="card-body">
-                        <p class="card-text">Des visites possibles 6 jours sur 7 </br> </br> </p>
+                        <p class="card-text">Des visites possibles 6 jours sur 7</p>
+                        </br>
+                        </br>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class='col'>
-                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+            <div class='col-12 col-md-6 col-lg-3'>
+                <div class="card bg-secondary pt-4 h-100 shadow-sm">
                     <img src="/../assets/images/index/agency-connection.svg" class="card-img-top" alt="Agency"
                         height="100">
                     <div class="card-body">
@@ -52,29 +55,35 @@
 <div id="recents">
     <h1 class="text-primary">Nos dernières annonces</h1>
     <div class="container">
-        <div class="row">
-            <div class="col">
-            <div class="card mb-3" style="max-width: 520px; height: 13rem;">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="/../assets/images/index/appart-exemple.jpg" alt="Example"
-                            style="width: 12rem; height: 13rem">
-                    </div>
-                    <div class="col-md-5">
-                        <div class="card-body">
-                            <h5 class="card-title"> Occasion à saisir!</h5>
-                            <p class="card-text">Bel appartement de type T3 situé dans le centre historique de Orléans.
-                            </p>
-                            <p class="card-text">
-                                <medium class="text-primary">Prix : 350€ CC</medium>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        <div class="row mb-4">
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
+            </div>
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.html.twig' %}
             </div>
         </div>
     </div>
 </div>
-
-</div>
-{% endblock %}
+</div>{% endblock %}
