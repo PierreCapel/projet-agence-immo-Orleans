@@ -1,15 +1,80 @@
 {% extends 'layout.visiteur.html.twig' %}
 
 {% block content %}
-    <h1>Hello le club de l'immo !</h1>
-    <p>
-        caroussel par ici
-    </br>
-        </p>
+<div id="promo">
+    <h1 class="text-primary">Les coups de coeur de l'agence</h1>
+    <p>caroussel par ici
     </p>
-    <p>
-        petites bulles publicitaires ainsi que slogans
     </br>
-    </p>
-    <p> previews d'annonces par là</p>
+</div>
+<div id="slogans">
+    <h1 class="text-primary">Notre agence</h1>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class='col'>
+                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+                    <img src="/../assets/images/index/experience.svg" class="card-img-top" alt="Experience"
+                        height="100">
+                    <div class="card-body">
+                        <p class="card-text">Une expérience de 16 ans dans l'immobilier sur Orléans</p>
+                    </div>
+                </div>
+            </div>
+            <div class='col'>
+                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+                    <img src="/../assets/images/index/client.svg" class="card-img-top" alt="Client" height="100">
+                    <div class="card-body">
+                        <p class="card-text">Un suivi personnalisé et un interlocuteur unique</p>
+                    </div>
+                </div>
+            </div>
+            <div class='col'>
+                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+                    <img src="/../assets/images/index/appointment.svg" class="card-img-top" alt="Appointment"
+                        height="100">
+                    <div class="card-body">
+                        <p class="card-text">Des visites possibles 6 jours sur 7 </br> </br> </p>
+                    </div>
+                </div>
+            </div>
+            <div class='col'>
+                <div class="card bg-secondary pt-4" style="width: 14rem; height: 16rem;">
+                    <img src="/../assets/images/index/agency-connection.svg" class="card-img-top" alt="Agency"
+                        height="100">
+                    <div class="card-body">
+                        <p class="card-text">Basées dans plusieurs villes, toutes nos agences travaillent ensemble</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="recents">
+    <h1 class="text-primary">Nos dernières annonces</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            <div class="card mb-3" style="max-width: 520px; height: 13rem;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="/../assets/images/index/appart-exemple.jpg" alt="Example"
+                            style="width: 12rem; height: 13rem">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h5 class="card-title"> Occasion à saisir!</h5>
+                            <p class="card-text">Bel appartement de type T3 situé dans le centre historique de Orléans.
+                            </p>
+                            <p class="card-text">
+                                <medium class="text-primary">Prix : 350€ CC</medium>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 {% endblock %}
