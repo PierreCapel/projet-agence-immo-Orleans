@@ -1,14 +1,14 @@
 {% extends 'layout.visiteur.html.twig' %}
 
 {% block content %}
-    <h1>Les locations c'est par ici</h1>
-    <p>
-        <a href="annonce"> annonce numero X</a>
-    </br> 
-        <a href="annonce"> annonce numero X</a>
-    </br> 
-    <a href="annonce"> annonce numero X</a>
-    </br> 
-    <a href="annonce"> annonce numero X</a>
-    </p>
+<h1 class="text-primary text-center">Nos bien disponibles à la location</h1>
+<div class="container">
+    <div class="row mb-5">
+        {% for i in 0..19 %} 
+            <div class="col-md-6 col-sd-12 col-lg-4">
+                {% include 'Components/_card.preview.annonce.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
