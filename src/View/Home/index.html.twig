@@ -2,7 +2,7 @@
 
 {% block content %}
 <div id="promo">
-    <h1 class="text-primary">Les coups de coeur de l'agence</h1>
+    <h1 class="text-primary text-center">Les coups de coeur de l'agence</h1>
     <div class="container">
         <div id="demo" class="carousel slide mt-3" data-ride="carousel">
           <div class="carousel-inner">
@@ -21,7 +21,7 @@
     </br>
 </div>
 <div id="slogans">
-    <h1 class="text-primary">Notre agence</h1>
+    <h1 class="text-primary text-center">Notre agence</h1>
     <div class="container">
         <div class="row mt-4 mb-5">
             <div class='col-12 col-md-6 col-lg-3'>
@@ -29,7 +29,7 @@
                     <img src="/../assets/images/index/experience.svg" class="card-img-top" alt="Experience"
                         height="100">
                     <div class="card-body">
-                        <p class="card-text">Une expérience de 16 ans dans l'immobilier sur Orléans</p>
+                        <p class="card-text text-center">Une expérience de 16 ans dans l'immobilier sur Orléans</p>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="card bg-secondary pt-4 h-100 shadow-sm">
                     <img src="/../assets/images/index/client.svg" class="card-img-top" alt="Client" height="100">
                     <div class="card-body">
-                        <p class="card-text">Un suivi personnalisé et un interlocuteur unique</p>
+                        <p class="card-text text-center">Un suivi personnalisé et un interlocuteur unique</p>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <img src="/../assets/images/index/appointment.svg" class="card-img-top" alt="Appointment"
                         height="100">
                     <div class="card-body">
-                        <p class="card-text">Des visites possibles 6 jours sur 7</p>
+                        <p class="card-text text-center">Des visites possibles 6 jours sur 7</p>
                         </br>
                         </br>
                         </p>
@@ -58,7 +58,7 @@
                     <img src="/../assets/images/index/agency-connection.svg" class="card-img-top" alt="Agency"
                         height="100">
                     <div class="card-body">
-                        <p class="card-text">Basées dans plusieurs villes, toutes nos agences travaillent ensemble</p>
+                        <p class="card-text text-center">Basées dans plusieurs villes, toutes nos agences travaillent ensemble</p>
                     </div>
                 </div>
             </div>
@@ -66,36 +66,14 @@
     </div>
 </div>
 <div id="recents">
-    <h1 class="text-primary">Nos dernières annonces</h1>
+    <h1 class="text-primary text-center">Nos dernières annonces</h1>
     <div class="container">
         <div class="row mb-5">
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.html.twig' %}
-            </div>
+            {% for i in 0..8 %} 
+                <div class="col-md-6 col-sd-12 col-lg-4">
+                    {% include 'Components/_card.preview.annonce.html.twig' %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>
