@@ -1,0 +1,25 @@
+/*------------------------header layout-----------------------------*/
+header {
+    height: 500px;
+    background: center/100% no-repeat;
+    background-image: linear-gradient(rgba(123, 28, 115, 0.15), rgba(123, 28, 115, 0.15)),
+     url(../images/rue-jeanne-d-arc-orleans-val-de-loire-tourisme.jpg);
+}
+/*------------------------header layout end-------------------------*/
+
+/*------------------------nav layout--------------------------------*/
+nav {
+    background-color: rgba(123, 28, 115, 0.2);
+}
+/*------------------------nav layout end----------------------------*/
+
+/*------------------------media queries layout--------------------------------*/
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        background: none;
+    }
+    nav {
+        background-color: rgba(123, 28, 115);
+    }
+}
