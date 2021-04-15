@@ -1,3 +1,7 @@
+/*
+* --------- script message of contact.html.twig--------------
+*/
+
 const message ="Votre message à bien été envoyé";
 
 document
