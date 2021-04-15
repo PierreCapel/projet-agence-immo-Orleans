@@ -1,6 +1,42 @@
 {% extends 'layout.visiteur.html.twig' %}
-
+{% block title %}Contactez-nous{% endblock %}
 {% block content %}
-    <h1>Utilisez le formulaire ci dessous pour nous contacter</h1>
-    <p>hey c'est moi le formulaire !</p>
+<div class="container mb-5">
+    <div class="row">
+            <div class="col-12">
+                <h2 class="text-primary text-center">Contacter notre agence</h2>
+            </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <p class="text-center">
+                Besoin de renseignement supplémentaire ou vous souhaitez nous présenter votre bien ?</br>
+                Remplissez ce formulaire, l'agence vous contactera dans les plus brefs délais !
+            </p>
+        </div>
+    </div>
+    
+    <div class="row">
+
+        <div class="mb-5 col-12 col-sm-6">
+            {% include 'Components/_form.html.twig' %}
+        </div>
+
+        <div id="adress" class="col-12 col-sm-6 text-primary">
+            <h5><b>Le club de l'immo - Orléans</b></h5>
+            <p>
+                28 Rue du Colombiers 45000 Orléans</br>
+                </br>
+                Tél: 02 38 83 99 40</br>
+                Fax: 02 38 84 01 64
+                
+            </p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d795.1910370653242!2d1.901448421710986!3d47.90362375126149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d5077c8115%3A0xaad212a5a8620c3b!2s28%20Rue%20du%20Colombier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1618394370026!5m2!1sfr!2sfr" width="400" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+{% block javascript %}<script src="/assets/js/contact.js"></script>{% endblock %}

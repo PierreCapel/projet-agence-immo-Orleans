@@ -1,7 +1,40 @@
 {# TODO : manage errors display #}
 
-<form method="post">
-	<input type="hidden" value="{{ item.id }}" name="id">
-	<input type="text" value="{{ item.title }}" name="title">
-	<input type="submit" value="Valider">
-</form>
+<div class="container d-flex justify-content-start">
+	<form id="contactForm" action="" method="post">
+
+		<div>
+			<input class="mb-3 form-control border border-primary" required cols="50" type="text" name="lastname" placeholder="NOM"></input>
+		</div>
+
+		<div>
+			<input class="mb-3 form-control border border-primary" required type="text" name="firstname" placeholder="Prénom"></input>
+		</div>
+
+		<div>
+			<input class="mb-3 form-control border border-primary" required type="email" name="user_email" placeholder="Email"></input>
+		</div>
+
+		<div>
+			<input class="mb-3 form-control border border-primary" required type="number" name="phone_number" placeholder="Numéro de téléphone"></input>
+		</div>
+		<div>
+			<select class="mb-3 form-select border border-primary" required name="subject">
+				<option selected>Veuillez choisir un sujet</option>
+				<option value="loc">Location</option>
+				<option value="achat">Achat</option>
+				<option value="rdv">Prise de rendez-vous</option>
+				<option value="pres">Présentation d'un bien</option>
+			</select>
+		</div>
+
+		<div>
+			<textarea class="mb-3 form-control border border-primary" required name="message" placeholder="Votre message" rows="10" cols="50"></textarea>
+		</div>
+
+		<div>
+			<button class="btn btn-primary" type="submit">Envoyer votre message</button>
+		</div>
+
+	</form>
+</div>
