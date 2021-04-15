@@ -1,2 +1,62 @@
-    <p>Je suis une barre de recherche on m'utilise princpalement pour faire des recherches</p>
+<div>
+	<div class="container-fluid-md container-lg bg-primary p-3 align-item-center mt-md-5">
+		<form class="row row-cols-lg-auto justify-content-center align-item-center">
+			<div class="col-sm-12 col-md-2 m-1 m-md-0">
+				<label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+				<select class="form-select" id="inlineFormSelectPref">
+					<option selected>Acheter</option>
+					<option value="1">Louer</option>
+				</select>
+			</div>
+
+			<div class="col-sm-12 col-md-2 m-1 m-md-0">
+				<label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+				<select class="form-select" id="inlineFormSelectPref">
+					<option selected>- Type de bien -</option>
+					<option value="1">Maison</option>
+					<option value="2">Appartement</option>
+					<option value="3">Terrain</option>
+				</select>
+			</div>
+
+			<div class="col-sm-12 col-md-5 m-1 m-md-0">
+				<label class="visually-hidden" for="inlineFormInputGroupUsername">Localité</label>
+				<div class="input-group">
+					<div class="input-group-text">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
+							<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+						</svg>
+					</div>
+					<input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Localité">
+				</div>
+			</div>
+			<div class="col-sm-1 col-lg-1 m-1 m-md-0">
+				<button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#criteria" aria-expanded="false" aria-controls="criteria">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewbox="0 0 16 16">
+						<path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+					</svg>
+				</button>
+			</div>
+			<div class="col-sm-2 col-lg-auto m-1 m-md-0">
+				<button type="submit" class="btn btn-secondary">Rechercher</button>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="collapse" id="criteria">
+								<div class="row mt-3">
+									<label class="col-md-1 text-light">Prix</label>
+									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="min" aria-label="Price min">
+									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="max" aria-label="Price max">
+									<label class="col-md-1 text-light">Pièces</label>
+									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="min" aria-label="Room min">
+									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="max" aria-label="Room max">
+									<label class="col-md-1 text-light">Surface</label>
+									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="min" aria-label="Surface min">
+									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="max" aria-label="Surface max">
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 
