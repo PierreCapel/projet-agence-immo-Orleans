@@ -43,4 +43,12 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/annonce.html.twig');
     }
+    public function cgu()
+    {
+        return $this->twig->render('Home/cgu.html.twig');
+    }
+    public function mentionsLegales()
+    {
+        return $this->twig->render('Home/mentionsLegales.html.twig');
+    }
 }
