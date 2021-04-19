@@ -1,12 +1,119 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
-<h1>Page d'accueil admin</h1>
-<a href="ajoutAnnonce"> ajouter annonce</a>
-</br>
-<a href="modifAnnonce"> modifier ou supprimer une annonce</a>
-</br>
-<a href="modifDocument">modifier la liste des documents necessaires</a>
-</br>
-<a href="modifSlogan">modifier les bulles slogan de la page d'accueil</a>
-{% endblock %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-3 bg-primary side-menu d-flex flex-column">
+				<div class="row justify-content-center mt-4">
+					<img src="" alt="La belle photo de profil" class="col-3 text-light"/>
+					<div class="col-6 mb-5">
+						<h5 class="text-light">Firstname Lastname</h5>
+						<p class="text-light">Agent immobilier</p>
+					</div>
+				</div>
+                <div class="row">
+					<ul class="nav">
+						<li class="nav-item">
+							<a href="ajoutAnnonce" class="nav-link text-decoration-none text-light m-1">
+								Ajouter annonce immobilière
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="modifAnnonce" class="nav-link text-decoration-none text-light m-1">
+								Modifier ou Supprimer une annonce
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="modifDocument" class="nav-link text-decoration-none text-light m-1">
+								Modifier la liste des documents necessaires
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="modifSlogan" class="nav-link text-decoration-none text-light m-1">
+								Modifier les bulles slogan de la page d'accueil
+							</a>
+						</li>
+					</ul>
+
+				</div>
+                <div class="row flex-grow-1"></div>
+				<div class="row justify-content-around mb-2">
+                    <a href="index" class="text-decoration-none text-light align-self-center">Accueil admin</a>
+					<img src="../assets/images/logo-cdimmo.png" alt="Le club de l'immo logo" class="cdimmo-logo" height="60"/>
+                    <a href="../Home/index" class="text-decoration-none text-light align-self-center">Site visiteur</a>
+				</div>
+			</div>
+			<div class="col-9">
+				<div class="row justify-content-center mt-4 mb-5">
+					<h1>Bienvenue sur page d'<span class="text-primary">administration<span></h1>
+						</div>
+						<div class="row m-2">
+							<h4>Actions concernant les
+								<strong class="text-primary">biens</strong>
+								:</h4>
+						</div>
+						<div class="row mb-2">
+							<div class="card bg-secondary m-5" style="width: 14rem;">
+								<a href="ajoutAnnonce" class="text-decoration-none m-1">
+									<img src="../assets/images/admin/add-home.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+									<div class="card-body">
+										<p class="card-text text-center">Ajouter un bien</p>
+									</div>
+								</a>
+							</div>
+							<div class="card bg-secondary m-5" style="width: 14rem;">
+								<a href="modifAnnonce" class="text-decoration-none m-1">
+									<img src="../assets/images/admin/delete-modify.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+									<div class="card-body">
+										<p class="card-text text-center">Modifier / Supprimer un bien</p>
+									</div>
+								</a>
+							</div>
+							<div class="card bg-secondary m-5" style="width: 14rem;">
+								<a href="modifAnnonce" class="text-decoration-none m-1">
+									<img src="../assets/images/admin/show-hide.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+									<div class="card-body">
+										<p class="card-text text-center">Afficher / Cacher un bien</p>
+									</div>
+								</a>
+							</div>
+							<div class="card bg-secondary m-5" style="width: 14rem;">
+								<a href="modifAnnonce" class="text-decoration-none m-1">
+									<img src="../assets/images/admin/promote.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+									<div class="card-body">
+										<p class="card-text text-center">Promouvoir un bien</p>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="row m-2">
+							<h4 class="">Administrer le
+								<strong class="text-primary">site</strong>
+								:</h4>
+						</div>
+						<div class="row">
+							<div class="card bg-secondary m-5" style="width: 14rem;">
+								<a href="modifDocument" class="text-decoration-none m-1">
+									<img src="../assets/images/admin/documents.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+									<div class="card-body">
+										<p class="card-text text-center">modifier la liste des documents necessaires</p>
+									</div>
+								</a>
+							</div>
+							<div class="card bg-secondary m-5" style="width: 14rem;">
+								<a href="modifSlogan" class="text-decoration-none m-1">
+									<img src="../assets/images/admin/website.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+									<div class="card-body">
+										<p class="card-text text-center">modifier les textes de la page d'accueil</p>
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		{% endblock %}
+

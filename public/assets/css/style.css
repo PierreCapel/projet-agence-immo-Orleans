@@ -57,3 +57,14 @@ nav {
 .footer-icon {
    width: 20px;
 }
+
+/*-------------- layout Admin --------------------*/
+.admin-bg {
+    background-color: #F4FAFF;
+}
+
+.side-menu {
+    height: 100vh;
+}
+
+/*-------------- layout Admin --------------------*/
