@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dac00ec3497004ade711e09f66bac633",
+    "content-hash": "a6b1e0e13d33d8d1299ab172a1be8304",
     "packages": [
         {
             "name": "symfony/polyfill-ctype",
@@ -167,27 +167,22 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.6.0",
+            "version": "v5.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "6ffb0b48e455430f8a5359ed689ad64c1143fac2"
+                "reference": "220139a89ffc3864bbb6e1b35471667318eadc1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/6ffb0b48e455430f8a5359ed689ad64c1143fac2",
-                "reference": "6ffb0b48e455430f8a5359ed689ad64c1143fac2",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/220139a89ffc3864bbb6e1b35471667318eadc1f",
+                "reference": "220139a89ffc3864bbb6e1b35471667318eadc1f",
                 "shasum": ""
             },
             "replace": {
                 "twitter/bootstrap": "self.version"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -216,7 +211,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twbs/bootstrap/issues",
-                "source": "https://github.com/twbs/bootstrap/tree/v4.6.0"
+                "source": "https://github.com/twbs/bootstrap/tree/v5.0.0-beta3"
             },
             "funding": [
                 {
@@ -224,7 +219,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-01-19T16:16:38+00:00"
+            "time": "2021-03-23T16:26:54+00:00"
         },
         {
             "name": "twig/twig",
@@ -3308,7 +3303,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "twbs/bootstrap": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
