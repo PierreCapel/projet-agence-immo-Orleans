@@ -1,9 +1,44 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
-    <h1>Bonjour l'admin, merci de te logger si tu est vraiment un vrai admin</h1>
-    
-    <p>
-        <a href="index"> loggin ok?</a>
-    </p>
+	<h1>Bonjour l'admin, merci de te logger si tu est vraiment un vrai admin</h1>
+
+	<p>
+		<a href="index">
+			loggin ok?</a>
+	</p>
+	<div>
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-4">
+					<h1>
+						<strong class="text-primary">Bienvenue</strong>
+						sur le page connexion
+						<span class="text-primary">administration</span>
+					</h1>
+					<img src="../assets/images/admin/location-agencies.png" alt="carte france localisation agences" height="600" />
+				</div>
+                <div class="col-2"></div>
+                <div class="col-3 d-flex">
+					<form class="row g-3 align-self-center bg-primary p-3">						
+						<div class="col-12 mt-3 mb-2">
+							<label for="usermail" class="form-label text-light">Email utilisateur</label>
+							<input type="text" class="form-control" id="usermail" name="usermail" placeholder="exemple@mail.fr" />
+						</div>
+						<div class="col-12 mt-3 mb-2">
+							<label for="password" class="form-label text-light">Mot de passe</label>
+							<input type="password" class="form-control" id="password" name="password" />
+						</div>					
+						<div class="col-12 mt-3 mb-2">
+							<button type="submit" class="btn btn-secondary">Se connecter</button>
+						</div>                       
+                        <a href="#" class=" col-12 text-center text-light mt-3 mb-1">Mot de passe oublié ?</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 {% endblock %}
+
