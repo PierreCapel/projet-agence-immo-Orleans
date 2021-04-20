@@ -62,6 +62,18 @@ nav {
 .admin-bg {
     background-color: #F4FAFF;
 }
+#header-admin {
+    inherits: true;
+    height: 70px;
+}
+
+#footer-admin {
+    height: 60px;
+}
+
+.content-login {
+    height: calc(100vh - 130px);
+}
 
 .side-menu {
     height: 100vh;
