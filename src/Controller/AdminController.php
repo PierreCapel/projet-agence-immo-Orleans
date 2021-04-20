@@ -47,14 +47,11 @@ class AdminController extends AbstractController
     {
         return $this->twig->render('admin/ajoutphoto.html.twig');
     }
-
-
     //fonction d'ajout des images par formulaire
     public function pictureUpload()
     {
         //check methode serveur
-        if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_POST['pictureUpload']))) 
-        {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_POST['pictureUpload']))) {
             //set dossier reception
             $uploadDir = __DIR__ . "/../../public/assets/images/annonces/";
             //recup extension fichier
@@ -64,12 +61,9 @@ class AdminController extends AbstractController
             //set liste d'extensions
             $extensionsOk = ['jpg', 'jpeg', 'png'];
             //check extension du fichier vs extensions autorisées
-            if (!in_array($extension, $extensionsOk)) 
-            {
+            if (!in_array($extension, $extensionsOk)) {
                 echo 'L\'image doit etre de type jpeg, jpg ou png.';
-            } 
-            else 
-            {
+            } else {
                 move_uploaded_file($_FILES['annoncePicture']['tmp_name'], $uploadFile);
             }
         }
