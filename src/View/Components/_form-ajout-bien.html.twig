@@ -79,28 +79,17 @@
                     </select>
             </div>
             <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                    Location
+                </p>
                 <input type="number" id="charges" name="charges" placeholder="Charges"></input>
                 <input type="number" id="caution" name="caution" placeholder="Caution"></input>
                 <input type="number" id="loyer" name="loyer" placeholder="Loyer"></input>
             </div>
-            <div class="m-2">                
-                <div class="d-flex">
-                    <p class="me-3">
-                        Charges comprises :
-                    </p>
-                    <input class="m-2"type="checkbox" id="eau_f" name="eau_f" value="eau_f">
-                    <label class="me-3"for="eau_f">Eau froide</label>
-                    <input class="m-2" type="checkbox" id="eau_c" name="eau_c" value="eau_c">
-                    <label class="me-3" for="eau_c">Eau chaude</label>
-                    <input class="m-2" type="checkbox" id="electricite" name="electricite" value="electricité">
-                    <label class="me-3" for="electricite">Electricité</label>
-                    <input class="m-2" type="checkbox" id="chauffage" name="chauffage" value="chauffage">
-                    <label class="me-3" for="chauffage">Chauffage</label>
-                    <input class="m-2" type="checkbox" id="ordures" name="ordures" value="ordures">
-                    <label class="me-3" for="ordures">Ordures ménagères</label>
-                    <input class="m-2" type="checkbox" id="charges" name="charges" value="charges">
-                    <label class="me-3" for="charges">Charges locatives</label>
-                </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                    Achat
+                </p>
                 <div>
                     <input type="number" name="prix" placeholder="Prix de vente"></input>
                 </div>
@@ -134,12 +123,12 @@
                 <label class="me-3" for="ensoleille">Ensoleillé</label>
             </div>
             <div class="m-2">
-                <label for="chambre">Nombre de chambres :</label>
+                <label class="me-3 text-decoration-underline" for="chambre">Nombre de chambres :</label>
                 <input class="me-3" type="number" name="chambre"></input>
             </div>            
             <div class="m-2">
                 <div class="d-flex">
-                    <p class="me-3">
+                    <p class="me-3 text-decoration-underline">
                         Revêtement au sol :
                     </p>                
                     <input class="m-2" type="radio" id="moquette" name="revetement" value="1"></input>
@@ -156,7 +145,7 @@
             </div>
             <div class="m-2"> 
                 <div class="d-flex">        
-                    <p class="me-3">
+                    <p class="me-3 text-decoration-underline">
                         Aménagements :
                     </p>                
                     <input class="m-2" type="checkbox" id="cave" name="cave" value="1"></input>
@@ -196,9 +185,9 @@
                     <option value="10">Cuisine américaine</option>
                 </select>
             </div>
-            <div class="m-2 mx-0">
+            <div class="m-2">
                 <div class="d-flex">
-                    <p class="me-3">
+                    <p class="me-3 text-decoration-underline">
                         extérieur :
                     </p>                
                     <input class="m-2" type="checkbox" id="terrase" name="terrase" value="1"></input>
@@ -215,7 +204,7 @@
             </div>
             <div class="m-2"> 
                 <div class="d-flex">        
-                    <p class="me-3">
+                    <p class="me-3 text-decoration-underline">
                         Stationnement :
                     </p>
                     <input class="m-2" type="checkbox" id="parking" name="parking" value="1"></input>
@@ -262,7 +251,8 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Ajouter un bien</button>
-
+        <div class="d-flex flex-row-reverse">
+            <button type="submit" class="btn btn-primary">Ajouter un bien</button>
+        </div>
     </form>
 </div>
