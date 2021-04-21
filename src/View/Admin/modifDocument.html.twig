@@ -1,5 +1,46 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
-    <h1>Modifier les slogans de la page d'accueil</h1>
-{% endblock %}
+	<div class="container">
+		<div class="row">
+			<div class="row text-center">
+				<h1>Modifier la liste des
+					<span class="text-primary">documents à fournir</span>
+				</h1>
+			</div>
+			<div class="row m-2">
+				<h4>Liste des
+					<span class="text-primary">documents</span>
+				</h4>
+			</div>
+			<div class="row">
+				<form method="POST" action="">
+					<p>
+						<input type="text" name="doc1"/>
+						<button>supprimer</button>
+					</p>
+					<p>
+						<input type="text" name="doc2"/>
+						<button>supprimer</button>
+					</p>
+					<p>
+						<input type="text" name="doc3"/>
+						<button>supprimer</button>
+					</p>
+					<p>
+						<input type="text" name="doc4"/>
+						<button>supprimer</button>
+					</p>
+					<p class="d-flex">
+						<div class="col">
+							<button>+</button>
+						</div>
+					<p class="col">Ajouter une ligne</p>
+					</p>
+				</p>
+				<button>valider</valider>
+			</form>
+		</div>
+	</div>
+</div>{% endblock %}
+
