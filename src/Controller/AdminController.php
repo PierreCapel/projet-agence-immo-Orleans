@@ -68,8 +68,20 @@ class AdminController extends AbstractController
     {
         //check methode serveur
         if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_FILES))) {
+            //recup id de l'annonce via $_GET
+            if (!empty($_GET)) {
+                $annonceId = $_GET['id'];
+            }
+            //creer dossier pour image si non existant
+            if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId)) {
+                mkdir((__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/"));
+                //creer fichier .gitkeep
+                if (!is_file(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep")) {
+                    touch(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep");
+                }
+            }
             //set dossier reception
-            $uploadDir = __DIR__ . "/../../public/assets/images/uploads/";
+            $uploadDir = __DIR__ . "/../../public/assets/images/annonces/";
 
             //recup extension fichier
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
@@ -86,8 +98,8 @@ class AdminController extends AbstractController
             }
 
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
-            
-            return '/assets/images/uploads/' . basename($_FILES['pictureUpload']['name']);
+
+            return '/assets/images/annonces/' . $annonceId . '/' . basename($_FILES['pictureUpload']['name']);
         }
     }
 }
