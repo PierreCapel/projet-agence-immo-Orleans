@@ -1,24 +1,28 @@
-<div id="desc_general" class="container m-2">
+<div id="form_ajout" class="container m-2">
     <form action="" method="post">
-
-        <div id="coordonnées" class="my-3 form-select border border-primary">
-            <h2>Coordonnées du bien</h2>
-            <div class="my-2">
+    
+        <div id="coordonnées" class="my-3 form-select border border-primary text-primary">
+            <h2 class="mb-4">
+                Coordonnées du bien
+            </h2>
+            <div class="m-2">
                 <input required class="" type="text" name="adresse" placeholder="Adresse"></input>
             </div>
-            <div class="my-2">
+            <div class="m-2">
                 <input class="" type="text" name="complement" placeholder="Complément (si besoin)"></input>
             </div>
-            <div class="my-2">
+            <div class="m-2">
                 <input required class="" type="number" name="code_postal" placeholder="Code postal"></input>
                 <input required class="" type="text" name="city" placeholder="Ville"></input>
             </div>
         </div>
 
-        <div id="type" class="my-3 form-select border border-primary">
-            <h2>Type du bien</h2>
-            <div class="d-flex my-2">
-                <select class="" name="categorie">
+        <div id="type" class="my-3 form-select border border-primary  text-primary">
+            <h2 class="mb-4">
+                Type du bien
+            </h2>
+            <div class="d-flex">
+                <select class="mx-2 form-select-sm" name="categorie">
                     <option selected>Appartement/maison</option>
                     <option value="1">Appartement</option>
                     <option value="2">Maison</option>
@@ -26,7 +30,7 @@
                     <option value="4">Loft</option>
                     <option value="5">Chambre</option>
                 </select>
-                <select class="" name="type">
+                <select class="mx-2 form-select-sm" name="type">
                     <option selected>Type</option>
                     <option value="1">T1</option>
                     <option value="2">T2</option>
@@ -34,50 +38,52 @@
                     <option value="4">T4</option>
                     <option value="5">T5 et plus</option>
                 </select>
-                
-                <select class="" name="est_vide">
-                    <option selected>Vide ou meublé</option>
-                    <option option value="1">Vide</option>
-                    <option option value="0">Meublé</option>
-                </select>                
+                <div>
+                    <input type="radio" id="vide" name="est_vide" value="1" checked>
+                    <label for="vide">Vide</label>
+                    <input type="radio" id="meuble" name="est_vide" value="0">
+                    <label for="meuble">Meublé</label>
+                </div>               
             </div>
             <div class="my-2">
-                <select class="" name="etat">
+                <select class="mx-2 form-select-sm" name="etat">
                     <option selected>Etat</option>
                     <option value="1">Ancien</option>
                     <option value="2">Bon état</option>
                     <option value="3">Déco récente</option>
                     <option value="4">Neuf</option>
                     <option value="5">Rénové</option>                    
-                <input type="checkbox" id="residence" name="residence" value="1">
+                <input class="mx-2" type="checkbox" id="residence" name="residence" value="1">
                 <label for="residence">Résidence</label>
-                <input type="checkbox" id="duplex" name="duplex" value="1">
+                <input class="mx-2" type="checkbox" id="duplex" name="duplex" value="1">
                 <label for="duplex">Duplex</label>
-                <input type="checkbox" id="ascenseur" name="ascenseur" value="1">
+                <input class="mx-2" type="checkbox" id="ascenseur" name="ascenseur" value="1">
                 <label for="ascenseur">Ascenseur</label>                
             </div>            
             <div class="my-2">
-                <input type="number" id="surface" name="surface" placeholder="Surface"></input>
-                <input type="number" id="etage" name="etage" placeholder="Etage"></input>
-                <input type="date" id="dispo"name="dispo" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
+                <input class="mx-2" type="number" id="surface" name="surface" placeholder="Surface"></input>
+                <input class="mx-2" type="number" id="etage" name="etage" placeholder="Etage"></input>
+                <input class="mx-2" type="date" id="dispo"name="dispo" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
             </div>
         </div>
 
-        <div id="tarifs" class="my-3 form-select border border-primary">
-            <h2>Tarif du bien</h2>
-            <div>
-                    <select class="" name="besoin">
+        <div id="tarifs" class="my-3 form-select border border-primary  text-primary">
+            <h2 class="mb-4">
+                Tarif du bien
+            </h2>
+            <div class="mx-2">
+                    <select class="form-select-sm" name="besoin">
                         <option selected>Achat ou location</option>
                         <option value="1">Achat</option>
                         <option value="2">Location</option>
                     </select>
             </div>
-            <div class="my-2">
+            <div class="m-2">
                 <input type="number" id="charges" name="charges" placeholder="Charges"></input>
                 <input type="number" id="caution" name="caution" placeholder="Caution"></input>
                 <input type="number" id="loyer" name="loyer" placeholder="Loyer"></input>
             </div>
-            <div class="my-2">                
+            <div class="m-2">                
                 <div class="d-flex">
                     <p class="me-3">
                         Charges comprises :
@@ -101,23 +107,25 @@
             </div>
         </div>
 
-        <div id="description" class="my-3 form-select border border-primary">
-            <h2>
+        <div id="description" class="my-3 form-select border border-primary text-primary">
+            <h2 class="mb-4">
                 Description du bien
             </h2>
-            <div class="my-2">
+            <div class="m-2">
                 <input type="checkbox" id="entre" name="entre" value="1"></input>
                 <label class="me-3" for="entre">Entrée</label>
-                <input type="number" name="sejour" placeholder="Séjour(s)"></input>
-                <input type="number" name="salon" placeholder="Salon(s)"></input>
+                <input type="checkbox" id="sejour" name="sejour" value="1"></input>
+                <label class="me-3" for="sejour">Séjour</label>
+                <input type="checkbox" id="salon" name="salon" value="1"></input>
+                <label class="me-3" for="salon">Salon</label>
             </div>
-            <div class="my-2">
+            <div class="m-2">
                 <input type="checkbox" id="d-vitrage" name="d-vitrage" value="1"></input>
                 <label class="me-3" for="d-vitrage">Double vitrage</label>
                 <input type="checkbox" id="v-roulant" name="v-roulant" value="1"></input>
                 <label class="me-3" for="v-roulant">Volets roulants</label>
             </div>
-            <div class="my-2">
+            <div class="m-2">
                 <input type="checkbox" id="gardien" name="gardien" value="1"></input>
                 <label class="me-3" for="gardien">Gardien</label>
                 <input type="checkbox" id="calme" name="calme" value="1"></input>
@@ -125,63 +133,56 @@
                 <input type="checkbox" id="ensoleille" name="ensoleille" value="1"></input>
                 <label class="me-3" for="ensoleille">Ensoleillé</label>
             </div>
-            <div class="my-2">
-                <input class="me-3" type="number" name="chambre" placeholder="Chambre(s)"></input>
-                <input type="checkbox" id="placards" name="placards" value="placards"></input>
-                <label class="me-3" for="placards">Placards</label>
-                <input type="checkbox" id="mezzanine" name="mezzanine" value="mezzanine"></input>
-                <label class="me-3" for="mezzanine">Mezzanine</label>
-                <input type="checkbox" id="dressing" name="dressing" value="dressing"></input>
-                <label class="me-3" for="dressing">Dressing</label>
-                <input type="checkbox" id="bureau" name="bureau" value="bureau"></input>
-                <label class="me-3" for="bureau">Bureau</label>
+            <div class="m-2">
+                <label for="chambre">Nombre de chambres :</label>
+                <input class="me-3" type="number" name="chambre"></input>
             </div>            
-            <div class="my-2">
+            <div class="m-2">
                 <div class="d-flex">
                     <p class="me-3">
                         Revêtement au sol :
                     </p>                
-                    <input class="m-2" type="checkbox" id="moquette" name="moquette" value="1"></input>
+                    <input class="m-2" type="radio" id="moquette" name="revetement" value="1"></input>
                     <label class="me-3" for="moquette">Moquette</label>
-                    <input class="m-2" type="checkbox" id="carrelage" name="carrelage" value="2"></input>
+                    <input class="m-2" type="radio" id="carrelage" name="revetement" value="2"></input>
                     <label class="me-3" for="carrelage">Carrelage</label>
-                    <input class="m-2" type="checkbox" id="linoleum" name="linoleum" value="3"></input>
+                    <input class="m-2" type="radio" id="linoleum" name="revetement" value="3"></input>
                     <label class="me-3" for="linoleum">Linoléum</label>
-                    <input class="m-2" type="checkbox" id="parquet" name="parquet" value="4"></input>
+                    <input class="m-2" type="radio" id="parquet" name="revetement" value="4"></input>
                     <label class="me-3" for="parquet">Parquet</label>
-                    <input class="m-2" type="checkbox" id="parquet-f" name="parquet-f" value="5"></input>
+                    <input class="m-2" type="radio" id="parquet-f" name="revetement" value="5"></input>
                     <label class="me-3" for="parquet-f">Parquet flottant</label>
                 </div>
             </div>
-            <div class="my-2"> 
+            <div class="m-2"> 
                 <div class="d-flex">        
                     <p class="me-3">
                         Aménagements :
                     </p>                
-                    <input class="m-2" type="checkbox" id="cave" name="cave" value="cave"></input>
+                    <input class="m-2" type="checkbox" id="cave" name="cave" value="1"></input>
                     <label class="me-3" for="cave">Cave</label>
-                    <input class="m-2" type="checkbox" id="grenier" name="grenier" value="grenier"></input>
+                    <input class="m-2" type="checkbox" id="grenier" name="grenier" value="2"></input>
                     <label class="me-3" for="grenier">Grenier</label>
-                    <input class="m-2" type="checkbox" id="sous-s" name="sous-s" value="sous-s"></input>
+                    <input class="m-2" type="checkbox" id="sous-s" name="sous-s" value="3"></input>
                     <label class="me-3" for="sous-s">Sous-sol</label>
-                    <input class="m-2" type="checkbox" id="logia" name="logia" value="logia"></input>
+                    <input class="m-2" type="checkbox" id="logia" name="logia" value="4"></input>
                     <label class="me-3" for="logia">Logia</label>
-                    <input class="m-2" type="checkbox" id="cellier" name="cellier" value="cellier"></input>
+                    <input class="m-2" type="checkbox" id="cellier" name="cellier" value="5"></input>
                     <label class="me-3" for="cellier">Cellier</label>
-                    <input class="m-2" type="checkbox" id="balcon" name="balcon" value="balcon"></input>
+                    <input class="m-2" type="checkbox" id="balcon" name="balcon" value="6"></input>
                     <label class="me-3" for="balcon">Balcon</label>
-                    <input class="m-2" type="checkbox" id="cheminee" name="cheminee" value="cheminee"></input>
+                    <input class="m-2" type="checkbox" id="cheminee" name="cheminee" value="7"></input>
                     <label class="me-3" for="cheminee">Cheminée</label>
-                    <input class="m-2" type="checkbox" id="piscine" name="piscine" value="piscine"></input>
+                    <input class="m-2" type="checkbox" id="piscine" name="piscine" value="8"></input>
                     <label class="me-3" for="piscine">Piscine</label>
-                    <input class="m-2" type="checkbox" id="interphone" name="interphone" value="interphone"></input>
+                    <input class="m-2" type="checkbox" id="interphone" name="interphone" value="9"></input>
                     <label class="me-3" for="interphone">Interphone</label>
-                    <input class="m-2" type="checkbox" id="digicode" name="digicode" value="digicode"></input>
+                    <input class="m-2" type="checkbox" id="digicode" name="digicode" value="10"></input>
                     <label class="me-3" for="digicode">Digicode</label>
                 </div>
             </div> 
-            <div class="my-4">
-                <select class="" name="cuisine">
+            <div class="m-2 mb-3">
+                <select class="form-select-sm" name="cuisine">
                     <option selected>Type de cuisine</option>
                     <option value="1">Cuisine aménagée</option>
                     <option value="2">Cuisine cummune</option>
@@ -195,7 +196,7 @@
                     <option value="10">Cuisine américaine</option>
                 </select>
             </div>
-            <div class="my-2 mx-0">
+            <div class="m-2 mx-0">
                 <div class="d-flex">
                     <p class="me-3">
                         extérieur :
@@ -212,21 +213,21 @@
                     <label class="me-3" for="jardin_c">Jardin clos</label>
                 </div>
             </div>
-            <div class="my-2"> 
+            <div class="m-2"> 
                 <div class="d-flex">        
                     <p class="me-3">
                         Stationnement :
                     </p>
-                    <input class="m-2" type="checkbox" id="parking" name="parking"></input>
+                    <input class="m-2" type="checkbox" id="parking" name="parking" value="1"></input>
                     <label class="me-3" for="parking">Parking</label>
-                    <input class="m-2" type="checkbox" id="garage" name="garage"></input>
+                    <input class="m-2" type="checkbox" id="garage" name="garage" value="1"></input>
                     <label class="me-3" for="garage">Garage</label>
-                    <input class="m-2" type="checkbox" id="velo" name="velo"></input>
+                    <input class="m-2" type="checkbox" id="velo" name="velo" value="1"></input>
                     <label class="me-3" for="velo">Local deux roues</label>
                 </div>
             </div>
-            <div class="my-4">
-                <select class="" name="type-chauffage">
+            <div class="m-2">
+                <select class="form-select-sm" name="type-chauffage">
                     <option selected>Type de chauffage</option>
                     <option value="1">Individuel</option>
                     <option value="2">Commun</option>
@@ -238,7 +239,7 @@
                     <option value="8">Commun fuel</option>
                     <option value="9">Commun électrique</option>
                 </select>
-                <select class="" name="dpe-c">
+                <select class="form-select-sm" name="dpe-c">
                     <option selected>DPE-Consommation</option>
                     <option value="1">A</option>
                     <option value="2">B</option>
@@ -248,7 +249,7 @@
                     <option value="6">F</option>
                     <option value="7">G</option>
                 </select>
-                <select class="" name="dpe-e">
+                <select class="form-select-sm" name="dpe-e">
                     <option selected>DPE-Emission</option>
                     <option value="1">A</option>
                     <option value="2">B</option>
@@ -260,5 +261,8 @@
                 </select>
             </div>
         </div>
+
+        <button type="submit" class="btn btn-primary">Ajouter un bien</button>
+
     </form>
 </div>
