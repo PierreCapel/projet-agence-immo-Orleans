@@ -3,49 +3,10 @@
 {% block content %}
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-3 bg-primary side-menu d-flex flex-column">
-				<div class="row justify-content-center mt-4">
-					<img src="" alt="La belle photo de profil" class="col-3 text-light"/>
-					<div class="col-6 mb-5">
-						<h5 class="text-light">Firstname Lastname</h5>
-						<p class="text-light">Agent immobilier</p>
-					</div>
-				</div>
-                <div class="row">
-					<ul class="nav">
-						<li class="nav-item">
-							<a href="ajoutAnnonce" class="nav-link text-decoration-none text-light m-1">
-								Ajouter annonce immobilière
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="modifAnnonce" class="nav-link text-decoration-none text-light m-1">
-								Modifier ou Supprimer une annonce
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="modifDocument" class="nav-link text-decoration-none text-light m-1">
-								Modifier la liste des documents necessaires
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="modifSlogan" class="nav-link text-decoration-none text-light m-1">
-								Modifier les bulles slogan de la page d'accueil
-							</a>
-						</li>
-					</ul>
-
-				</div>
-                <div class="row flex-grow-1"></div>
-				<div class="row justify-content-around mb-2">
-                    <a href="index" class="text-decoration-none text-light align-self-center">Accueil admin</a>
-					<img src="../assets/images/logo-cdimmo.png" alt="Le club de l'immo logo" class="cdimmo-logo" height="60"/>
-                    <a href="../Home/index" class="text-decoration-none text-light align-self-center">Site visiteur</a>
-				</div>
-			</div>
-			<div class="col-9">
+			{% include '/Components/_sidemenu.admin.html.twig' %}
+			<div class="col-sm-12 col-lg-9">
 				<div class="row justify-content-center mt-4 mb-5">
-					<h1>Bienvenue sur page d'<span class="text-primary">administration<span></h1>
+					<h1 class="text-center">Bienvenue sur page d'<span class="text-primary">administration<span></h1>
 						</div>
 						<div class="row m-2">
 							<h4>Actions concernant les
