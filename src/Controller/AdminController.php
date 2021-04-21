@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use Exception;
+
 class AdminController extends AbstractController
 {
     /**
@@ -43,32 +45,49 @@ class AdminController extends AbstractController
     {
         return $this->twig->render('admin/modifdocument.html.twig');
     }
+
     public function ajoutPhoto()
     {
-        var_dump($_POST);
-        $this->upload();
-        return $this->twig->render('admin/ajoutphoto.html.twig');
+        $error = '';
+        $imageUrl = '';
+
+        try {
+            $imageUrl = $this->upload();
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+
+        return $this->twig->render('admin/ajoutphoto.html.twig', [
+            'imageUrl' => $imageUrl,
+            'error' => $error,
+        ]);
     }
-    //fonction d'ajout des images par formulaire 
+
+    // fonction d'ajout des images par formulaire 
     private function upload()
     {
         //check methode serveur
         if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_FILES))) {
             //set dossier reception
-            $uploadDir = __DIR__ . "/";
+            $uploadDir = __DIR__ . "/../../public/assets/images/uploads/";
+
             //recup extension fichier
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
+
             //set chemin destination fichier
             $uploadFile = $uploadDir . basename($_FILES['pictureUpload']['name']);
+
             //set liste d'extensions
             $extensionsOk = ['jpg', 'jpeg', 'png'];
+
             //check extension du fichier vs extensions autorisées
             if (!in_array($extension, $extensionsOk)) {
-                echo 'L\'image doit etre de type jpeg, jpg ou png.';
-            } else {
-                move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
-                echo "file uploaded";
+                throw new Exception('L\'image doit etre de type jpeg, jpg ou png');
             }
+
+            move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
+            
+            return '/assets/images/uploads/' . basename($_FILES['pictureUpload']['name']);
         }
     }
 }

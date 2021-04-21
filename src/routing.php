@@ -12,7 +12,13 @@
 
 $routeParts = explode('/', ltrim($_SERVER['REQUEST_URI'], '/') ?: HOME_PAGE);
 $controller = 'App\Controller\\' . ucfirst($routeParts[0] ?? '') . 'Controller';
+
 $method = $routeParts[1] ?? '';
+
+// Suppression de la query string dans le nom de la méthode
+// eg monAction?q=var devient monAction.
+$method = preg_replace('/\?.*/', '', $method);
+
 $vars = array_slice($routeParts, 2);
 
 if (class_exists($controller) && method_exists(new $controller(), $method)) {
