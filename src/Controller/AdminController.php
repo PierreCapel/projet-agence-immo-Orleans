@@ -67,10 +67,12 @@ class AdminController extends AbstractController
 
     private function logout()
     {
-        $_SESSION = array();
-        session_destroy();
-        unset($_SESSION);
-        header('Location: /admin/loggin');
+        if (isset($_SESSION['logout']) && $_SESSION['logout'] === true) {
+            $_SESSION = array();
+            session_destroy();
+            unset($_SESSION);
+            header('Location: /admin/loggin');
+        }
     }
 
     private function login()
