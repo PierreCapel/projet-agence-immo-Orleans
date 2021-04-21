@@ -62,10 +62,10 @@ class AdminController extends AbstractController
             'error' => $error,
         ]);
     }
-
-    // fonction d'ajout des images par formulaire 
+    // fonction d'ajout des images par formulaire
     private function upload()
     {
+        $annonceId = '';
         //check methode serveur
         if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_FILES))) {
             //recup id de l'annonce via $_GET
