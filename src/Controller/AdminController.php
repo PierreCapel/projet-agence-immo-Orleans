@@ -65,23 +65,24 @@ class AdminController extends AbstractController
     // fonction d'ajout des images par formulaire
     private function upload()
     {
-        $annonceId = '';
         //check methode serveur
         if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_FILES))) {
             //recup id de l'annonce via $_GET
             if (!empty($_GET)) {
                 $annonceId = $_GET['id'];
+            } else {
+                $annonceId = '';
             }
             //creer dossier pour image si non existant
             if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId)) {
                 mkdir((__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/"));
+            }
                 //creer fichier .gitkeep
-                if (!is_file(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep")) {
+            if (!is_file(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep")) {
                     touch(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep");
-                }
             }
             //set dossier reception
-            $uploadDir = __DIR__ . "/../../public/assets/images/annonces/";
+            $uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/";
 
             //recup extension fichier
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
