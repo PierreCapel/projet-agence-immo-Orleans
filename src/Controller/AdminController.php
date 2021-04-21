@@ -29,7 +29,6 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logoutSet();
         $this->logout();
         return $this->twig->render('Admin/index.html.twig');
     }
@@ -69,10 +68,13 @@ class AdminController extends AbstractController
 
     private function logout()
     {
+        if (!empty($_GET['logout'])) {
+            $_SESSION['logout'] = $_GET['logout'];
+            var_dump($_SESSION);
+            var_dump($_GET);
+        }
         if (isset($_SESSION['logout']) && $_SESSION['logout'] === 'true') {
-            $_SESSION = array();
             session_destroy();
-            unset($_SESSION);
             header('Location: /admin/loggin');
         }
     }
@@ -92,15 +94,6 @@ class AdminController extends AbstractController
                 $_SESSION['usermail'] = $usermail;
                 header('location: /admin/index');
             }
-        }
-    }
-
-    private function logoutSet()
-    {
-        if (!empty($_GET['logout'])) {
-            $_SESSION['logout'] = $_GET['logout'];
-            var_dump($_SESSION);
-            var_dump($_GET);
         }
     }
 }
