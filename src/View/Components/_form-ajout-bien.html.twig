@@ -6,14 +6,18 @@
                 Coordonnées du bien
             </h2>
             <div class="m-2">
-                <input required class="" type="text" name="adresse" placeholder="Adresse"></input>
+                <label class="mx-2" for="adresse">Adresse</label>
+                <input required class="" id="adresse" type="text" name="adresse"></input>
             </div>
             <div class="m-2">
-                <input class="" type="text" name="complement" placeholder="Complément (si besoin)"></input>
+                <label class="mx-2" for="complement">Complément d'adresse</label>
+                <input class="" type="text" id"complement" name="complement" placeholder="Complément (si besoin)"></input>
             </div>
             <div class="m-2">
-                <input required class="" type="number" name="code_postal" placeholder="Code postal"></input>
-                <input required class="" type="text" name="city" placeholder="Ville"></input>
+                <label class="mx-2" for="code_postal">Code postale</label>
+                <input required class="" id ="code_postal" type="number" name="code_postal"></input>
+                <label class="mx-2" for="ville">Ville</label>
+                <input required class="" id="ville" type="text" name="ville"></input>
             </div>
         </div>
 
@@ -22,16 +26,16 @@
                 Type du bien
             </h2>
             <div class="d-flex">
-                <select class="mx-2 form-select-sm" name="categorie">
-                    <option selected>Appartement/maison</option>
+                <select class="mx-2 form-select-sm" name="categorie_id">
+                    <option value="6" selected>Appartement/maison</option>
                     <option value="1">Appartement</option>
                     <option value="2">Maison</option>
                     <option value="3">Studio</option>
                     <option value="4">Loft</option>
                     <option value="5">Chambre</option>
                 </select>
-                <select class="mx-2 form-select-sm" name="type">
-                    <option selected>Type</option>
+                <select class="mx-2 form-select-sm" name="type_id">
+                    <option value="6" selected>Type</option>
                     <option value="1">T1</option>
                     <option value="2">T2</option>
                     <option value="3">T3</option>
@@ -46,8 +50,8 @@
                 </div>               
             </div>
             <div class="my-2">
-                <select class="mx-2 form-select-sm" name="etat">
-                    <option selected>Etat</option>
+                <select class="mx-2 form-select-sm" name="etat_id">
+                    <option value="6" selected>Etat</option>
                     <option value="1">Ancien</option>
                     <option value="2">Bon état</option>
                     <option value="3">Déco récente</option>
@@ -61,9 +65,15 @@
                 <label for="ascenseur">Ascenseur</label>                
             </div>            
             <div class="my-2">
-                <input class="mx-2" type="number" id="surface" name="surface" placeholder="Surface"></input>
-                <input class="mx-2" type="number" id="etage" name="etage" placeholder="Etage"></input>
-                <input class="mx-2" type="date" id="dispo"name="dispo" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
+                <label class="mx-2" for="surface">Surface</label>
+                <input class="mx-2" type="number" id="surface" name="surface" value="0"></input>
+                <label class="mx-2" for="etage">Nombre d'étages</label>
+                <input class="mx-2" type="number" id="etage" name="etage" value="0"></input>
+                
+            </div>
+            <div>
+                <label class="mx-2" for="dispo">Disponible à partir du :</label>
+                <input class="mx-2" type="date" id="dispo"name="disponibilite" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
             </div>
         </div>
 
@@ -72,8 +82,8 @@
                 Tarif du bien
             </h2>
             <div class="mx-2">
-                    <select class="form-select-sm" name="besoin">
-                        <option selected>Achat ou location</option>
+                    <select class="form-select-sm" name="besoin_id">
+                        <option value="3" selected>Achat ou location</option>
                         <option value="1">Achat</option>
                         <option value="2">Location</option>
                     </select>
@@ -82,16 +92,20 @@
                 <p class="me-3 text-decoration-underline">
                     Location
                 </p>
-                <input type="number" id="charges" name="charges" placeholder="Charges"></input>
-                <input type="number" id="caution" name="caution" placeholder="Caution"></input>
-                <input type="number" id="loyer" name="loyer" placeholder="Loyer"></input>
+                <label class="" for="charge">Charges :</label>
+                <input type="number" id="charge" name="charge"value="0"></input>
+                <label class="mx-2" for="caution">Caution :</label>
+                <input type="number" id="caution" name="caution" value="0"></input>
+                <label class="mx-2" for="loyer">Loyer :</label>
+                <input type="number" id="loyer" name="loyer" placeholder="Loyer" value="0"></input>
             </div>
             <div class="m-2">
                 <p class="me-3 text-decoration-underline">
                     Achat
                 </p>
                 <div>
-                    <input type="number" name="prix" placeholder="Prix de vente"></input>
+                    <label class="" for="prix">Prix :</label>
+                    <input type="number" id="prix" name="prix" value="0"></input>
                 </div>
             </div>
         </div>
@@ -101,7 +115,7 @@
                 Description du bien
             </h2>
             <div class="m-2">
-                <input type="checkbox" id="entre" name="entre" value="oui"></input>
+                <input type="checkbox" id="entre" name="entree" value="oui"></input>
                 <label class="me-3" for="entre">Entrée</label>
                 <input type="checkbox" id="sejour" name="sejour" value="oui"></input>
                 <label class="me-3" for="sejour">Séjour</label>
@@ -109,9 +123,9 @@
                 <label class="me-3" for="salon">Salon</label>
             </div>
             <div class="m-2">
-                <input type="checkbox" id="d-vitrage" name="d-vitrage" value="oui"></input>
+                <input type="checkbox" id="d-vitrage" name="double_vitrage" value="oui"></input>
                 <label class="me-3" for="d-vitrage">Double vitrage</label>
-                <input type="checkbox" id="v-roulant" name="v-roulant" value="oui"></input>
+                <input type="checkbox" id="v-roulant" name="volets_roulants" value="oui"></input>
                 <label class="me-3" for="v-roulant">Volets roulants</label>
             </div>
             <div class="m-2">
@@ -124,22 +138,22 @@
             </div>
             <div class="m-2">
                 <label class="me-3 text-decoration-underline" for="chambre">Nombre de chambres :</label>
-                <input class="me-3" type="number" name="chambre"></input>
+                <input class="me-3" type="number" id="chambre" name="chambre" value="0"></input>
             </div>            
             <div class="m-2">
                 <div class="d-flex">
                     <p class="me-3 text-decoration-underline">
                         Revêtement au sol :
                     </p>                
-                    <input class="m-2" type="radio" id="moquette" name="revetement" value="1"></input>
+                    <input class="m-2" type="radio" id="moquette" name="revetement_id" value="1"></input>
                     <label class="me-3" for="moquette">Moquette</label>
-                    <input class="m-2" type="radio" id="carrelage" name="revetement" value="2"></input>
+                    <input class="m-2" type="radio" id="carrelage" name="revetement_id" value="2" checked></input>
                     <label class="me-3" for="carrelage">Carrelage</label>
-                    <input class="m-2" type="radio" id="linoleum" name="revetement" value="3"></input>
+                    <input class="m-2" type="radio" id="linoleum" name="revetement_id" value="3"></input>
                     <label class="me-3" for="linoleum">Linoléum</label>
-                    <input class="m-2" type="radio" id="parquet" name="revetement" value="4"></input>
+                    <input class="m-2" type="radio" id="parquet" name="revetement_id" value="4"></input>
                     <label class="me-3" for="parquet">Parquet</label>
-                    <input class="m-2" type="radio" id="parquet-f" name="revetement" value="5"></input>
+                    <input class="m-2" type="radio" id="parquet-f" name="revetement_id" value="5"></input>
                     <label class="me-3" for="parquet-f">Parquet flottant</label>
                 </div>
             </div>
@@ -152,7 +166,7 @@
                     <label class="me-3" for="cave">Cave</label>
                     <input class="m-2" type="checkbox" id="grenier" name="grenier" value="oui"></input>
                     <label class="me-3" for="grenier">Grenier</label>
-                    <input class="m-2" type="checkbox" id="sous-s" name="sous-s" value="oui"></input>
+                    <input class="m-2" type="checkbox" id="sous-s" name="sous_sol" value="oui"></input>
                     <label class="me-3" for="sous-s">Sous-sol</label>
                     <input class="m-2" type="checkbox" id="logia" name="logia" value="oui"></input>
                     <label class="me-3" for="logia">Logia</label>
@@ -171,8 +185,8 @@
                 </div>
             </div> 
             <div class="m-2 mb-3">
-                <select class="form-select-sm" name="cuisine">
-                    <option selected>Type de cuisine</option>
+                <select class="form-select-sm" name="cuisine_id">
+                    <option value="11" selected>Type de cuisine</option>
                     <option value="1">Cuisine aménagée</option>
                     <option value="2">Cuisine cummune</option>
                     <option value="3">Cuisine équipé</option>
@@ -194,11 +208,11 @@
                     <label class="me-3" for="terrase">Terrase</label>
                     <input class="m-2" type="checkbox" id="cour" name="cour" value="oui"></input>
                     <label class="me-3" for="cour">Cour</label>
-                    <input class="m-2" type="checkbox" id="cour_c" name="cour_c" value="oui"></input>
+                    <input class="m-2" type="checkbox" id="cour_c" name="cour_close" value="oui"></input>
                     <label class="me-3" for="cour_c">Cour close</label>
                     <input class="m-2" type="checkbox" id="jardin" name="jardin" value="oui"></input>
                     <label class="me-3" for="jardin">Jardin</label>
-                    <input class="m-2" type="checkbox" id="jardin_c" name="jardin_c" value="oui"></input>
+                    <input class="m-2" type="checkbox" id="jardin_c" name="jardin_clos" value="oui"></input>
                     <label class="me-3" for="jardin_c">Jardin clos</label>
                 </div>
             </div>
@@ -211,13 +225,13 @@
                     <label class="me-3" for="parking">Parking</label>
                     <input class="m-2" type="checkbox" id="garage" name="garage" value="oui"></input>
                     <label class="me-3" for="garage">Garage</label>
-                    <input class="m-2" type="checkbox" id="velo" name="velo" value="oui"></input>
+                    <input class="m-2" type="checkbox" id="velo" name="local_velo" value="oui"></input>
                     <label class="me-3" for="velo">Local deux roues</label>
                 </div>
             </div>
             <div class="m-2">
-                <select class="form-select-sm" name="type-chauffage">
-                    <option selected>Type de chauffage</option>
+                <select class="form-select-sm" name="chauffage_id">
+                    <option value="10" selected>Type de chauffage</option>
                     <option value="1">Individuel</option>
                     <option value="2">Commun</option>
                     <option value="3">Mixte</option>
@@ -228,8 +242,8 @@
                     <option value="8">Commun fuel</option>
                     <option value="9">Commun électrique</option>
                 </select>
-                <select class="form-select-sm" name="dpe-c">
-                    <option selected>DPE-Consommation</option>
+                <select class="form-select-sm" name="dpe_c_id">
+                    <option value="8" selected>DPE-Consommation</option>
                     <option value="1">A</option>
                     <option value="2">B</option>
                     <option value="3">C</option>
@@ -238,8 +252,8 @@
                     <option value="6">F</option>
                     <option value="7">G</option>
                 </select>
-                <select class="form-select-sm" name="dpe-e">
-                    <option selected>DPE-Emission</option>
+                <select class="form-select-sm" name="dpe_e_id">
+                    <option value="8" selected>DPE-Emission</option>
                     <option value="1">A</option>
                     <option value="2">B</option>
                     <option value="3">C</option>
