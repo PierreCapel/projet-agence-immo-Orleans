@@ -90,4 +90,9 @@ nav {
     height: 100vh;
 }
 
+.Scrollable {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
 /*-------------- layout Admin --------------------*/
