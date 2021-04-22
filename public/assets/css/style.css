@@ -58,7 +58,15 @@ nav {
    width: 20px;
 }
 /*---------------CGU et mentions légales Layout-----------*/
-
+.container-CGU h1{
+    font-size: x-large;
+}
+.container-CGU h2{
+    font-size: large;
+}
+.container-CGU h3{
+    font-size: medium;
+}
 
 
 /*-------------- layout Admin --------------------*/
