@@ -43,6 +43,262 @@ class AdminController extends AbstractController
     public function ajoutAnnonce()
     {
         $this->startSession();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            $post = [];
+
+            $post['adresse'] = $_POST['adresse'];
+            $post['complement'] = $_POST['complement'];
+            $post['code_postal'] = $_POST['code_postal'];
+            $post['city'] = $_POST['city'];
+
+            if ($_POST['categorie'] === 'Appartement/maison') {
+                $post['categorie'] = '';
+            } else {
+                $post['categorie'] = $_POST['categorie'];
+            }
+
+            if ($_POST['type'] === 'Type') {
+                $post['type'] = '';
+            } else {
+                $post['type'] = $_POST['type'];
+            }
+
+            $post['est_vide'] = $_POST['est_vide'];
+
+            if ($_POST['etat'] === 'Etat') {
+                $post['etat'] = '';
+            } else {
+                $post['etat'] = $_POST['etat'];
+            }
+
+            if (isset($_POST['residence'])) {
+                $post['residence'] = $_POST['residence'];
+            } else {
+                $post['residence'] = 'non';
+            }
+
+            if (isset($_POST['duplex'])) {
+                $post['duplex'] = $_POST['duplex'];
+            } else {
+                $post['duplex'] = 'non';
+            }
+
+            if (isset($_POST['ascenseur'])) {
+                $post['ascenseur'] = $_POST['ascenseur'];
+            } else {
+                $post['ascenseur'] = 'non';
+            }
+
+            $post['surface'] = $_POST['surface'];
+            $post['etage'] = $_POST['etage'];
+            $post['dispo'] = $_POST['dispo'];
+            
+            if ($_POST['besoin'] === 'Achat ou location') {
+                $post['besoin'] = '';
+            } else {
+                $post['besoin'] = $_POST['besoin'];
+            }
+
+            $post['charges'] = $_POST['charges'];
+            $post['caution'] = $_POST['caution'];
+            $post['loyer'] = $_POST['loyer'];
+            $post['prix'] = $_POST['prix'];
+
+            if (isset($_POST['entre'])) {
+                $post['entre'] = $_POST['entre'];
+            } else {
+                $post['entre'] = 'non';
+            }
+
+            if (isset($_POST['sejour'])) {
+                $post['sejour'] = $_POST['sejour'];
+            } else {
+                $post['sejour'] = 'non';
+            }
+
+            if (isset($_POST['salon'])) {
+                $post['salon'] = $_POST['salon'];
+            } else {
+                $post['salon'] = 'non';
+            }
+
+            if (isset($_POST['d-vitrage'])) {
+                $post['d-vitrage'] = $_POST['d-vitrage'];
+            } else {
+                $post['d-vitrage'] = 'non';
+            }
+
+            if (isset($_POST['v-roulant'])) {
+                $post['v-roulant'] = $_POST['v-roulant'];
+            } else {
+                $post['v-roulant'] = 'non';
+            }
+
+            if (isset($_POST['gardien'])) {
+                $post['gardien'] = $_POST['gardien'];
+            } else {
+                $post['gardien'] = 'non';
+            }
+
+            if (isset($_POST['calme'])) {
+                $post['calme'] = $_POST['calme'];
+            } else {
+                $post['calme'] = 'non';
+            }
+
+            if (isset($_POST['ensoleille'])) {
+                $post['ensoleille'] = $_POST['ensoleille'];
+            } else {
+                $post['ensoleille'] = 'non';
+            }
+
+            $post['chambre'] = $_POST['chambre'];
+
+            if (isset($_POST['revetement'])) {
+                $post['revetement'] = $_POST['revetement'];
+            } else {
+                $post['revetement'] = '';
+            }
+
+            if (isset($_POST['logia'])) {
+                $post['logia'] = $_POST['logia'];
+            } else {
+                $post['logia'] = 'non';
+            }
+
+            if (isset($_POST['cave'])) {
+                $post['cave'] = $_POST['cave'];
+            } else {
+                $post['cave'] = 'non';
+            }
+
+            if (isset($_POST['grenier'])) {
+                $post['grenier'] = $_POST['grenier'];
+            } else {
+                $post['grenier'] = 'non';
+            }
+
+            if (isset($_POST['sous-s'])) {
+                $post['sous-s'] = $_POST['sous-s'];
+            } else {
+                $post['sous-s'] = 'non';
+            }
+
+            if (isset($_POST['cellier'])) {
+                $post['cellier'] = $_POST['cellier'];
+            } else {
+                $post['cellier'] = 'non';
+            }
+
+            if (isset($_POST['balcon'])) {
+                $post['balcon'] = $_POST['balcon'];
+            } else {
+                $post['balcon'] = 'non';
+            }
+
+            if (isset($_POST['cheminee'])) {
+                $post['cheminee'] = $_POST['cheminee'];
+            } else {
+                $post['cheminee'] = 'non';
+            }
+
+            if (isset($_POST['piscine'])) {
+                $post['piscine'] = $_POST['piscine'];
+            } else {
+                $post['piscine'] = 'non';
+            }
+
+            if (isset($_POST['interphone'])) {
+                $post['interphone'] = $_POST['interphone'];
+            } else {
+                $post['interphone'] = 'non';
+            }
+
+            if (isset($_POST['digicode'])) {
+                $post['digicode'] = $_POST['digicode'];
+            } else {
+                $post['digicode'] = 'non';
+            }
+
+            if ($_POST['cuisine'] === 'Type de cuisine') {
+                $post['cuisine'] = '';
+            } else {
+                $post['cuisine'] = $_POST['cuisine'];
+            }
+
+            if (isset($_POST['terrase'])) {
+                $post['terrase'] = $_POST['terrase'];
+            } else {
+                $post['terrase'] = 'non';
+            }
+
+            if (isset($_POST['cour'])) {
+                $post['cour'] = $_POST['cour'];
+            } else {
+                $post['cour'] = 'non';
+            }
+
+            if (isset($_POST['cour_c'])) {
+                $post['cour_c'] = $_POST['cour_c'];
+            } else {
+                $post['cour_c'] = 'non';
+            }
+
+            if (isset($_POST['jardin'])) {
+                $post['jardin'] = $_POST['jardin'];
+            } else {
+                $post['jardin'] = 'non';
+            }
+
+            if (isset($_POST['jardin_c'])) {
+                $post['jardin_c'] = $_POST['jardin_c'];
+            } else {
+                $post['jardin_c'] = 'non';
+            }
+
+            if (isset($_POST['parking'])) {
+                $post['parking'] = $_POST['parking'];
+            } else {
+                $post['parking'] = 'non';
+            }
+
+            if (isset($_POST['garage'])) {
+                $post['garage'] = $_POST['garage'];
+            } else {
+                $post['garage'] = 'non';
+            }
+
+            if (isset($_POST['velo'])) {
+                $post['velo'] = $_POST['velo'];
+            } else {
+                $post['velo'] = 'non';
+            }
+
+            if ($_POST['type-chauffage'] === 'Type de chauffage') {
+                $post['type-chauffage'] = '';
+            } else {
+                $post['type-chauffage'] = $_POST['type-chauffage'];
+            }
+
+            if ($_POST['dpe-c'] === 'DPE-Consommation') {
+                $post['dpe-c'] = '';
+            } else {
+                $post['dpe-c'] = $_POST['dpe-c'];
+            }
+
+            if ($_POST['dpe-e'] === 'DPE-Emission') {
+                $post['dpe-e'] = '';
+            } else {
+                $post['dpe-e'] = $_POST['dpe-e'];
+            }
+
+            $post['description'] = $_POST['description'];
+
+            var_dump($_POST);
+            var_dump($post);
+        }
+
         return $this->twig->render('Admin/ajoutAnnonce.html.twig');
     }
     public function modifSlogan()
