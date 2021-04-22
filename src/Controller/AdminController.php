@@ -70,8 +70,6 @@ class AdminController extends AbstractController
     {
         if (!empty($_GET['logout'])) {
             $_SESSION['logout'] = $_GET['logout'];
-            var_dump($_SESSION);
-            var_dump($_GET);
         }
         if (isset($_SESSION['logout']) && $_SESSION['logout'] === 'true') {
             session_destroy();
