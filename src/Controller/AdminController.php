@@ -22,7 +22,6 @@ class AdminController extends AbstractController
      * @throws \Twig\Error\SyntaxError
      */
 
-     
     public function loggin()
     {
         $this->startSession();
@@ -55,7 +54,7 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         return $this->twig->render('Admin/modifDocument.html.twig');
-
+    }
     public function ajoutPhoto()
     {
         $error = '';
