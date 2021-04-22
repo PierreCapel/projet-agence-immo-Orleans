@@ -21,26 +21,79 @@ class AdminController extends AbstractController
      */
     public function loggin()
     {
+        $this->startSession();
+        $this->login();
         return $this->twig->render('Admin/loggin.html.twig');
     }
     public function index()
     {
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
         return $this->twig->render('Admin/index.html.twig');
     }
     public function modifAnnonce()
     {
+        $this->startSession();
         return $this->twig->render('Admin/modifAnnonce.html.twig');
     }
     public function ajoutAnnonce()
     {
+        $this->startSession();
         return $this->twig->render('Admin/ajoutAnnonce.html.twig');
     }
     public function modifSlogan()
     {
+        $this->startSession();
         return $this->twig->render('Admin/modifSlogan.html.twig');
     }
     public function modifDocument()
     {
+        $this->startSession();
         return $this->twig->render('Admin/modifDocument.html.twig');
+    }
+
+    private function startSession()
+    {
+        session_start();
+        session_regenerate_id();
+    }
+
+    private function authorizeAccess()
+    {
+        if (!isset($_SESSION['usermail'])) {
+            header('Location: /admin/loggin');
+        }
+    }
+
+    private function logout()
+    {
+        if (!empty($_GET['logout'])) {
+            $_SESSION['logout'] = $_GET['logout'];
+            var_dump($_SESSION);
+            var_dump($_GET);
+        }
+        if (isset($_SESSION['logout']) && $_SESSION['logout'] === 'true') {
+            session_destroy();
+            header('Location: /admin/loggin');
+        }
+    }
+
+    private function login()
+    {
+        if (isset($_SESSION["usermail"])) {
+            header('Location: /admin/index');
+        }
+        define('EMAIL', 'masteragence@gmail.com');
+        define('PASSWORD', 'test');
+        if (!empty($_POST)) {
+            $usermail = $_POST['usermail'];
+            $password = $_POST['password'];
+
+            if ($usermail === EMAIL && $password === PASSWORD) {
+                $_SESSION['usermail'] = $usermail;
+                header('location: /admin/index');
+            }
+        }
     }
 }
