@@ -66,7 +66,7 @@ class AdminController extends AbstractController
             $error = $e->getMessage();
         }
 
-        return $this->twig->render('admin/ajoutphoto.html.twig', [
+        return $this->twig->render('Admin/ajoutphoto.html.twig', [
             'imageUrl' => $imageUrl,
             'error' => $error,
             'id' => $_GET['id'],
