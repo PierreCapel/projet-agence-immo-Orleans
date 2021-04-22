@@ -1,12 +1,54 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
-<h1>Page d'accueil admin</h1>
-<a href="ajoutAnnonce"> ajouter annonce</a>
-</br>
-<a href="modifAnnonce"> modifier ou supprimer une annonce</a>
-</br>
-<a href="modifDocument">modifier la liste des documents necessaires</a>
-</br>
-<a href="modifSlogan">modifier les bulles slogan de la page d'accueil</a>
+	<div class="row justify-content-center mt-4 mb-5">
+		<h1 class="text-center">Bienvenue sur page d'<span class="text-primary">administration<span></h1>
+	</div>
+	<div class="row m-2">
+		<h4 class="text-center">Actions concernant les
+			<strong class="text-primary">biens</strong>
+		:</h4>
+	</div>
+	<div class="row mb-3 mb-xl-5 justify-content-center">
+		<div class="col-3 card bg-secondary me-3">
+			<a href="ajoutAnnonce" class="text-decoration-none m-1">
+				<img src="../assets/images/admin/add-home.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+				<div class="card-body d-none d-lg-block">
+					<p class="card-text text-center">Ajouter</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-3 card bg-secondary ms-3">
+			<a href="modifAnnonce" class="text-decoration-none m-1">
+				<img src="../assets/images/admin/delete-modify.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+				<div class="card-body d-none d-lg-block">
+					<p class="card-text text-center">Modifier Supprimer</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="row m-2">
+		<h4 class="text-center">Administrer le
+			<strong class="text-primary">site</strong>
+		:</h4>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-3 card bg-secondary me-3">
+			<a href="modifDocument" class="text-decoration-none m-1">
+				<img src="../assets/images/admin/documents.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+				<div class="card-body">
+					<p class="card-text d-none d-lg-block">modifier liste documents necessaires</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-3 card bg-secondary ms-3">
+			<a href="modifSlogan" class="text-decoration-none m-1">
+				<img src="../assets/images/admin/website.svg" class="card-img-top mt-2" alt="logo ajouter un bien" height="150">
+				<div class="card-body">
+					<p class="card-text d-none d-lg-block">modifier textes de la page d'accueil</p>
+				</div>
+			</a>
+		</div>
+	</div>
 {% endblock %}
+

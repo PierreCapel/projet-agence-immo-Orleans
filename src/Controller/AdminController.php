@@ -21,30 +21,40 @@ class AdminController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
+
+     
     public function loggin()
     {
-        return $this->twig->render('admin/loggin.html.twig');
+        $this->startSession();
+        $this->login();
+        return $this->twig->render('Admin/loggin.html.twig');
     }
     public function index()
     {
-        return $this->twig->render('admin/index.html.twig');
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+        return $this->twig->render('Admin/index.html.twig');
     }
     public function modifAnnonce()
     {
-        return $this->twig->render('admin/modifannonce.html.twig');
+        $this->startSession();
+        return $this->twig->render('Admin/modifAnnonce.html.twig');
     }
     public function ajoutAnnonce()
     {
-        return $this->twig->render('admin/ajoutannonce.html.twig');
+        $this->startSession();
+        return $this->twig->render('Admin/ajoutAnnonce.html.twig');
     }
     public function modifSlogan()
     {
-        return $this->twig->render('admin/modifslogan.html.twig');
+        $this->startSession();
+        return $this->twig->render('Admin/modifSlogan.html.twig');
     }
     public function modifDocument()
     {
-        return $this->twig->render('admin/modifdocument.html.twig');
-    }
+        $this->startSession();
+        return $this->twig->render('Admin/modifDocument.html.twig');
 
     public function ajoutPhoto()
     {
@@ -102,6 +112,48 @@ class AdminController extends AbstractController
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
 
             return '/assets/images/annonces/' . $annonceId . '/' . basename($_FILES['pictureUpload']['name']);
+        }
+    }
+
+    private function startSession()
+    {
+        session_start();
+        session_regenerate_id();
+    }
+
+    private function authorizeAccess()
+    {
+        if (!isset($_SESSION['usermail'])) {
+            header('Location: /admin/loggin');
+        }
+    }
+
+    private function logout()
+    {
+        if (!empty($_GET['logout'])) {
+            $_SESSION['logout'] = $_GET['logout'];
+        }
+        if (isset($_SESSION['logout']) && $_SESSION['logout'] === 'true') {
+            session_destroy();
+            header('Location: /admin/loggin');
+        }
+    }
+
+    private function login()
+    {
+        if (isset($_SESSION["usermail"])) {
+            header('Location: /admin/index');
+        }
+        define('EMAIL', 'masteragence@gmail.com');
+        define('PASSWORD', 'test');
+        if (!empty($_POST)) {
+            $usermail = $_POST['usermail'];
+            $password = $_POST['password'];
+
+            if ($usermail === EMAIL && $password === PASSWORD) {
+                $_SESSION['usermail'] = $usermail;
+                header('location: /admin/index');
+            }
         }
     }
 }
