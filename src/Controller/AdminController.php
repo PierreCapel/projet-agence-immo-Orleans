@@ -60,6 +60,7 @@ class AdminController extends AbstractController
         return $this->twig->render('admin/ajoutphoto.html.twig', [
             'imageUrl' => $imageUrl,
             'error' => $error,
+            'id' => $_GET['id'],
         ]);
     }
     // fonction d'ajout des images par formulaire
