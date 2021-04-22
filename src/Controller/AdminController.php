@@ -88,12 +88,6 @@ class AdminController extends AbstractController
                 $post[$choice] = isset($_POST[$choice]) ? $_POST[$choice] : 'non';
             }
 
-            if (isset($_POST['revetement_id'])) {
-                $post['revetement_id'] = $_POST['revetement_id'];
-            } else {
-                $post['revetement_id'] = '0';
-            }
-
             $adminManager->addGoods($post);
         }
 
