@@ -43,7 +43,10 @@ class AdminController extends AbstractController
     }
     public function ajoutAnnonce()
     {
-
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+        
         $adminManager = new AdminManager();
 
 
