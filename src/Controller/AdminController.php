@@ -46,7 +46,7 @@ class AdminController extends AbstractController
         $this->startSession();
         $this->authorizeAccess();
         $this->logout();
-        
+
         $adminManager = new AdminManager();
 
 
