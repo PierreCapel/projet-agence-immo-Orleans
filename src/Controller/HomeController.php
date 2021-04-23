@@ -41,7 +41,9 @@ class HomeController extends AbstractController
     }
     public function annonce()
     {
-        return $this->twig->render('Home/annonce.html.twig');
+       $result = $this->getMensualite();
+            //$result = $this->getMensualite();
+        return $this->twig->render('Home/annonce.html.twig', ['result' => $result]);
     }
     public function cgu()
     {
@@ -50,5 +52,27 @@ class HomeController extends AbstractController
     public function mentionsLegales()
     {
         return $this->twig->render('Home/mentionsLegales.html.twig');
+    }
+
+
+    public function getMensualite() 
+    {
+        $capital = 0;
+        $nbYear = 0;
+        $rate = 0;
+
+    
+
+        if (!empty($_GET)){
+            $capital=intval($_GET["capital"]);
+            $nbYear=intval($_GET["nbYear"]);
+            $rate=intval($_GET["rate"]);
+
+            $month = $nbYear * 12;
+            $interest = ($capital * $rate)/100;
+
+            $result = ($capital + $interest) / $month;
+            return $result;
+        }
     }
 }
