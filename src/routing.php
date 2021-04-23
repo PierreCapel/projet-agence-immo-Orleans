@@ -15,7 +15,7 @@ $controller = 'App\Controller\\' . ucfirst($routeParts[0] ?? '') . 'Controller';
 
 $method = $routeParts[1] ?? '';
 
-// Suppression de la query string dans le nom de la mÃ©thode
+// Suppression de la query string dans le nom de la méthode
 // eg monAction?q=var devient monAction.
 $method = preg_replace('/\?.*/', '', $method);
 

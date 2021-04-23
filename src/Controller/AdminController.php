@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use Exception;
+
 class AdminController extends AbstractController
 {
     /**
@@ -19,6 +21,7 @@ class AdminController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
+
     public function loggin()
     {
         $this->startSession();
@@ -51,6 +54,64 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         return $this->twig->render('Admin/modifDocument.html.twig');
+    }
+    public function ajoutPhoto()
+    {
+        $error = '';
+        $imageUrl = '';
+
+        try {
+            $imageUrl = $this->upload();
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+
+        return $this->twig->render('Admin/ajoutphoto.html.twig', [
+            'imageUrl' => $imageUrl,
+            'error' => $error,
+            'id' => $_GET['id'],
+        ]);
+    }
+    // fonction d'ajout des images par formulaire
+    private function upload()
+    {
+        //check methode serveur
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_FILES))) {
+            //recup id de l'annonce via $_GET
+            if (!empty($_GET)) {
+                $annonceId = $_GET['id'];
+            } else {
+                $annonceId = '';
+            }
+            //creer dossier pour image si non existant
+            if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId)) {
+                mkdir((__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/"));
+            }
+                //creer fichier .gitkeep
+            if (!is_file(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep")) {
+                    touch(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep");
+            }
+            //set dossier reception
+            $uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/";
+
+            //recup extension fichier
+            $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
+
+            //set chemin destination fichier
+            $uploadFile = $uploadDir . basename($_FILES['pictureUpload']['name']);
+
+            //set liste d'extensions
+            $extensionsOk = ['jpg', 'jpeg', 'png'];
+
+            //check extension du fichier vs extensions autorisées
+            if (!in_array($extension, $extensionsOk)) {
+                throw new Exception('L\'image doit etre de type jpeg, jpg ou png');
+            }
+
+            move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
+
+            return '/assets/images/annonces/' . $annonceId . '/' . basename($_FILES['pictureUpload']['name']);
+        }
     }
 
     private function startSession()
