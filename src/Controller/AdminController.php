@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use Exception;
+use App\Model\AdminManager;
 
 class AdminController extends AbstractController
 {
@@ -43,6 +44,56 @@ class AdminController extends AbstractController
     public function ajoutAnnonce()
     {
         $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+
+        $adminManager = new AdminManager();
+
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $post = $_POST;
+
+            // Champs checkbox du formulaire
+            $choices = [
+                'residence',
+                'duplex',
+                'ascenseur',
+                'entree',
+                'sejour',
+                'salon',
+                'double_vitrage',
+                'volets_roulants',
+                'gardien',
+                'calme',
+                'ensoleille',
+                'logia',
+                'cave',
+                'grenier',
+                'sous_sol',
+                'cellier',
+                'balcon',
+                'cheminee',
+                'piscine',
+                'interphone',
+                'digicode',
+                'terrasse',
+                'cour',
+                'cour_close',
+                'jardin',
+                'jardin_clos',
+                'parking',
+                'garage',
+                'local_velo',
+            ];
+
+            // Pour chaque checkbox,  on stocke la valeur si checkée, sinon 'non'
+            foreach ($choices as $choice) {
+                $post[$choice] = isset($_POST[$choice]) ? $_POST[$choice] : 'non';
+            }
+
+            $adminManager->addGoods($post);
+        }
+
         return $this->twig->render('Admin/ajoutAnnonce.html.twig');
     }
     public function modifSlogan()

@@ -1,0 +1,286 @@
+<div id="form_ajout" class="container m-2">
+    <form action="" method="post">
+
+{#------------------------------ 1ere partie du formaulaire : Les coordonnées ----------------------------------   #}
+        
+        <div id="coordonnées" class="my-3 form-control border border-primary text-primary">
+            <h2 class="mb-4">
+                Coordonnées du bien
+            </h2>
+            <div class="m-2">
+                <label class="mx-2" for="adresse">Adresse</label>
+                <input required class="form-control" id="adresse" type="text" name="adresse"></input>
+            </div>
+            <div class="m-2">
+                <label class="mx-2" for="complement">Complément d'adresse</label>
+                <input class="form-control" type="text" id"complement" name="complement" placeholder="Complément (si besoin)"></input>
+            </div>
+            <div class="m-2">
+                <label class="mx-2" for="code_postal">Code postale</label>
+                <input required class="form-control" id ="code_postal" type="number" name="code_postal"></input>
+                <label class="mx-2" for="ville">Ville</label>
+                <input required class="form-control" id="ville" type="text" name="ville"></input>
+            </div>
+        </div>
+
+{#------------------------------ 2eme partie du formaulaire : Le type ----------------------------------   #}
+
+        <div id="type" class="my-3 form-control border border-primary  text-primary">
+            <h2 class="mb-4">
+                Type du bien
+            </h2>
+            <div class="d-flex">
+                <select class="mx-2 form-select-sm" name="categorie_id">
+                    <option value="6" selected>Appartement/maison</option>
+                    <option value="1">Appartement</option>
+                    <option value="2">Maison</option>
+                    <option value="3">Studio</option>
+                    <option value="4">Loft</option>
+                    <option value="5">Chambre</option>
+                </select>
+                <select class="mx-2 form-select-sm" name="type_id">
+                    <option value="6" selected>Type</option>
+                    <option value="1">T1</option>
+                    <option value="2">T2</option>
+                    <option value="3">T3</option>
+                    <option value="4">T4</option>
+                    <option value="5">T5 et plus</option>
+                </select>
+                <div>
+                    <input type="radio" id="vide" name="est_vide" value="oui" checked>
+                    <label for="vide">Vide</label>
+                    <input type="radio" id="meuble" name="est_vide" value="non">
+                    <label for="meuble">Meublé</label>
+                </div>               
+            </div>
+            <div class="my-2">
+                <select class="mx-2 form-select-sm" name="etat_id">
+                    <option value="6" selected>Etat</option>
+                    <option value="1">Ancien</option>
+                    <option value="2">Bon état</option>
+                    <option value="3">Déco récente</option>
+                    <option value="4">Neuf</option>
+                    <option value="5">Rénové</option>                    
+                <input class="mx-2" type="checkbox" id="residence" name="residence" value="oui">
+                <label for="residence">Résidence</label>
+                <input class="mx-2" type="checkbox" id="duplex" name="duplex" value="oui">
+                <label for="duplex">Duplex</label>
+                <input class="mx-2" type="checkbox" id="ascenseur" name="ascenseur" value="oui">
+                <label for="ascenseur">Ascenseur</label>                
+            </div>            
+            <div class="my-2">
+                <label class="mx-2" for="surface">Surface</label>
+                <input class="mx-2" type="number" id="surface" name="surface" value="0"></input>
+                <label class="mx-2" for="etage">Nombre d'étages</label>
+                <input class="mx-2" type="number" id="etage" name="etage" value="0"></input>
+                
+            </div>
+            <div>
+                <label class="mx-2" for="dispo">Disponible à partir du :</label>
+                <input class="mx-2" type="date" id="dispo"name="disponibilite" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
+            </div>
+        </div>
+
+{#------------------------------ 2eme partie du formaulaire : Les tarifs ----------------------------------   #}
+
+        <div id="tarifs" class="my-3 form-control border border-primary  text-primary">
+            <h2 class="mb-4">
+                Tarif du bien
+            </h2>
+            <div class="mx-2">
+                    <select class="form-select-sm" name="besoin_id">
+                        <option value="3" selected>Achat ou location</option>
+                        <option value="1">Achat</option>
+                        <option value="2">Location</option>
+                    </select>
+            </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                    Location
+                </p>
+                <label class="" for="charge">Charges :</label>
+                <input type="number" id="charge" name="charge"value="0"></input>
+                <label class="mx-2" for="caution">Caution :</label>
+                <input type="number" id="caution" name="caution" value="0"></input>
+                <label class="mx-2" for="loyer">Loyer :</label>
+                <input type="number" id="loyer" name="loyer" placeholder="Loyer" value="0"></input>
+            </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                    Achat
+                </p>
+                <div>
+                    <label class="" for="prix">Prix :</label>
+                    <input type="number" id="prix" name="prix" value="0"></input>
+                </div>
+            </div>
+        </div>
+
+{#------------------------------ 4eme partie du formaulaire : La description ----------------------------------   #}
+
+        <div id="description" class="my-3 form-control border border-primary text-primary">
+            <h2 class="mb-4">
+                Description du bien
+            </h2>
+            <div class="m-2">
+                <input type="checkbox" id="entre" name="entree" value="oui"></input>
+                <label class="me-3" for="entre">Entrée</label>
+                <input type="checkbox" id="sejour" name="sejour" value="oui"></input>
+                <label class="me-3" for="sejour">Séjour</label>
+                <input type="checkbox" id="salon" name="salon" value="oui"></input>
+                <label class="me-3" for="salon">Salon</label>
+            </div>
+            <div class="m-2">
+                <input type="checkbox" id="d-vitrage" name="double_vitrage" value="oui"></input>
+                <label class="me-3" for="d-vitrage">Double vitrage</label>
+                <input type="checkbox" id="v-roulant" name="volets_roulants" value="oui"></input>
+                <label class="me-3" for="v-roulant">Volets roulants</label>
+            </div>
+            <div class="m-2">
+                <input type="checkbox" id="gardien" name="gardien" value="oui"></input>
+                <label class="me-3" for="gardien">Gardien</label>
+                <input type="checkbox" id="calme" name="calme" value="oui"></input>
+                <label class="me-3" for="calme">Calme</label>
+                <input type="checkbox" id="ensoleille" name="ensoleille" value="oui"></input>
+                <label class="me-3" for="ensoleille">Ensoleillé</label>
+            </div>
+            <div class="m-2">
+                <label class="me-3 text-decoration-underline" for="chambre">Nombre de chambres :</label>
+                <input class="me-3" type="number" id="chambre" name="chambre" value="0"></input>
+            </div>            
+            <div class="m-2">
+                <div class="">
+                    <p class="me-3 text-decoration-underline">
+                        Revêtement au sol :
+                    </p>                
+                    <input class="m-2" type="radio" id="moquette" name="revetement_id" value="1"></input>
+                    <label class="me-3" for="moquette">Moquette</label>
+                    <input class="m-2" type="radio" id="carrelage" name="revetement_id" value="2" checked></input>
+                    <label class="me-3" for="carrelage">Carrelage</label>
+                    <input class="m-2" type="radio" id="linoleum" name="revetement_id" value="3"></input>
+                    <label class="me-3" for="linoleum">Linoléum</label>
+                    <input class="m-2" type="radio" id="parquet" name="revetement_id" value="4"></input>
+                    <label class="me-3" for="parquet">Parquet</label>
+                    <input class="m-2" type="radio" id="parquet-f" name="revetement_id" value="5"></input>
+                    <label class="me-3" for="parquet-f">Parquet flottant</label>
+                </div>
+            </div>
+            <div class="m-2"> 
+                <div class="">        
+                    <p class="me-3 text-decoration-underline">
+                        Aménagements :
+                    </p>                
+                    <input class="m-2" type="checkbox" id="cave" name="cave" value="oui"></input>
+                    <label class="me-3" for="cave">Cave</label>
+                    <input class="m-2" type="checkbox" id="grenier" name="grenier" value="oui"></input>
+                    <label class="me-3" for="grenier">Grenier</label>
+                    <input class="m-2" type="checkbox" id="sous-s" name="sous_sol" value="oui"></input>
+                    <label class="me-3" for="sous-s">Sous-sol</label>
+                    <input class="m-2" type="checkbox" id="logia" name="logia" value="oui"></input>
+                    <label class="me-3" for="logia">Logia</label>
+                    <input class="m-2" type="checkbox" id="cellier" name="cellier" value="oui"></input>
+                    <label class="me-3" for="cellier">Cellier</label>
+                    <input class="m-2" type="checkbox" id="balcon" name="balcon" value="oui"></input>
+                    <label class="me-3" for="balcon">Balcon</label>
+                    <input class="m-2" type="checkbox" id="cheminee" name="cheminee" value="oui"></input>
+                    <label class="me-3" for="cheminee">Cheminée</label>
+                    <input class="m-2" type="checkbox" id="piscine" name="piscine" value="oui"></input>
+                    <label class="me-3" for="piscine">Piscine</label>
+                    <input class="m-2" type="checkbox" id="interphone" name="interphone" value="oui"></input>
+                    <label class="me-3" for="interphone">Interphone</label>
+                    <input class="m-2" type="checkbox" id="digicode" name="digicode" value="oui"></input>
+                    <label class="me-3" for="digicode">Digicode</label>
+                </div>
+            </div> 
+            <div class="m-2 mb-3">
+                <select class="form-select-sm" name="cuisine_id">
+                    <option value="11" selected>Type de cuisine</option>
+                    <option value="1">Cuisine aménagée</option>
+                    <option value="2">Cuisine cummune</option>
+                    <option value="3">Cuisine équipé</option>
+                    <option value="4">Cuisine fermé</option>
+                    <option value="5">Cuisine fermé équipé</option>
+                    <option value="6">Cuisine ouverte</option>
+                    <option value="7">Cuisine ouverte équipé</option>
+                    <option value="8">kitchenette</option>
+                    <option value="9">kitchenette équipé</option>
+                    <option value="10">Cuisine américaine</option>
+                </select>
+            </div>
+            <div class="m-2">
+                <div class="">
+                    <p class="me-3 text-decoration-underline">
+                        extérieur :
+                    </p>                
+                    <input class="m-2" type="checkbox" id="terrase" name="terrase" value="oui"></input>
+                    <label class="me-3" for="terrase">Terrase</label>
+                    <input class="m-2" type="checkbox" id="cour" name="cour" value="oui"></input>
+                    <label class="me-3" for="cour">Cour</label>
+                    <input class="m-2" type="checkbox" id="cour_c" name="cour_close" value="oui"></input>
+                    <label class="me-3" for="cour_c">Cour close</label>
+                    <input class="m-2" type="checkbox" id="jardin" name="jardin" value="oui"></input>
+                    <label class="me-3" for="jardin">Jardin</label>
+                    <input class="m-2" type="checkbox" id="jardin_c" name="jardin_clos" value="oui"></input>
+                    <label class="me-3" for="jardin_c">Jardin clos</label>
+                </div>
+            </div>
+            <div class="m-2"> 
+                <div class="">        
+                    <p class="me-3 text-decoration-underline">
+                        Stationnement :
+                    </p>
+                    <input class="m-2" type="checkbox" id="parking" name="parking" value="oui"></input>
+                    <label class="me-3" for="parking">Parking</label>
+                    <input class="m-2" type="checkbox" id="garage" name="garage" value="oui"></input>
+                    <label class="me-3" for="garage">Garage</label>
+                    <input class="m-2" type="checkbox" id="velo" name="local_velo" value="oui"></input>
+                    <label class="me-3" for="velo">Local deux roues</label>
+                </div>
+            </div>
+            <div class="m-2">
+                <select class="form-select-sm" name="chauffage_id">
+                    <option value="10" selected>Type de chauffage</option>
+                    <option value="1">Individuel</option>
+                    <option value="2">Commun</option>
+                    <option value="3">Mixte</option>
+                    <option value="4">Individuel gaz</option>
+                    <option value="5">Individuel fuel</option>
+                    <option value="6">Individuel électrique</option>
+                    <option value="7">Commun gaz</option>
+                    <option value="8">Commun fuel</option>
+                    <option value="9">Commun électrique</option>
+                </select>
+                <select class="form-select-sm" name="dpe_c_id">
+                    <option value="8" selected>DPE-Consommation</option>
+                    <option value="1">A</option>
+                    <option value="2">B</option>
+                    <option value="3">C</option>
+                    <option value="4">D</option>
+                    <option value="5">E</option>
+                    <option value="6">F</option>
+                    <option value="7">G</option>
+                </select>
+                <select class="form-select-sm" name="dpe_e_id">
+                    <option value="8" selected>DPE-Emission</option>
+                    <option value="1">A</option>
+                    <option value="2">B</option>
+                    <option value="3">C</option>
+                    <option value="4">D</option>
+                    <option value="5">E</option>
+                    <option value="6">F</option>
+                    <option value="7">G</option>
+                </select>
+            </div>
+            <div class="m-2 mt-4">
+                <p class="me-3 text-decoration-underline">
+                    Déscription du bien :
+                </p>
+                <textarea required class="form-control" id="description" name="description"></textarea>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row-reverse">
+            <button type="submit" class="btn btn-primary">Ajouter un bien</button>
+        </div>
+    </form>
+</div>

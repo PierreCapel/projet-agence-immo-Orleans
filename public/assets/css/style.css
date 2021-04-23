@@ -90,4 +90,9 @@ nav {
     height: 100vh;
 }
 
+.scrollable {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
 /*-------------- layout Admin --------------------*/
