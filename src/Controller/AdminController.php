@@ -10,8 +10,9 @@
 namespace App\Controller;
 
 use Exception;
-use App\Model\AdminManager;
 use App\Model\DocumentManager;
+use App\Model\BiensManager;
+use App\Model\TypesManager;
 
 class AdminController extends AbstractController
 {
@@ -48,8 +49,8 @@ class AdminController extends AbstractController
         $this->authorizeAccess();
         $this->logout();
 
-        $adminManager = new AdminManager();
-
+        $biensManager = new BiensManager();
+        $typesManager = new TypesManager();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = $_POST;
@@ -92,10 +93,20 @@ class AdminController extends AbstractController
                 $post[$choice] = isset($_POST[$choice]) ? $_POST[$choice] : 'non';
             }
 
-            $adminManager->addGoods($post);
+            $biensManager->add($post);
+            header('Location: /admin/annonceAjouter');
         }
 
-        return $this->twig->render('Admin/ajoutAnnonce.html.twig');
+        return $this->twig->render('Admin/ajoutAnnonce.html.twig', [
+            'nd' => $typesManager->getByTypes('nd'),
+            'besoins' => $typesManager->getByTypes('besoin'),
+            'categories' => $typesManager->getByTypes('categorie'),
+            'types' => $typesManager->getByTypes('type'),
+            'etats' => $typesManager->getByTypes('etat'),
+            'chauffages' => $typesManager->getByTypes('chauffage'),
+            'cuisines' => $typesManager->getByTypes('cuisine'),
+            'revetements' => $typesManager->getByTypes('revetement'),
+        ]);
     }
     public function modifSlogan()
     {
@@ -214,5 +225,14 @@ class AdminController extends AbstractController
                 header('location: /admin/index');
             }
         }
+    }
+
+    public function annonceAjouter()
+    {
+        $biensManager = new BiensManager();
+
+        return $this->twig->render('Admin/annonceAjouter.html.twig', [
+            'id' => $biensManager->getLastAdd(),
+        ]);
     }
 }

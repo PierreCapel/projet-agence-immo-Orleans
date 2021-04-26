@@ -4,15 +4,17 @@ namespace App\Model;
 
 use PDO;
 
-class AdminManager extends AbstractManager
+class BiensManager extends AbstractManager
 {
-    public function addGoods(array $post)
+    public const TABLE = 'biens';
+
+    public function add(array $post)
     {
         $fields = array_keys($post);
         $values = [];
 
         // Création des colonnes de la requêtes
-        $query = "INSERT INTO bien (" . implode(',', $fields) . ") ";
+        $query = "INSERT INTO " . self::TABLE . " (" . implode(',', $fields) . ") ";
 
         foreach ($fields as $field) {
             $values[] = ":$field";
@@ -28,5 +30,14 @@ class AdminManager extends AbstractManager
         }
 
         return $statement->execute();
+    }
+
+    public function getLastAdd(): array
+    {
+        $query = "SELECT id FROM " . self::TABLE . " WHERE id=(SELECT Max(id) FROM biens)";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }
