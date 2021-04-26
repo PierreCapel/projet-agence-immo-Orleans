@@ -1,7 +1,7 @@
 const addButton = document.getElementById('add-button');
 const form = document.getElementById('my-form');
 let pTag = document.getElementsByClassName('input-area');
-let suppButton = document.getElementsByClassName('supp');
+let deleteButton = document.getElementsByClassName('supp');
 
 let id = pTag.length;
 
@@ -49,12 +49,12 @@ addButton.addEventListener('click', (e) => {
     
 });
 
-for (let i = 0; i < suppButton.length; i++) {
-    suppButton[i].addEventListener('click', (e) => {
+for (let i = 0; i < deleteButton.length; i++) {
+    deleteButton[i].addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         console.log(e)
-        suppButton[i].parentNode.parentNode.removeChild(pTag[i]);
+        deleteButton[i].parentNode.parentNode.removeChild(pTag[i]);
     }
     )
 };

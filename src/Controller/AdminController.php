@@ -112,7 +112,7 @@ class AdminController extends AbstractController
             $newlistDoc = $_POST;
             $documentManager->modifyListDoc($newlistDoc);
         }
-        $listDocs = $documentManager->getListDoc();
+        $listDocs = $documentManager->selectAll();
         return $this->twig->render('Admin/modifDocument.html.twig', ["lists" => $listDocs]);
     }
     public function ajoutPhoto()
