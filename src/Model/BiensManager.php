@@ -31,4 +31,13 @@ class BiensManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function getLastAdd(): array
+    {
+        $query = "SELECT id FROM " . self::TABLE . " WHERE id=(SELECT Max(id) FROM biens)";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }

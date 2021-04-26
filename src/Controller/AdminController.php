@@ -94,6 +94,7 @@ class AdminController extends AbstractController
             }
 
             $biensManager->add($post);
+            header('Location: /admin/annonceAjouter');
         }
 
         return $this->twig->render('Admin/ajoutAnnonce.html.twig', [
@@ -224,5 +225,16 @@ class AdminController extends AbstractController
                 header('location: /admin/index');
             }
         }
+    }
+
+    public function annonceAjouter()
+    {
+        $biensManager = new BiensManager();
+
+        $biensManager->getLastAdd();
+
+        return $this->twig->render('Admin/annonceAjouter.html.twig', [
+            'id' => $biensManager->getLastAdd(),
+        ]);
     }
 }
