@@ -8,6 +8,10 @@
                 Coordonnées du bien
             </h2>
             <div class="m-2">
+                <label class="mx-2" for="titre">Titre de l'annonce</label>
+                <input required class="form-control" id="titre" type="text" name="titre"></input>
+            </div>
+            <div class="m-2">
                 <label class="mx-2" for="adresse">Adresse</label>
                 <input required class="form-control" id="adresse" type="text" name="adresse"></input>
             </div>
@@ -31,20 +35,16 @@
             </h2>
             <div class="d-flex">
                 <select class="mx-2 form-select-sm" name="categorie_id">
-                    <option value="6" selected>Appartement/maison</option>
-                    <option value="1">Appartement</option>
-                    <option value="2">Maison</option>
-                    <option value="3">Studio</option>
-                    <option value="4">Loft</option>
-                    <option value="5">Chambre</option>
+                    <option selected value="{{nd.0.id}}">Maison/appartement</option>
+                    {% for type in categories %}
+                        <option value="{{type.id}}">{{type.libelle}}</option>
+                    {% endfor %}
                 </select>
                 <select class="mx-2 form-select-sm" name="type_id">
-                    <option value="6" selected>Type</option>
-                    <option value="1">T1</option>
-                    <option value="2">T2</option>
-                    <option value="3">T3</option>
-                    <option value="4">T4</option>
-                    <option value="5">T5 et plus</option>
+                    <option selected value="{{nd.0.id}}">Type</option>
+                    {% for type in types %}
+                        <option value="{{type.id}}">{{type.libelle}}</option>
+                    {% endfor %}
                 </select>
                 <div>
                     <input type="radio" id="vide" name="est_vide" value="oui" checked>
@@ -55,12 +55,11 @@
             </div>
             <div class="my-2">
                 <select class="mx-2 form-select-sm" name="etat_id">
-                    <option value="6" selected>Etat</option>
-                    <option value="1">Ancien</option>
-                    <option value="2">Bon état</option>
-                    <option value="3">Déco récente</option>
-                    <option value="4">Neuf</option>
-                    <option value="5">Rénové</option>                    
+                    <option selected value="{{nd.0.id}}">Etat</option>
+                    {% for type in etats %}
+                        <option value="{{type.id}}">{{type.libelle}}</option>
+                    {% endfor %}
+                </select>                   
                 <input class="mx-2" type="checkbox" id="residence" name="residence" value="oui">
                 <label for="residence">Résidence</label>
                 <input class="mx-2" type="checkbox" id="duplex" name="duplex" value="oui">
@@ -89,9 +88,10 @@
             </h2>
             <div class="mx-2">
                     <select class="form-select-sm" name="besoin_id">
-                        <option value="3" selected>Achat ou location</option>
-                        <option value="1">Achat</option>
-                        <option value="2">Location</option>
+                        <option selected value="{{nd.0.id}}">Achat/location</option>
+                    {% for type in besoins %}
+                        <option value="{{type.id}}">{{type.libelle}}</option>
+                    {% endfor %}
                     </select>
             </div>
             <div class="m-2">
@@ -153,16 +153,12 @@
                     <p class="me-3 text-decoration-underline">
                         Revêtement au sol :
                     </p>                
-                    <input class="m-2" type="radio" id="moquette" name="revetement_id" value="1"></input>
-                    <label class="me-3" for="moquette">Moquette</label>
-                    <input class="m-2" type="radio" id="carrelage" name="revetement_id" value="2" checked></input>
-                    <label class="me-3" for="carrelage">Carrelage</label>
-                    <input class="m-2" type="radio" id="linoleum" name="revetement_id" value="3"></input>
-                    <label class="me-3" for="linoleum">Linoléum</label>
-                    <input class="m-2" type="radio" id="parquet" name="revetement_id" value="4"></input>
-                    <label class="me-3" for="parquet">Parquet</label>
-                    <input class="m-2" type="radio" id="parquet-f" name="revetement_id" value="5"></input>
-                    <label class="me-3" for="parquet-f">Parquet flottant</label>
+                    <input class="m-2" checked type="radio" id="none" name="revetement_id" value="{{nd.0.id}}"></input>
+                    <label class="me-3" for="none">Non renseigné</label>
+                    {% for type in revetements %}
+                        <input class="m-2" type="radio" id="{{type.libelle}}" name="revetement_id" value="{{type.id}}"></input>
+                        <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
+                    {% endfor %}
                 </div>
             </div>
             <div class="m-2"> 
@@ -194,17 +190,11 @@
             </div> 
             <div class="m-2 mb-3">
                 <select class="form-select-sm" name="cuisine_id">
-                    <option value="11" selected>Type de cuisine</option>
-                    <option value="1">Cuisine aménagée</option>
-                    <option value="2">Cuisine cummune</option>
-                    <option value="3">Cuisine équipé</option>
-                    <option value="4">Cuisine fermé</option>
-                    <option value="5">Cuisine fermé équipé</option>
-                    <option value="6">Cuisine ouverte</option>
-                    <option value="7">Cuisine ouverte équipé</option>
-                    <option value="8">kitchenette</option>
-                    <option value="9">kitchenette équipé</option>
-                    <option value="10">Cuisine américaine</option>
+                    <option selected value="{{nd.0.id}}">Type de cuisine</option>
+                    {% for type in cuisines %}
+                        <option value="{{type.id}}">{{type.libelle}}</option>
+                    {% endfor %}
+                    </select>
                 </select>
             </div>
             <div class="m-2">
@@ -212,7 +202,7 @@
                     <p class="me-3 text-decoration-underline">
                         extérieur :
                     </p>                
-                    <input class="m-2" type="checkbox" id="terrase" name="terrase" value="oui"></input>
+                    <input class="m-2" type="checkbox" id="terrasse" name="terrasse" value="oui"></input>
                     <label class="me-3" for="terrase">Terrase</label>
                     <input class="m-2" type="checkbox" id="cour" name="cour" value="oui"></input>
                     <label class="me-3" for="cour">Cour</label>
@@ -239,36 +229,31 @@
             </div>
             <div class="m-2">
                 <select class="form-select-sm" name="chauffage_id">
-                    <option value="10" selected>Type de chauffage</option>
-                    <option value="1">Individuel</option>
-                    <option value="2">Commun</option>
-                    <option value="3">Mixte</option>
-                    <option value="4">Individuel gaz</option>
-                    <option value="5">Individuel fuel</option>
-                    <option value="6">Individuel électrique</option>
-                    <option value="7">Commun gaz</option>
-                    <option value="8">Commun fuel</option>
-                    <option value="9">Commun électrique</option>
+                    <option value="{{nd.0.id}}">Type de chauffage</option>
+                    {% for type in chauffages %}
+                        <option value="{{type.id}}">{{type.libelle}}</option>
+                    {% endfor %}
+                    </select>
                 </select>
-                <select class="form-select-sm" name="dpe_c_id">
-                    <option value="8" selected>DPE-Consommation</option>
-                    <option value="1">A</option>
-                    <option value="2">B</option>
-                    <option value="3">C</option>
-                    <option value="4">D</option>
-                    <option value="5">E</option>
-                    <option value="6">F</option>
-                    <option value="7">G</option>
+                <select class="form-select-sm" name="dpe_c">
+                    <option value="Non renseigné" selected>DPE-Consommation</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
                 </select>
-                <select class="form-select-sm" name="dpe_e_id">
-                    <option value="8" selected>DPE-Emission</option>
-                    <option value="1">A</option>
-                    <option value="2">B</option>
-                    <option value="3">C</option>
-                    <option value="4">D</option>
-                    <option value="5">E</option>
-                    <option value="6">F</option>
-                    <option value="7">G</option>
+                <select class="form-select-sm" name="dpe_e">
+                    <option value="Non renseigné" selected>DPE-Emission</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
                 </select>
             </div>
             <div class="m-2 mt-4">
