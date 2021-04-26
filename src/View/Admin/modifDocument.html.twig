@@ -16,28 +16,13 @@
 			<div class="row">
 				<form method="POST" action="">
 					<div id="monform">
-
-					{# boucle du tableau list #}
-					{#{% for list in lists %}#}
-						<!--<p class="mabalise">
-							<input type="text" name={{ 'justificatifs' ~ list['id'] }} 
-							class="input-doc" id={{ list[id] }} value={{ list['justificatifs'] }}/>
-							<a class="btn btn-primary">supprimer</a>
-						</p>-->
-					{#{% endfor %}#}
-
-					<p class="mabalise">
-						<input type="text" name="justificatifs2" class="input-doc" id="2"/>
-						<a class="btn btn-primary supp">supprimer</a>
-					</p>
-					<p class="mabalise">
-						<input type="text" name="justificatifs3" class="input-doc" id="3"/>
-						<a class="btn btn-primary supp">supprimer</a>
-					</p>
-					<p class="mabalise">
-						<input type="text" name="justificatifs4" class="input-doc" id="4"/>
-						<a class="btn btn-primary supp">supprimer</a>
-					</p>
+						{% for list in lists %}
+							<p class="mabalise d-flex align-items-center">
+								<textarea type="text" name={{ 'justificatifs' ~ list['id'] }} 
+								class="textarea-doc" id={{ list['id'] }} rows="1">{{ list['justificatifs'] }}</textarea>
+								<a class="btn btn-primary ms-1 supp">supprimer</a>
+							</p>
+						{% endfor %}
 					</div>
 					<p>
 						<button class="btn btn-primary" id='monbouton'>
