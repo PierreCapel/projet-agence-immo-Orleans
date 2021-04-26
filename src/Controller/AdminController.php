@@ -104,6 +104,8 @@ class AdminController extends AbstractController
     public function modifDocument()
     {
         $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
         $adminManager = new AdminManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newlistDoc = $_POST;
