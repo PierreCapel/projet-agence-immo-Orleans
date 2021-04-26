@@ -7,7 +7,7 @@ use PDO;
 class BiensManager extends AbstractManager
 {
     public const TABLE = 'biens';
-    
+
     public function add(array $post)
     {
         $fields = array_keys($post);
