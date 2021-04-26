@@ -104,6 +104,8 @@ class AdminController extends AbstractController
     public function modifDocument()
     {
         $this->startSession();
+        //$listDocs = $this->getListDoc();
+        //, ["lists" => $listDocs]
         return $this->twig->render('Admin/modifDocument.html.twig');
     }
     public function ajoutPhoto()
@@ -206,4 +208,67 @@ class AdminController extends AbstractController
             }
         }
     }
+
+    /*private function modifyListDoc()
+    {
+        //new instance AdminManager
+        $adminManager = new AdminManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $listDoc = $_POST;
+
+            $this->adminManager->modifyList($listDoc);
+        }
+
+        /**
+         * code qui va aller AdminManager
+         */
+        //query récup tous les documents avec id
+       /* function getList()
+        {
+            $query = 'SELECT * FROM justificatifs';
+            $statement = $this->pdo->query($query);
+            $list = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $list;
+        }
+
+        function modifyArray(array $listDoc)
+        {
+            $fields = array_keys($listDoc);
+            $values = [];
+
+            //vide la table justificatifs
+            $query = 'TRUNCATE TABLE `justificatifs`';
+            $statement = $this->pdo->query($query);
+
+            //ajout de la nouvelle liste
+            $query = 'INSERT INTO justificatifs VALUES';
+
+            foreach($fields as $field) {
+                $values = ":$field";
+            }
+
+            $query .= ' (' . implode(',', $values) . ')';
+
+            $statement = $this->pdo->prepare($query);
+
+            foreach($listDoc as $field => $values) {
+                $statement->bindValue(":$field", $value, PDO::PARAM_STR);
+            }
+
+            return $statement->execute();
+
+        }
+
+    }
+
+    private function getListDoc()
+    {
+        //new instance AdminManager
+        $adminManager = new AdminManager();
+
+        $this->adminManager->getList();
+        //return $list
+        return $listToModify = $list;
+    }*/
 }
