@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use Exception;
 use App\Model\AdminManager;
+use App\Model\DocumentManager;
 
 class AdminController extends AbstractController
 {
@@ -104,7 +105,15 @@ class AdminController extends AbstractController
     public function modifDocument()
     {
         $this->startSession();
-        return $this->twig->render('Admin/modifDocument.html.twig');
+        $this->authorizeAccess();
+        $this->logout();
+        $documentManager = new DocumentManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $newlistDoc = $_POST;
+            $documentManager->modifyListDoc($newlistDoc);
+        }
+        $listDocs = $documentManager->selectAll();
+        return $this->twig->render('Admin/modifDocument.html.twig', ["lists" => $listDocs]);
     }
     public function ajoutPhoto()
     {

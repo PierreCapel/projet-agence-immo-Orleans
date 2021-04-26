@@ -1,5 +1,47 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
-    <h1>Modifier les slogans de la page d'accueil</h1>
+	<div class="container">
+		<div class="row">
+			<div class="row text-center mt-3">
+				<h1>Modifier la liste des
+					<span class="text-primary">documents à fournir</span>
+				</h1>
+			</div>
+			<div class="row m-3">
+				<h4>Liste des
+					<span class="text-primary">documents</span>
+				</h4>
+			</div>
+			<div class="row">
+				<form method="POST" action="">
+					<div id="my-form">
+						{% for list in lists %}
+							<p class="input-area d-flex align-items-center">
+								<textarea type="text" name={{ 'justificatifs' ~ list['id'] }} 
+								class="textarea-doc" id={{ list['id'] }} rows="1">{{ list['justificatifs'] }}</textarea>
+								<a class="btn btn-primary ms-1 supp">supprimer</a>
+							</p>
+						{% endfor %}
+					</div>
+					<p>
+						<button class="btn btn-primary" id='add-button'>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewbox="0 0 16 16">
+								<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+								<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+							</svg>
+						</button>
+						Ajouter une ligne
+					</p>
+					<div class="row justify-content-end mt-5 me-5">
+						<button class="col-auto btn btn-primary align-self-end" type="submit">valider</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript %}
+	<script src="/assets/js/modifDocument.js"></script>
 {% endblock %}
