@@ -231,8 +231,6 @@ class AdminController extends AbstractController
     {
         $biensManager = new BiensManager();
 
-        $biensManager->getLastAdd();
-
         return $this->twig->render('Admin/annonceAjouter.html.twig', [
             'id' => $biensManager->getLastAdd(),
         ]);
