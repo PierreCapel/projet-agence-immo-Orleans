@@ -1,20 +1,17 @@
-/**
- * ajouter un input
- */
-const button = document.getElementById('monbouton');
-const form = document.getElementById('monform');
-let pTag = document.getElementsByClassName('mabalise');
+const addButton = document.getElementById('add-button');
+const form = document.getElementById('my-form');
+let pTag = document.getElementsByClassName('input-area');
 let suppButton = document.getElementsByClassName('supp');
 
 let id = pTag.length;
 
-button.addEventListener('click', (e) => {
+addButton.addEventListener('click', (e) => {
     e.preventDefault();
     //création balise p
-    const maNouvelleBalise = document.createElement('p');
-    maNouvelleBalise.classList.add('mabalise');
-    maNouvelleBalise.classList.add('d-flex');
-    maNouvelleBalise.classList.add('align-items-center');
+    const newInputarea = document.createElement('p');
+    newInputarea.classList.add('input-area');
+    newInputarea.classList.add('d-flex');
+    newInputarea.classList.add('align-items-center');
 
 
     //création balise input
@@ -35,18 +32,18 @@ button.addEventListener('click', (e) => {
     newLink.innerHTML = "Supprimer";
 
     //ajout balises input et a dans p
-    maNouvelleBalise.appendChild(newTextArea);
-    maNouvelleBalise.appendChild(newLink);
+    newInputarea.appendChild(newTextArea);
+    newInputarea.appendChild(newLink);
 
     //ajout p dans form 
-    form.appendChild(maNouvelleBalise);
+    form.appendChild(newInputarea);
 
 
     newLink.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         console.log(e)
-        newLink.parentNode.parentNode.removeChild(maNouvelleBalise);
+        newLink.parentNode.parentNode.removeChild(newInputarea);
     }
     )
     
