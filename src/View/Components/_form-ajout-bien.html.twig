@@ -1,16 +1,42 @@
 <div id="form_ajout" class="container m-2">
     <form action="" method="post">
+    
+{#------------------------------ 1ere partie du formaulaire : Affichage annonce ----------------------------------   #}
 
-{#------------------------------ 1ere partie du formaulaire : Les coordonnées ----------------------------------   #}
-        
-        <div id="coordonnées" class="my-3 form-control border border-primary text-primary">
+        <div id="general" class="my-3 form-control border border-primary text-primary">
             <h2 class="mb-4">
-                Coordonnées du bien
+                Affichage de l'annonce
             </h2>
             <div class="m-2">
                 <label class="mx-2" for="titre">Titre de l'annonce</label>
                 <input required class="form-control" id="titre" type="text" name="titre"></input>
             </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                        Mettre en avant l'annonce sur la page d'accueil du Stationnement :
+                </p>
+                <input class="m-2" type="radio" id="oui" name="top" value="oui"></input>
+                <label class="me-3" for="oui">Oui</label>
+                <input class="m-2" checked type="radio" id="non" name="top" value="non"></input>
+                <label class="me-3" for="non">Non</label>
+            </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                        Rendre visible l'annonce :
+                </p>
+                <input class="m-2" checked type="radio" id="oui" name="visible" value="oui"></input>
+                <label class="me-3" for="oui">Oui</label>
+                <input class="m-2" type="radio" id="non" name="visible" value="non"></input>
+                <label class="me-3" for="non">Non</label>
+            </div>
+        </div>
+
+{#------------------------------ 2eme partie du formaulaire : Les coordonnées ----------------------------------   #}
+        
+        <div id="coordonnées" class="my-3 form-control border border-primary text-primary">
+            <h2 class="mb-4">
+                Coordonnées du bien
+            </h2>
             <div class="m-2">
                 <label class="mx-2" for="adresse">Adresse</label>
                 <input required class="form-control" id="adresse" type="text" name="adresse"></input>
@@ -27,76 +53,97 @@
             </div>
         </div>
 
-{#------------------------------ 2eme partie du formaulaire : Le type ----------------------------------   #}
+{#------------------------------ 3eme partie du formaulaire : Le type ----------------------------------   #}
 
         <div id="type" class="my-3 form-control border border-primary  text-primary">
             <h2 class="mb-4">
                 Type du bien
             </h2>
-            <div class="d-flex">
-                <select class="mx-2 form-select-sm" name="categorie_id">
-                    <option selected value="{{nd.0.id}}">Maison/appartement</option>
-                    {% for type in categories %}
-                        <option value="{{type.id}}">{{type.libelle}}</option>
-                    {% endfor %}
-                </select>
-                <select class="mx-2 form-select-sm" name="type_id">
-                    <option selected value="{{nd.0.id}}">Type</option>
-                    {% for type in types %}
-                        <option value="{{type.id}}">{{type.libelle}}</option>
-                    {% endfor %}
-                </select>
+            <div class="d-flex m-3">
                 <div>
+                    <p class="me-3 text-decoration-underline">
+                            Catégorie du bien :
+                    </p>
+                    <input checked type="radio" id"categorie" name="categorie_id" value="{{nd.0.id}}"></input>
+                    <label for="categorie">Non renseigné</label>                   
+                        {% for type in categories %}
+                            <input class="m-2" type="radio" id"{{type.libelle}}" name="categorie_id" value="{{type.id}}"></input>
+                            <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
+                        {% endfor %}
+                </div>
+            </div>
+            <div class="d-flex m-3">
+                <div>
+                    <p class="me-3 text-decoration-underline">
+                            Type du bien :
+                    </p>
+                    <input checked type="radio" id"type" name="type_id" value="{{nd.0.id}}"></input>
+                    <label for="type">Non renseigné</label>                   
+                        {% for type in types %}
+                            <input class="m-2" type="radio" id"{{type.libelle}}" name="type_id" value="{{type.id}}"></input>
+                            <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
+                        {% endfor %}
+                </div>
+            </div>
+            <div class="d-flex m-3 mt-4">
+                <div>
+                    <p class="me-3 text-decoration-underline">
+                                Meublement du bien :
+                    </p>                    
                     <input type="radio" id="vide" name="est_vide" value="oui" checked>
                     <label for="vide">Vide</label>
                     <input type="radio" id="meuble" name="est_vide" value="non">
                     <label for="meuble">Meublé</label>
                 </div>               
             </div>
-            <div class="my-2">
-                <select class="mx-2 form-select-sm" name="etat_id">
-                    <option selected value="{{nd.0.id}}">Etat</option>
-                    {% for type in etats %}
-                        <option value="{{type.id}}">{{type.libelle}}</option>
-                    {% endfor %}
-                </select>                   
-                <input class="mx-2" type="checkbox" id="residence" name="residence" value="oui">
-                <label for="residence">Résidence</label>
-                <input class="mx-2" type="checkbox" id="duplex" name="duplex" value="oui">
-                <label for="duplex">Duplex</label>
-                <input class="mx-2" type="checkbox" id="ascenseur" name="ascenseur" value="oui">
-                <label for="ascenseur">Ascenseur</label>                
-            </div>            
-            <div class="my-2">
-                <label class="mx-2" for="surface">Surface</label>
-                <input class="mx-2" type="number" id="surface" name="surface" value="0"></input>
-                <label class="mx-2" for="etage">Nombre d'étages</label>
-                <input class="mx-2" type="number" id="etage" name="etage" value="0"></input>
-                
+            <div class="d-flex m-3">
+                <div>
+                    <p class="me-3 text-decoration-underline">
+                            Etat du bien :
+                    </p>
+                    <input checked type="radio" id"etat" name="etat_id" value="{{nd.0.id}}"></input>
+                    <label for="etat">Non renseigné</label>                   
+                        {% for type in etats %}
+                            <input class="m-2" type="radio" id"{{type.libelle}}" name="etat_id" value="{{type.id}}"></input>
+                            <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
+                        {% endfor %}
+                </div>
             </div>
-            <div>
-                <label class="mx-2" for="dispo">Disponible à partir du :</label>
-                <input class="mx-2" type="date" id="dispo"name="disponibilite" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
+            <div class="m-3">
+
+                  
+            </div>
+            <div class="m-3">          
+                <div class="my-2">
+                    <p class="me-3 text-decoration-underline">
+                            Surface :
+                    </p>
+                    <input class="mx-2" type="number"name="surface" value="0"></input>
+                </div>
+                <div class="my-2">
+                    <p class="me-3 text-decoration-underline">
+                            Disponible à partir du :
+                    </p>
+                    <input class="mx-2" type="date" name="disponibilite" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
+                </div>
             </div>
         </div>
 
-{#------------------------------ 2eme partie du formaulaire : Les tarifs ----------------------------------   #}
+{#------------------------------ 4eme partie du formaulaire : Les tarifs ----------------------------------   #}
 
         <div id="tarifs" class="my-3 form-control border border-primary  text-primary">
-            <h2 class="mb-4">
-                Tarif du bien
-            </h2>
-            <div class="mx-2">
-                    <select class="form-select-sm" name="besoin_id">
-                        <option selected value="{{nd.0.id}}">Achat/location</option>
-                    {% for type in besoins %}
-                        <option value="{{type.id}}">{{type.libelle}}</option>
-                    {% endfor %}
-                    </select>
-            </div>
+            <div>
+                    <p class="me-3 text-decoration-underline">
+                            Achat ou location :
+                    </p>               
+                        {% for type in besoins %}
+                            <input checked class="m-2" type="radio" id"{{type.libelle}}" name="besoin_id" value="{{type.id}}"></input>
+                            <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
+                        {% endfor %}
+                </div>
             <div class="m-2">
                 <p class="me-3 text-decoration-underline">
-                    Location
+                    Location :
                 </p>
                 <label class="" for="charge">Charges :</label>
                 <input type="number" id="charge" name="charge"value="0"></input>
@@ -107,36 +154,58 @@
             </div>
             <div class="m-2">
                 <p class="me-3 text-decoration-underline">
-                    Achat
+                    Achat :
                 </p>
                 <div>
                     <label class="" for="prix">Prix :</label>
                     <input type="number" id="prix" name="prix" value="0"></input>
                 </div>
             </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                    DPE :
+                </p>
+                <div>
+                    <select class="form-select-sm" name="dpe_c">
+                    <option value="Non renseigné" selected>DPE-Consommation</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                </select>
+                <select class="form-select-sm" name="dpe_e">
+                    <option value="Non renseigné" selected>DPE-Emission</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                </select>
+                </div>
+            </div>
         </div>
 
-{#------------------------------ 4eme partie du formaulaire : La description ----------------------------------   #}
+{#------------------------------ 5eme partie du formaulaire : La description ----------------------------------   #}
 
         <div id="description" class="my-3 form-control border border-primary text-primary">
             <h2 class="mb-4">
                 Description du bien
             </h2>
             <div class="m-2">
-                <input type="checkbox" id="entre" name="entree" value="oui"></input>
-                <label class="me-3" for="entre">Entrée</label>
-                <input type="checkbox" id="sejour" name="sejour" value="oui"></input>
-                <label class="me-3" for="sejour">Séjour</label>
-                <input type="checkbox" id="salon" name="salon" value="oui"></input>
-                <label class="me-3" for="salon">Salon</label>
-            </div>
-            <div class="m-2">
-                <input type="checkbox" id="d-vitrage" name="double_vitrage" value="oui"></input>
-                <label class="me-3" for="d-vitrage">Double vitrage</label>
-                <input type="checkbox" id="v-roulant" name="volets_roulants" value="oui"></input>
-                <label class="me-3" for="v-roulant">Volets roulants</label>
-            </div>
-            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                    Généralitées
+                </p>
+                <input type="checkbox" id="residence" name="residence" value="oui">
+                <label class="me-3" for="residence">Résidence</label>
+                <input type="checkbox" id="duplex" name="duplex" value="oui">
+                <label class="me-3" for="duplex">Duplex</label>
+                <input type="checkbox" id="ascenseur" name="ascenseur" value="oui">
+                <label class="me-3" for="ascenseur">Ascenseur</label>
                 <input type="checkbox" id="gardien" name="gardien" value="oui"></input>
                 <label class="me-3" for="gardien">Gardien</label>
                 <input type="checkbox" id="calme" name="calme" value="oui"></input>
@@ -145,9 +214,40 @@
                 <label class="me-3" for="ensoleille">Ensoleillé</label>
             </div>
             <div class="m-2">
-                <label class="me-3 text-decoration-underline" for="chambre">Nombre de chambres :</label>
-                <input class="me-3" type="number" id="chambre" name="chambre" value="0"></input>
-            </div>            
+                <p class="me-3 text-decoration-underline">
+                    Pièces
+                </p>
+                <div class="m-2">
+                    <p class="me-3 text-decoration-underline">
+                        Nombre de chambres :
+                    </p>
+                    <input class="mx-2" type="number" name="chambre" value="0"></input>
+                </div>
+                <div class="m-2">
+                    <p class="me-3 text-decoration-underline">
+                        Nombre de pièces :
+                    </p>
+                    <input class="mx-2" type="number" name="piece" value="0"></input>
+                </div>
+                <div class="m-2">
+                    <p class="me-3 text-decoration-underline">
+                        Nombre d'étages :
+                    </p>
+                    <input class="mx-2" type="number" name="etage" value="0"></input>
+                </div> 
+                <div class="m-2 my-4">                 
+                    <input type="checkbox" id="entre" name="entree" value="oui"></input>
+                    <label class="me-3" for="entre">Entrée</label>
+                    <input type="checkbox" id="sejour" name="sejour" value="oui"></input>
+                    <label class="me-3" for="sejour">Séjour</label>
+                    <input type="checkbox" id="salon" name="salon" value="oui"></input>
+                    <label class="me-3" for="salon">Salon</label>
+                    <input type="checkbox" id="d-vitrage" name="double_vitrage" value="oui"></input>
+                    <label class="me-3" for="d-vitrage">Double vitrage</label>
+                    <input type="checkbox" id="v-roulant" name="volets_roulants" value="oui"></input>
+                    <label class="me-3" for="v-roulant">Volets roulants</label>
+                </div>
+            </div>      
             <div class="m-2">
                 <div class="">
                     <p class="me-3 text-decoration-underline">
@@ -194,7 +294,12 @@
                     {% for type in cuisines %}
                         <option value="{{type.id}}">{{type.libelle}}</option>
                     {% endfor %}
-                    </select>
+                </select>
+                <select class="form-select-sm" name="chauffage_id">
+                    <option value="{{nd.0.id}}">Type de chauffage</option>
+                    {% for type in chauffages %}
+                        <option value="{{type.id}}">{{type.libelle}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="m-2">
@@ -228,34 +333,7 @@
                 </div>
             </div>
             <div class="m-2">
-                <select class="form-select-sm" name="chauffage_id">
-                    <option value="{{nd.0.id}}">Type de chauffage</option>
-                    {% for type in chauffages %}
-                        <option value="{{type.id}}">{{type.libelle}}</option>
-                    {% endfor %}
-                    </select>
-                </select>
-                <select class="form-select-sm" name="dpe_c">
-                    <option value="Non renseigné" selected>DPE-Consommation</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="G">G</option>
-                </select>
-                <select class="form-select-sm" name="dpe_e">
-                    <option value="Non renseigné" selected>DPE-Emission</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="G">G</option>
-                </select>
-            </div>
+                
             <div class="m-2 mt-4">
                 <p class="me-3 text-decoration-underline">
                     Déscription du bien :
@@ -264,7 +342,7 @@
             </div>
         </div>
 
-        <div class="d-flex flex-row-reverse">
+        <div class="d-flex flex-row-reverse m-3">
             <button type="submit" class="btn btn-primary">Ajouter un bien</button>
         </div>
     </form>
