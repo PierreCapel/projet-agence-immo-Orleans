@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use PDO;
+
 class AchatsManager extends AbstractManager
 {
     public function showSales()
