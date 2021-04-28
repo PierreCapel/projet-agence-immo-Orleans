@@ -1,5 +1,34 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
-    <h1>Modifier les documents et pieces necessaire pour dossier de location (et/ou achat?)</h1>
+    <div class="container">
+		<div class="row">
+			<div class="row text-center mt-3">
+				<h1>Modifier la liste des
+					<span class="text-primary">slogans</span>
+				</h1>
+			</div>
+			<div class="row m-3">
+				<h4>Liste des
+					<span class="text-primary">slogans</span>
+				</h4>
+			</div>
+			<div class="row">
+				<form method="POST" action="">
+					<div id="my-form">
+						{% for slogan in listSlogans %}
+							<p class="input-area d-flex align-items-center">
+								<label for={{ slogan['id'] }} class="me-3">{{ 'Slogan ' ~ slogan['id']}}</label>
+								<textarea type="text" name={{ 'slogan' ~ slogan['id'] }} 
+								class="textarea-doc" id={{ slogan['id'] }} rows="3">{{ slogan['slogan'] }}</textarea>
+							</p>
+						{% endfor %}
+					</div>
+					<div class="row justify-content-end mt-5 me-5">
+						<button class="col-auto btn btn-primary align-self-end" type="submit">valider</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 {% endblock %}
