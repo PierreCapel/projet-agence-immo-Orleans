@@ -1,5 +1,5 @@
 <div class="card shadow-lg  mt-3">
-    <img src="/../assets/images/annonces/{{bien.id}}/main.png" class="card-img-top" alt="appart exemple">
+    <img src="/../assets/images/annonces/{{bien.id}}/main.png" class="card-img-top" alt="appart exemple" height="300">
     <div class="card-body">
         <p class="card-text">
             <a class="text-primary"> {{bien.ville }}</a>
@@ -9,7 +9,13 @@
             <a class='text-primary'> en savoir plus</a>
         </p>
         <p class='float-right'>Prix :
-            <a class='text-primary'> {{bien.prix}} € CC</a>
+            <a class='text-primary'>
+            {% if bien.prix != 0 %}
+                {{ bien.prix }} € HAI
+            {% else %}
+                {{ bien.loyer }} € CC
+            {% endif %}
+            </a>
         </p>
     </div>
 </div>
