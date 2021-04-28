@@ -1,0 +1,20 @@
+<div class="card shadow-lg  mt-3">
+    <img src="/../assets/images/annonces/{{bien.id}}/main.jpg" class="card-img-top" alt="appart exemple">
+    <div class="card-body">
+        <p class="card-text">
+            <a class="text-primary"> {{bien.ville }}</a>
+            <h5>{{ bien.titre }}</h5>
+        </p>
+        <p> {{bien.description | slice(0, 120) ~ "... " }}
+            <a class='text-primary'> en savoir plus</a>
+        </p>
+        <p class='float-right'>Prix :
+            <a class='text-primary'> {{bien.prix}} € CC</a>
+        </p>
+        <div class="d-flex">
+            <a class="btn btn-primary m-1" href="modifAnnonce?id={{bien.id}}">Modifier</a>
+            <a class="btn btn-success m-1" href="ajoutPhoto?id={{bien.id}}">Images</a>
+            <a class="btn btn-danger m-1" href="supprAnnonce?id={{bien.id}}">Supprimer</a>
+        </div>
+    </div>
+</div>
