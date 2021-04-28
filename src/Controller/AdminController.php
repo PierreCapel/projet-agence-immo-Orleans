@@ -17,6 +17,9 @@ use App\Model\SloganManager;
 
 class AdminController extends AbstractController
 {
+    private BiensManager $biensManager;
+    private TypesManager $typesManager;
+
     public function __construct()
     {
         parent::__construct();
