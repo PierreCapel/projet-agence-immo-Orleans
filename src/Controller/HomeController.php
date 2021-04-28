@@ -27,10 +27,10 @@ class HomeController extends AbstractController
     public function index()
     {
         return $this->twig->render('Home/index.html.twig', [
-            'listeBiens' => $this->biensManager->selectAll(2),
+            'listeBiens' => $this->biensManager->selectAll('id', 'DESC'),
         ]);
     }
-    
+
     public function locations()
     {
         return $this->twig->render('Home/locations.html.twig', [
