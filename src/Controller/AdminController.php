@@ -13,6 +13,7 @@ use Exception;
 use App\Model\DocumentManager;
 use App\Model\BiensManager;
 use App\Model\TypesManager;
+use App\Model\SloganManager;
 
 class AdminController extends AbstractController
 {
@@ -111,7 +112,19 @@ class AdminController extends AbstractController
     public function modifSlogan()
     {
         $this->startSession();
-        return $this->twig->render('Admin/modifSlogan.html.twig');
+        $this->authorizeAccess();
+        $this->logout();
+
+        $sloganManager = new SloganManager();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $newlistSlogan = $_POST;
+            $sloganManager->modifyListSlogan($newlistSlogan);
+        }
+
+        $listSlogans = $sloganManager->selectAll();
+
+        return $this->twig->render('Admin/modifSlogan.html.twig', ['listSlogans' => $listSlogans]);
     }
     public function modifDocument()
     {
