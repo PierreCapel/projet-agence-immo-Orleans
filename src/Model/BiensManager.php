@@ -51,24 +51,20 @@ class BiensManager extends AbstractManager
         return $statement->fetchAll();
     }
     public function upDate(array $post, int $id)
-    {   
+    {
          // Création de la requêtes
         $query = "UPDATE " . self::TABLE . " SET ";
         $count = 0;
         // Ajout des collones à modifier ansi que leur nouvelle valeurs à la requête
-        foreach ($post as $field => $value)
-        {       
-            if ($count !== (count($post)-1))
-            {
+        foreach ($post as $field => $value) {
+            if ($count !== (count($post) - 1)) {
                 $query .= "$field = '$value' , ";
                 $count += 1;
-            }
-            else
-            {
+            } else {
                 $query .= "$field = '$value' ";
             }
-                
         }
+
         // Ajout de la condition pour modifier
         $query .= "WHERE id = :id";
 

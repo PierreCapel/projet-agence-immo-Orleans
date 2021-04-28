@@ -118,7 +118,6 @@ class AdminController extends AbstractController
         $biensManager = new BiensManager();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $post = $_POST;
             $biensManager->upDate($post, 4);
         }
