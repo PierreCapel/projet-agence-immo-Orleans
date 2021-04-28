@@ -182,7 +182,11 @@ class AdminController extends AbstractController
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
 
             //set chemin destination fichier
-            $uploadFile = $uploadDir . basename($_FILES['pictureUpload']['name']);
+            if (!empty($_POST['setAsMain'])) {
+                $uploadFile = $uploadDir . 'main.jpg';
+            } else {
+                $uploadFile = $uploadDir . basename($_FILES['pictureUpload']['name']);
+            }
 
             //set liste d'extensions
             $extensionsOk = ['jpg', 'jpeg', 'png'];
@@ -194,7 +198,7 @@ class AdminController extends AbstractController
 
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
 
-            return '/assets/images/annonces/' . $annonceId . '/' . basename($_FILES['pictureUpload']['name']);
+            return '/assets/images/annonces/' . $annonceId . '/' . basename($uploadFile);
         }
     }
 
