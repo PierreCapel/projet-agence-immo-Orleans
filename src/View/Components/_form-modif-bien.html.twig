@@ -1,0 +1,110 @@
+<div id="form_ajout" class="container m-2">
+    <form action="" method="post">
+
+{#------------------------------ 1ere partie du formaulaire : Affichage annonce ----------------------------------   #}
+
+        <div id="general" class="my-3 form-control border border-primary text-primary">
+            <h2 class="mb-4">
+                Affichage de l'annonce
+            </h2>
+            <div class="m-2">
+                <label class="mx-2" for="titre">Titre de l'annonce</label>
+                <input required class="form-control" id="titre" type="text" name="titre" value="{{bien.titre}}"></input>
+            </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                        Mettre en avant l'annonce sur la page d'accueil du Stationnement :
+                </p>
+                {% if bien.top == 'oui' %}
+                    <input class="m-2" checked type="radio" id="oui" name="top" value="oui"></input>
+                    <label class="me-3" for="oui">Oui</label>   
+                    <input class="m-2" type="radio" id="non" name="top" value="non"></input>
+                    <label class="me-3" for="non">Non</label>
+                {% elseif bien.top == 'non' %}
+                    <input class="m-2" type="radio" id="oui" name="top" value="oui"></input>
+                    <label class="me-3" for="oui">Oui</label>   
+                    <input class="m-2" checked type="radio" id="non" name="top" value="non"></input>
+                    <label class="me-3" for="non">Non</label>
+                {% endif %}
+            </div>
+            <div class="m-2">
+                <p class="me-3 text-decoration-underline">
+                        Rendre visible l'annonce :
+                </p>
+                {% if bien.visible =='oui' %}
+                    <input class="m-2" checked type="radio" id="oui" name="visible" value="oui"></input>
+                    <label class="me-3" for="oui">Oui</label>
+                    <input class="m-2" type="radio" id="non" name="visible" value="non"></input>
+                    <label class="me-3" for="non">Non</label>
+                {% elseif bien.visible =='non' %}
+                    <input class="m-2" type="radio" id="oui" name="visible" value="oui"></input>
+                    <label class="me-3" for="oui">Oui</label>
+                    <input class="m-2" checked type="radio" id="non" name="visible" value="non"></input>
+                    <label class="me-3" for="non">Non</label>
+                {% endif %}
+            </div>
+            <div class="my-2">
+                <p class="me-3 text-decoration-underline">
+                            Disponible à partir du :
+                </p>
+                <input class="mx-2" type="date" name="disponibilite" value="{{bien.disponibilite}}" min="2018-06-07" max="2050-12-14"></input>
+            </div>
+        </div>    
+{#------------------------------ 2eme partie du formaulaire : Les coordonnées ----------------------------------   #}
+        
+        <div id="coordonnées" class="my-3 form-control border border-primary text-primary">
+            <h2 class="mb-4">
+                Coordonnées du bien
+            </h2>
+            <div class="m-2">
+                <label class="mx-2" for="adresse">Adresse</label>
+                <input required class="form-control" id="adresse" type="text" name="adresse" value="{{bien.adresse}}"></input>
+            </div>
+            <div class="m-2">
+                <label class="mx-2" for="complement">Complément d'adresse</label>
+                <input class="form-control" type="text" id"complement" name="complement" value="{{bien.complement}}"></input>
+            </div>
+            <div class="m-2">
+                <label class="mx-2" for="code_postal">Code postale</label>
+                <input required class="form-control" id ="code_postal" type="number" name="code_postal" value="{{bien.code_postal}}"></input>
+                <label class="mx-2" for="ville">Ville</label>
+                <input required class="form-control" id="ville" type="text" name="ville" value="{{bien.ville}}"></input>
+            </div>
+        </div>
+
+{#------------------------------ 4eme partie du formaulaire : Les tarifs ----------------------------------   #}
+
+        <div id="tarifs" class="my-3 form-control border border-primary  text-primary">
+            <h2 class="mb-4">
+                Tarifs du biens
+            </h2>
+            {% if bien.besoin_id == 3 %}
+                <div class="m-2">
+                    <p class="me-3 text-decoration-underline">
+                        Location :
+                    </p>
+                    <label class="" for="charge">Charges :</label>
+                    <input type="number" id="charge" name="charge"value="{{bien.charge}}"></input>
+                    <label class="mx-2" for="caution">Caution :</label>
+                    <input type="number" id="caution" name="caution" value="{{bien.caution}}"></input>
+                    <label class="mx-2" for="loyer">Loyer :</label>
+                    <input type="number" id="loyer" name="loyer" placeholder="Loyer" value="{{bien.loyer}}"></input>
+                </div>
+            {% elseif bien.besoin_id == 2 %}
+                <div class="m-2">
+                    <p class="me-3 text-decoration-underline">
+                        Achat :
+                    </p>
+                    <div>
+                        <label class="" for="prix">Prix :</label>
+                        <input type="number" id="prix" name="prix" value="{{bien.prix}}"></input>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="d-flex flex-row-reverse m-3">
+            <button type="submit" class="btn btn-primary">Modifier un bien</button>
+        </div>            
+        
+    </form>
+</div>
