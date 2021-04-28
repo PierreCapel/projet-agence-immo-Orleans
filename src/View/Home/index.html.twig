@@ -2,10 +2,12 @@
 
 {% block content %}
 <div id="promo">
-    <h1 class="text-primary text-center mt-4">Les coups de coeur de l'agence</h1>
+    <h1 class="text-primary text-center mt-4">Les coups de coeur de l'agence</h1>  
     <div class="container">
         <div id="demo" class="carousel slide mt-3" data-ride="carousel">
           <div class="carousel-inner">
+
+
             <div class="carousel-item active">
               <img src="/../assets/images/index/appart-exemple-carroussel.jpg" alt="Carrousel slide 1" class="d-block w-100">
             </div>
@@ -61,14 +63,16 @@
             </div>
         </div>
     </div>
+
+
 </div>
-<div id="recents">
+<div id="recents">   
     <h1 class="text-primary text-center">Nos dernières annonces</h1>
     <div class="container">
         <div class="row mb-5">
             {% for bien in listeBiens %} 
                 <div class="col-md-6 col-sd-12 col-lg-4">
-                    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
+                    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}  
                 </div>
             {% endfor %}
         </div>
