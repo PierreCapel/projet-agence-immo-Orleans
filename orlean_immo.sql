@@ -1,7 +1,16 @@
+-- MySQL dump 10.13  Distrib 8.0.23, for Linux (x86_64)
+--
+-- Host: localhost    Database: orlean_immo
+-- ------------------------------------------------------
+-- Server version	8.0.23-0ubuntu0.20.04.1
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -9,7 +18,13 @@
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ orlean_immo /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE orlean_immo;
 
-DROP TABLE IF EXISTS biens;
+--
+-- Table structure for table `biens`
+--
+
+DROP TABLE IF EXISTS `biens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `biens` (
   `id` int NOT NULL AUTO_INCREMENT,
   `adresse` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -86,29 +101,97 @@ CREATE TABLE `biens` (
   CONSTRAINT `fk_revetement_types` FOREIGN KEY (`revetement_id`) REFERENCES `types` (`id`),
   CONSTRAINT `fk_type_types` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-DROP TABLE IF EXISTS types;
+--
+-- Dumping data for table `biens`
+--
+
+LOCK TABLES `biens` WRITE;
+/*!40000 ALTER TABLE `biens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `biens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `justificatifs`
+--
+
+DROP TABLE IF EXISTS `justificatifs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `justificatifs` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `justificatifs` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `justificatifs`
+--
+
+LOCK TABLES `justificatifs` WRITE;
+/*!40000 ALTER TABLE `justificatifs` DISABLE KEYS */;
+INSERT INTO `justificatifs` VALUES (1,'les attestations de revenu pour les trois derniers mois (fiches de paie, de pension, d\'ASSEDIC, ou contrat d\'embauche)'),(2,'les quittances de loyer de sa précédente location'),(3,'la déclaration d\'impôt sur le revenu'),(4,'si besoin, les fiches de revenu de la personne qui se porte caution');
+/*!40000 ALTER TABLE `justificatifs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `slogan`
+--
+
+DROP TABLE IF EXISTS `slogan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `slogan` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `slogan` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `slogan`
+--
+
+LOCK TABLES `slogan` WRITE;
+/*!40000 ALTER TABLE `slogan` DISABLE KEYS */;
+INSERT INTO `slogan` VALUES (1,'Une expérience de 16 ans dans l\'immobilier sur Orléans'),(2,'Un suivi personnalisé et un interlocuteur unique'),(3,'Des visites possibles 6 jours sur 7'),(4,'Basées dans plusieurs villes, toutes nos agences travaillent ensemble');
+/*!40000 ALTER TABLE `slogan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `types`
+--
+
+DROP TABLE IF EXISTS `types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `types` (
   `id` int NOT NULL AUTO_INCREMENT,
   `type` varchar(100) DEFAULT NULL,
   `libelle` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `types`
+--
 
+LOCK TABLES `types` WRITE;
+/*!40000 ALTER TABLE `types` DISABLE KEYS */;
+INSERT INTO `types` VALUES (1,'nd','Non renseigné'),(2,'besoin','Achat'),(3,'besoin','Location'),(4,'categorie','Appartement'),(5,'categorie','Maison'),(6,'categorie','Studio'),(7,'categorie','Loft'),(8,'categorie','Chambre'),(9,'type','T1'),(10,'type','T2'),(11,'type','T3'),(12,'type','T4'),(13,'type','T5 et plus'),(14,'etat','Ancien'),(15,'etat','Bon état'),(16,'etat','Déco récente'),(17,'etat','Neuf'),(18,'etat','Rénové'),(19,'chauffage','Individuel'),(20,'chauffage','Commun'),(21,'chauffage','Mixte'),(22,'chauffage','Individuel gaz'),(23,'chauffage','Individuel fuel'),(24,'chauffage','Individuel électrique'),(25,'chauffage','Commun gaz'),(26,'chauffage','Commun fuel'),(27,'chauffage','Commun électrique'),(28,'cuisine','Cuisine aménagée'),(29,'cuisine','Cuisine comune'),(30,'cuisine','Cuisine mixte'),(31,'cuisine','Cuisine fermé'),(32,'cuisine','Cuisine fermé équipé'),(33,'cuisine','Cuisine ouverte'),(34,'cuisine','Cuisine ouverte équipé'),(35,'cuisine','Kitchenette'),(36,'cuisine','Kitchenette équipé'),(37,'cuisine','Cuisine Américaine'),(38,'revetement','Moquette'),(39,'revetement','Carrelage'),(40,'revetement','Linoléum'),(41,'revetement','Parquet'),(42,'revetement','Parquet flottant');
+/*!40000 ALTER TABLE `types` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-
-INSERT INTO types(id,type,libelle) VALUES(1,'nd','Non renseigné'),(2,'besoin','Achat'),(3,'besoin','Location'),(4,'categorie','Appartement'),(5,'categorie','Maison'),(6,'categorie','Studio'),(7,'categorie','Loft'),(8,'categorie','Chambre'),(9,'type','T1'),(10,'type','T2'),(11,'type','T3'),(12,'type','T4'),(13,'type','T5 et plus'),(14,'etat','Ancien'),(15,'etat','Bon état'),(16,'etat','Déco récente'),(17,'etat','Neuf'),(18,'etat','Rénové'),(19,'chauffage','Individuel'),(20,'chauffage','Commun'),(21,'chauffage','Mixte'),(22,'chauffage','Individuel gaz'),(23,'chauffage','Individuel fuel'),(24,'chauffage','Individuel électrique'),(25,'chauffage','Commun gaz'),(26,'chauffage','Commun fuel'),(27,'chauffage','Commun électrique'),(28,'cuisine','Cuisine aménagée'),(29,'cuisine','Cuisine comune'),(30,'cuisine','Cuisine mixte'),(31,'cuisine','Cuisine fermé'),(32,'cuisine','Cuisine fermé équipé'),(33,'cuisine','Cuisine ouverte'),(34,'cuisine','Cuisine ouverte équipé'),(35,'cuisine','Kitchenette'),(36,'cuisine','Kitchenette équipé'),(37,'cuisine','Cuisine Américaine'),(38,'revetement','Moquette'),(39,'revetement','Carrelage'),(40,'revetement','Linoléum'),(41,'revetement','Parquet'),(42,'revetement','Parquet flottant');
-
-
-
-
-
-
-
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-04-28 11:03:07
