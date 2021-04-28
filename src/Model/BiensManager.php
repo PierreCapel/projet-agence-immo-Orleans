@@ -49,5 +49,4 @@ class BiensManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-    
 }
