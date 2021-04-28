@@ -39,11 +39,9 @@ class AdminController extends AbstractController
         $this->logout();
         return $this->twig->render('Admin/index.html.twig');
     }
-    public function modifAnnonce()
-    {
-        $this->startSession();
-        return $this->twig->render('Admin/modifAnnonce.html.twig');
-    }
+
+    // --------------- Fonctions annonces -----------------------
+
     public function ajoutAnnonce()
     {
         $this->startSession();
@@ -94,6 +92,8 @@ class AdminController extends AbstractController
                 $post[$choice] = isset($_POST[$choice]) ? $_POST[$choice] : 'non';
             }
 
+            $post['date'] = date('Y-m-d');
+
             $biensManager->add($post);
             header('Location: /admin/annonceAjouter');
         }
@@ -109,6 +109,26 @@ class AdminController extends AbstractController
             'revetements' => $typesManager->getByTypes('revetement'),
         ]);
     }
+    public function modifAnnonce()
+    {
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+
+        $biensManager = new BiensManager();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $post = $_POST;
+            $biensManager->upDate($post, 1);
+        }
+
+        return $this->twig->render('Admin/modifAnnonce.html.twig', [
+            'bien' => $biensManager->selectOneById(1),
+        ]);
+    }
+
+    // ------------------------------------------------------------------------------------
+
     public function modifSlogan()
     {
         $this->startSession();
