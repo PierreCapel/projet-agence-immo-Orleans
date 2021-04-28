@@ -101,10 +101,25 @@
                     </div>
                 </div>
             {% endif %}
+        </div>            
+
+{#------------------------------ 5eme partie du formaulaire : La description ----------------------------------   #}
+        
+        <div id="description" class="my-3 form-control border border-primary text-primary">
+            <h2 class="mb-4">
+                Description du bien
+            </h2>
+            <div class="m-2 mt-4">
+                <p class="me-3 text-decoration-underline">
+                    Déscription du bien :
+                </p>
+                <textarea required class="form-control" id="description" name="description">{{bien.titre}}</textarea>
+            </div>
         </div>
+
         <div class="d-flex flex-row-reverse m-3">
             <button type="submit" class="btn btn-primary">Modifier un bien</button>
-        </div>            
-        
+        </div>
+
     </form>
 </div>

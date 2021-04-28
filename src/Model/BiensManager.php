@@ -34,8 +34,9 @@ class BiensManager extends AbstractManager
 
     public function getLastAdd(): array
     {
-        $query = "SELECT id FROM " . self::TABLE . " WHERE id=(SELECT Max(id) FROM biens)";
+        $query = "SELECT id FROM " . self::TABLE . " WHERE id = :id";
         $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':id', $this->pdo->lastInsertId());
         $statement->execute();
 
         return $statement->fetchAll();
@@ -48,5 +49,33 @@ class BiensManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+    public function upDate(array $post, int $id)
+    {   
+         // Création de la requêtes
+        $query = "UPDATE " . self::TABLE . " SET ";
+        $count = 0;
+        // Ajout des collones à modifier ansi que leur nouvelle valeurs à la requête
+        foreach ($post as $field => $value)
+        {       
+            if ($count !== (count($post)-1))
+            {
+                $query .= "$field = '$value' , ";
+                $count += 1;
+            }
+            else
+            {
+                $query .= "$field = '$value' ";
+            }
+                
+        }
+        // Ajout de la condition pour modifier
+        $query .= "WHERE id = :id";
+
+        $statement = $this->pdo->prepare($query);
+
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        return $statement->execute();
     }
 }

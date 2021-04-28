@@ -92,6 +92,8 @@ class AdminController extends AbstractController
                 $post[$choice] = isset($_POST[$choice]) ? $_POST[$choice] : 'non';
             }
 
+            $post['date'] = date('Y-m-d');
+
             $biensManager->add($post);
             header('Location: /admin/annonceAjouter');
         }
@@ -115,8 +117,14 @@ class AdminController extends AbstractController
 
         $biensManager = new BiensManager();
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $post = $_POST;
+            $biensManager->upDate($post, 4);
+        }
+
         return $this->twig->render('Admin/modifAnnonce.html.twig', [
-            'bien' => $biensManager->selectOneById(1),
+            'bien' => $biensManager->selectOneById(4),
         ]);
     }
 
