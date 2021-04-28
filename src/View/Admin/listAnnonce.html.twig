@@ -11,9 +11,9 @@
             <div>
 
                 <div>
-                    <input class="mx-3" type="radio" id="achat" name="besoin">
+                    <input class="mx-3" type="radio" id="achat" name="besoin" value="vente">
                     <label for="achat">Filtrer par achat</label>
-                    <input class="mx-3" type="radio" id="location" name="besoin">
+                    <input class="mx-3" type="radio" id="location" name="besoin" value="location">
                     <label for="achat">Filtrer par location</label>
                     <input type="submit" class="btn btn-primary mx-5" value="Filter">
                 </div>
@@ -24,12 +24,27 @@
 
     <div class="container">
         <div class="row mb-5">
-            {% for bien in biens %} 
-                <div class="col-md-6 col-sd-12 col-lg-4">
-                        {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
-                </div>
-            {% endfor %}
+            {% if besoin.id == 2 %}
+                {% for bien in biens %}          
+                    <div class="col-md-6 col-sd-12 col-lg-4">
+                            {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
+                    </div>
+                {% endfor %}
+            {% elseif besoin.id == 3 %}
+                {% for bien in biens %}          
+                    <div class="col-md-6 col-sd-12 col-lg-4">
+                            {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for bien in biens %}          
+                    <div class="col-md-6 col-sd-12 col-lg-4">
+                            {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
+
 </div>    
 {% endblock %}

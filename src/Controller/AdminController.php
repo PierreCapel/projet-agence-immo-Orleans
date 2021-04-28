@@ -280,8 +280,22 @@ class AdminController extends AbstractController
 
     public function listAnnonce()
     {
+
+        if (!empty($_GET)) {
+            $besoin = $_GET['besoin'];
+            if ($besoin === 'vente') {
+                return $this->twig->render('Admin/listAnnonce.html.twig', [
+                   'biens' => $this->biensManager->selectAllByCategory(3),
+                ]);
+            }
+            if ($besoin === 'location') {
+                return $this->twig->render('Admin/listAnnonce.html.twig', [
+                   'biens' => $this->biensManager->selectAllByCategory(2),
+                ]);
+            }
+        }
         return $this->twig->render('Admin/listAnnonce.html.twig', [
-            'biens' => $this->biensManager->selectAll('id', 'DESC'),
-        ]);
+                'biens' => $this->biensManager->selectAll('id', 'DESC'),
+            ]);
     }
 }
