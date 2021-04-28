@@ -69,9 +69,9 @@
     <h1 class="text-primary text-center">Nos dernières annonces</h1>
     <div class="container">
         <div class="row mb-5">
-            {% for i in 0..8 %} 
+            {% for bien in listeBiens %} 
                 <div class="col-md-6 col-sd-12 col-lg-4">
-                    {% include 'Components/_card.preview.annonce.html.twig' %}
+                    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
                 </div>
             {% endfor %}
         </div>
