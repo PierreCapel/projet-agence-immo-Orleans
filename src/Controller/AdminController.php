@@ -177,17 +177,17 @@ class AdminController extends AbstractController
             }
             //set dossier reception
             $uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/";
-            
+
             //recup extension fichier
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
-            
+
             //set chemin destination fichier
             if (!empty($_POST['setAsMain'])) {
-                $uploadFile = $uploadDir .'main.jpg';
+                $uploadFile = $uploadDir . 'main.jpg';
             } else {
                 $uploadFile = $uploadDir . basename($_FILES['pictureUpload']['name']);
             }
-            
+
             //set liste d'extensions
             $extensionsOk = ['jpg', 'jpeg', 'png'];
 
