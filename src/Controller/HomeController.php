@@ -10,48 +10,66 @@
 namespace App\Controller;
 
 use App\Model\SloganManager;
+use App\Model\BiensManager;
 
 class HomeController extends AbstractController
 {
+    private BiensManager $biensManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->biensManager = new BiensManager();
+    }
+
     /**
      * Display home page
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
      */
     public function index()
     {
         $sloganManager = new SloganManager();
         $listSlogans = $sloganManager->selectAll();
-        return $this->twig->render('Home/index.html.twig', ['listSlogans' => $listSlogans]);
+        return $this->twig->render('Home/index.html.twig', [
+            'listeBiens' => $this->biensManager->selectAll(2),
+            'listSlogans' => $listSlogans,
+        ]);
     }
+    
     public function locations()
     {
-        return $this->twig->render('Home/locations.html.twig');
+        return $this->twig->render('Home/locations.html.twig', [
+            'listeBiens' => $this->biensManager->selectAllByCategory(3),
+        ]);
     }
+
     public function ventes()
     {
-        return $this->twig->render('Home/ventes.html.twig');
+        return $this->twig->render('Home/ventes.html.twig', [
+            'listeBiens' => $this->biensManager->selectAllByCategory(2),
+        ]);
     }
+
     public function agence()
     {
         return $this->twig->render('Home/agence.html.twig');
     }
+
     public function contact()
     {
         return $this->twig->render('Home/contact.html.twig');
     }
+
     public function annonce()
     {
         $result = $this->getMensualite();
         return $this->twig->render('Home/annonce.html.twig', ['result' => $result]);
     }
+
     public function cgu()
     {
         return $this->twig->render('Home/cgu.html.twig');
     }
+
     public function mentionsLegales()
     {
         return $this->twig->render('Home/mentionsLegales.html.twig');

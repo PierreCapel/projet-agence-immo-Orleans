@@ -2,14 +2,14 @@
     <img src="/../assets/images/index/appart-exemple.jpg" class="card-img-top" alt="appart exemple">
     <div class="card-body">
         <p class="card-text">
-            <a class="text-primary">Orléans sud</a>
-            <h5>Maison dans l'agglomération d'Orléans</h5>
+            <a class="text-primary"> {{bien.ville }}</a>
+            <h5>{{ bien.titre }}</h5>
         </p>
-        <p>Magnifique maison dans l’agglomération d’Orléans, elle dispose ...
+        <p> {{bien.description | slice(0, 120) ~ "... " }}
             <a class='text-primary'> en savoir plus</a>
         </p>
         <p class='float-right'>Prix :
-            <a class='text-primary'>780€ CC</a>
+            <a class='text-primary'> {{bien.prix}} € CC</a>
         </p>
     </div>
 </div>

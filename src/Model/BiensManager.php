@@ -40,4 +40,14 @@ class BiensManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function selectAllByCategory(int $category)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE besoin_id = :category;");
+        $statement->bindValue(':category', $category, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+    
 }
