@@ -119,11 +119,11 @@ class AdminController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = $_POST;
-            $biensManager->upDate($post, 4);
+            $biensManager->upDate($post, 1);
         }
 
         return $this->twig->render('Admin/modifAnnonce.html.twig', [
-            'bien' => $biensManager->selectOneById(4),
+            'bien' => $biensManager->selectOneById(1),
         ]);
     }
 
