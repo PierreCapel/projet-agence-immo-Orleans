@@ -2,14 +2,12 @@
 
 {% block content %}
 <div>
-
     <div class="container-fluid">
         <h2>
             Vos annonces
         </h2>
         <form class="form-control" action="" method="get">
             <div>
-
                 <div>
                     <input class="mx-3" type="radio" id="achat" name="besoin" value="vente">
                     <label for="achat">Filtrer par achat</label>
@@ -21,7 +19,6 @@
             </div>
         </form>
     </div>
-
     <div class="container">
         <div class="row mb-5">
             {% if besoin.id == 2 %}
@@ -45,6 +42,5 @@
             {% endif %}
         </div>
     </div>
-
 </div>    
 {% endblock %}
