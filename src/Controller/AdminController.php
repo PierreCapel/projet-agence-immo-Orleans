@@ -20,6 +20,8 @@ class AdminController extends AbstractController
 {
     private BiensManager $biensManager;
     private TypesManager $typesManager;
+    private int $annonceId = 0;
+    private string $uploadDir = '';
 
     public function __construct()
     {
@@ -185,9 +187,13 @@ class AdminController extends AbstractController
     }
     public function ajoutPhoto()
     {
-        $error = '';
+        $this->setAnnonceId();
+        $this->setImgFolder();
+        $this->deleteImg();
         $imageUrl = '';
-
+        $folderContent = $this->getImgFolderContent();
+        $imageFolder = "../assets/images/annonces/" . $this->annonceId . "/";
+        $error = '';
         try {
             $imageUrl = $this->upload();
         } catch (Exception $e) {
@@ -197,7 +203,10 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/ajoutphoto.html.twig', [
             'imageUrl' => $imageUrl,
             'error' => $error,
-            'id' => $_GET['id'],
+            'id' => $this->annonceId,
+            'imagesList' => $folderContent,
+            'imagesFolder' => $imageFolder,
+            'post' => $_POST,
         ]);
     }
     // fonction d'ajout des images par formulaire
@@ -205,32 +214,23 @@ class AdminController extends AbstractController
     {
         //check methode serveur
         if ($_SERVER["REQUEST_METHOD"] === "POST" && (!empty($_FILES))) {
-            //recup id de l'annonce via $_GET
             if (!empty($_GET)) {
-                $annonceId = $_GET['id'];
-            } else {
-                $annonceId = '';
+                $this->annonceId = $_GET['id'];
             }
             //creer dossier pour image si non existant
-            if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId)) {
-                mkdir((__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/"));
+            if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId)) {
+                mkdir((__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/"));
             }
-                //creer fichier .gitkeep
-            if (!is_file(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep")) {
-                    touch(__DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/.gitkeep");
-            }
-            //set dossier reception
-            $uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $annonceId . "/";
-
             //recup extension fichier
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
 
             //set chemin destination fichier
             if (!empty($_POST['setAsMain'])) {
-                $uploadFile = $uploadDir . 'main.jpg';
+                $uploadFile = $this->uploadDir . 'main.' . $extension;
             } else {
-                $uploadFile = $uploadDir . basename($_FILES['pictureUpload']['name']);
+                $uploadFile = $this->uploadDir . basename($_FILES['pictureUpload']['name']);
             }
+            $uploadedImgBaseName = basename($uploadFile);
 
             //set liste d'extensions
             $extensionsOk = ['jpg', 'jpeg', 'png'];
@@ -242,7 +242,7 @@ class AdminController extends AbstractController
 
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
 
-            return '/assets/images/annonces/' . $annonceId . '/' . basename($uploadFile);
+            return $uploadedImgBaseName;
         }
     }
 
@@ -326,5 +326,29 @@ class AdminController extends AbstractController
         }
 
         return true;
+    }
+    protected function getImgFolderContent()
+    {
+        if (!empty($this->uploadDir)) {
+            return scandir($this->uploadDir);
+        }
+    }
+
+    protected function setAnnonceId()
+    {
+        if (!empty($_GET)) {
+            $this->annonceId = $_GET['id'];
+        }
+    }
+    protected function setImgFolder()
+    {
+        $this->uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/";
+    }
+
+    protected function deleteImg()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['deleteImg'])) {
+            unlink($this->uploadDir . "/" . $_POST['deleteImg']);
+        }
     }
 }

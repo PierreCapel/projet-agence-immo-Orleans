@@ -1,38 +1,51 @@
-<h1 class="text-primary text-center mt-4 mb-4">Ajouter une image</h1>
+<h1 class="text-primary text-center mt-4 mb-4">Gestion des images de l'annonce {{id}}</h1>
+<h2 class="text-primary text-center mt-4 mb-4">Ajouter une image</h2>
 {% if imageUrl is not empty %}
-<div class='container mb-4'>
-    <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Image ajoutée!</h4>
-        <p>Votre image a bien été envoyée vers le serveur et ajoutée à l'annonce numéro {{id}}.</p>
-    </div>
-    <a type= "button" href= "" class="btn btn-primary">Ajouter une autre image</a>
-    <a type= "button" href= "index" class="btn btn-primary">Retour à l'accueil Admin</a>
-</div>
-<div class="container">
-    <div class="text-center">
-        <img class="img-fluid d-flex align-self-center" src="{{ imageUrl }}" alt="Aperçu de l'image ajoutée">
-    </div>
-</div>
+	<div class='container mb-4'>
+		<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Image ajoutée!</h4>
+			<p>Votre image a bien été envoyée vers le serveur et ajoutée à l'annonce numéro
+				{{id}}.</p>
+		</div>
+		<a type="button" href="" class="btn btn-primary">Retour au gestionnaire d'images</a>
+		<a type="button" href="index" class="btn btn-primary">Retour à l'accueil Admin</a>
+	</div>
+	<div class="container">
+		<div class="text-center">
+			<img class="img-fluid d-flex align-self-center" src="{{imagesFolder}}{{ imageUrl }}" alt="Aperçu de l'image ajoutée">
+		</div>
+	</div>
 {% else %}
-    {% if error is not empty %}
-        <div class="alert alert-danger" role="alert">
-            {{ error }}
-        </div>
-    {% endif %}
-        <div class='container mb-4 shadow p-3 mb-5 bg-white rounded'>
-            <form method="post" enctype="multipart/form-data" action="">
-                <div class="custom-file mb-4 mt-4">
-                    <input type="file" class="custom-file-input" name="pictureUpload">
-                    <label class="custom-file-label" for="customFile">Choisir une image</label>
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="setAsMain" id="setAsMain" name = "setAsMain">
-                    <label class="form-check-label" for="setAsMain">
-                    Définir comme image principale de l'annonce
-                    </label>
-                </div>
-                <button type="submit" name="pictureSend" class="btn btn-primary btn-lg btn-block">Envoyer l'image</button>
-            </form>
-        </div>
+	{% if error is not empty %}
+		<div class="alert alert-danger" role="alert">
+			{{ error }}
+		</div>
+	{% endif %}
+	<div class='container mb-4 shadow p-3 mb-5 bg-white rounded'>
+		<form method="post" enctype="multipart/form-data" action="">
+			<div class="custom-file mb-4 mt-4">
+				<input type="file" class="custom-file-input" name="pictureUpload">
+				<label class="custom-file-label" for="customFile">Choisir une image</label>
+			</div>
+			<div class="form-check mb-3">
+				<input class="form-check-input" type="checkbox" value="setAsMain" id="setAsMain" name="setAsMain">
+				<label class="form-check-label" for="setAsMain">
+					Définir comme image principale de l'annonce
+				</label>
+			</div>
+			<button type="submit" name="pictureSend" class="btn btn-primary btn-lg btn-block">Envoyer l'image</button>
+		</form>
+	</div>
 {% endif %}
-</div>
+<h2 class="text-primary text-center mt-4 mb-4">Supprimer une image</h2>
+{% for image in imagesList | slice (3,20) %}
+	<form method="post" action="">
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" value="{{image}}" name="deleteImg">
+			<label class="form-check-label" for="flexCheckDefault">
+				<img class="img-fluid d-flex align-self-center" src="{{imagesFolder}}{{ image }}" alt="Aperçu de l'image ajoutée">
+				<button type="submit" class="btn btn-primary mb-5 mt-2">Supprimer l'image</button>
+			</label>
+		</div>
+	</form>
+{% endfor %}</div>
