@@ -173,10 +173,10 @@ class AdminController extends AbstractController
         $this->setAnnonceId();
         $this->setImgFolder();
         $this->deleteImg();
+        $imageUrl = '';
         $folderContent = $this->getImgFolderContent();
         $imageFolder = "../assets/images/annonces/" . $this->annonceId . "/";
         $error = '';
-        $imageUrl = '';
         try {
             $imageUrl = $this->upload();
         } catch (Exception $e) {
@@ -213,6 +213,7 @@ class AdminController extends AbstractController
             } else {
                 $uploadFile = $this->uploadDir . basename($_FILES['pictureUpload']['name']);
             }
+            $uploadedImgBaseName = basename($uploadFile);
 
             //set liste d'extensions
             $extensionsOk = ['jpg', 'jpeg', 'png'];
@@ -224,7 +225,7 @@ class AdminController extends AbstractController
 
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
 
-            return $uploadFile;
+            return $uploadedImgBaseName;
         }
     }
 
