@@ -1,6 +1,32 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
-    <h1>La page qui affiche toutes les annconces</h1>
-    {% include "Components/_card.preview.annonce" %}
+<div>
+    <div class="container-fluid">
+        <h2>
+            Vos annonces
+        </h2>
+        <form class="form-control" action="" method="get">
+            <div>
+                <div>
+                    <input class="mx-3" type="radio" id="achat" name="besoin" value="vente">
+                    <label for="achat">Filtrer par achat</label>
+                    <input class="mx-3" type="radio" id="location" name="besoin" value="location">
+                    <label for="achat">Filtrer par location</label>
+                    <input type="submit" class="btn btn-primary mx-5" value="Filter">
+                </div>
+                
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <div class="row mb-5">
+            {% for bien in biens %}          
+                <div class="col-md-6 col-sd-12 col-lg-4">
+                     {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>    
 {% endblock %}

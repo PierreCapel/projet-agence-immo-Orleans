@@ -17,6 +17,15 @@ use App\Model\SloganManager;
 
 class AdminController extends AbstractController
 {
+    private BiensManager $biensManager;
+    private TypesManager $typesManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->biensManager = new BiensManager();
+        $this->typesManager = new TypesManager();
+    }
     /**
      * Display home page
      *
@@ -47,9 +56,6 @@ class AdminController extends AbstractController
         $this->startSession();
         $this->authorizeAccess();
         $this->logout();
-
-        $biensManager = new BiensManager();
-        $typesManager = new TypesManager();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = $_POST;
@@ -94,19 +100,19 @@ class AdminController extends AbstractController
 
             $post['date'] = date('Y-m-d');
 
-            $biensManager->add($post);
+            $this->biensManager->add($post);
             header('Location: /admin/annonceAjouter');
         }
 
         return $this->twig->render('Admin/ajoutAnnonce.html.twig', [
-            'nd' => $typesManager->getByTypes('nd'),
-            'besoins' => $typesManager->getByTypes('besoin'),
-            'categories' => $typesManager->getByTypes('categorie'),
-            'types' => $typesManager->getByTypes('type'),
-            'etats' => $typesManager->getByTypes('etat'),
-            'chauffages' => $typesManager->getByTypes('chauffage'),
-            'cuisines' => $typesManager->getByTypes('cuisine'),
-            'revetements' => $typesManager->getByTypes('revetement'),
+            'nd' => $this->typesManager->getByTypes('nd'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'types' => $this->typesManager->getByTypes('type'),
+            'etats' => $this->typesManager->getByTypes('etat'),
+            'chauffages' => $this->typesManager->getByTypes('chauffage'),
+            'cuisines' => $this->typesManager->getByTypes('cuisine'),
+            'revetements' => $this->typesManager->getByTypes('revetement'),
         ]);
     }
     public function modifAnnonce()
@@ -115,15 +121,16 @@ class AdminController extends AbstractController
         $this->authorizeAccess();
         $this->logout();
 
-        $biensManager = new BiensManager();
+        $id = $_GET['id'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = $_POST;
-            $biensManager->upDate($post, 1);
+            $this->biensManager->upDate($post, $id);
+            header('Location: listAnnonce');
         }
 
         return $this->twig->render('Admin/modifAnnonce.html.twig', [
-            'bien' => $biensManager->selectOneById(1),
+            'bien' => $this->biensManager->selectOneById($id),
         ]);
     }
 
@@ -266,10 +273,29 @@ class AdminController extends AbstractController
 
     public function annonceAjouter()
     {
-        $biensManager = new BiensManager();
-
         return $this->twig->render('Admin/annonceAjouter.html.twig', [
-            'id' => $biensManager->getLastAdd(),
+            'id' => $this->biensManager->getLastAdd(),
         ]);
+    }
+
+    public function listAnnonce()
+    {
+
+        if (!empty($_GET)) {
+            $besoin = $_GET['besoin'];
+            if ($besoin === 'vente') {
+                return $this->twig->render('Admin/listAnnonce.html.twig', [
+                   'biens' => $this->biensManager->selectAllByCategory(3),
+                ]);
+            }
+            if ($besoin === 'location') {
+                return $this->twig->render('Admin/listAnnonce.html.twig', [
+                   'biens' => $this->biensManager->selectAllByCategory(2),
+                ]);
+            }
+        }
+        return $this->twig->render('Admin/listAnnonce.html.twig', [
+                'biens' => $this->biensManager->selectAll('id', 'DESC'),
+            ]);
     }
 }
