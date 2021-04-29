@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use Exception;
+use DirectoryIterator;
 use App\Model\DocumentManager;
 use App\Model\BiensManager;
 use App\Model\TypesManager;
@@ -288,37 +289,20 @@ class AdminController extends AbstractController
     }
 
     public function annonceAjouter()
-    {
+    {   
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+        
         return $this->twig->render('Admin/annonceAjouter.html.twig', [
             'id' => $this->biensManager->getLastAdd(),
         ]);
     }
 
-    public function listAnnonce()
-    {
-
-        if (!empty($_GET)) {
-            $besoin = $_GET['besoin'];
-            if ($besoin === 'vente') {
-                return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $this->biensManager->selectAllByCategory(3),
-                ]);
-            }
-            if ($besoin === 'location') {
-                return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $this->biensManager->selectAllByCategory(2),
-                ]);
-            }
-        }
-        return $this->twig->render('Admin/listAnnonce.html.twig', [
-                'biens' => $this->biensManager->selectAll('id', 'DESC'),
-            ]);
-    }
-
     private function deleteDirectory($path)
     {
         try {
-            $iterator = new \DirectoryIterator($path);
+            $iterator = new DirectoryIterator($path);
 
             foreach ($iterator as $fileinfo) {
                 if ($fileinfo->isDot()) {
@@ -327,16 +311,16 @@ class AdminController extends AbstractController
 
                 if ($fileinfo->isDir()) {
                     if ($this->deleteDirectory($fileinfo->getPathname())) {
-                        @rmdir($fileinfo->getPathname());
+                        rmdir($fileinfo->getPathname());
                     }
                 }
 
                 if ($fileinfo->isFile()) {
-                    @unlink($fileinfo->getPathname());
+                    unlink($fileinfo->getPathname());
                 }
             }
 
-            @rmdir($path);
+            rmdir($path);
         } catch (Exception $e) {
             return false;
         }

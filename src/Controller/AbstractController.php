@@ -10,6 +10,7 @@
 
 namespace App\Controller;
 
+use App\Model\BiensManager;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -35,5 +36,26 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+    }
+
+    public function listAnnonce()
+    {   
+        $biensManager = new BiensManager();
+        if (!empty($_GET)) {
+            $besoin = $_GET['besoin'];
+            if ($besoin === 'vente') {
+                return $this->twig->render('Admin/listAnnonce.html.twig', [
+                   'biens' => $this->biensManager->selectAllByCategory(3),
+                ]);
+            }
+            if ($besoin === 'location') {
+                return $this->twig->render('Admin/listAnnonce.html.twig', [
+                   'biens' => $this->biensManager->selectAllByCategory(2),
+                ]);
+            }
+        }
+        return $this->twig->render('Admin/listAnnonce.html.twig', [
+                'biens' => $biensManager->selectAll('id', 'DESC'),
+            ]);
     }
 }
