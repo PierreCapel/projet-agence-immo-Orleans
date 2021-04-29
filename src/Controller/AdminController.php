@@ -20,7 +20,7 @@ class AdminController extends AbstractController
     private BiensManager $biensManager;
     private TypesManager $typesManager;
 
-    private function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->biensManager = new BiensManager();
