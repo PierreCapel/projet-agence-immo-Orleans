@@ -144,8 +144,7 @@ class AdminController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $this->biensManager->del($id);
-            array_map('unlink', glob("__DIR__" . "/../../public/assets/images/annonces/$id/*"));
-            rmdir("__DIR__" . "/../../public/assets/images/annonces/$id/");
+            $this->deleteDirectory(realpath(__DIR__ . '/../../public/assets/images/annonces/' . $id));
         }
 
         return $this->twig->render('Admin/supprimerAnnonce.html.twig');
@@ -314,5 +313,34 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/listAnnonce.html.twig', [
                 'biens' => $this->biensManager->selectAll('id', 'DESC'),
             ]);
+    }
+
+    private function deleteDirectory($path)
+    {
+        try {
+            $iterator = new \DirectoryIterator($path);
+
+            foreach ($iterator as $fileinfo) {
+                if ($fileinfo->isDot()) {
+                    continue;
+                }
+
+                if ($fileinfo->isDir()) {
+                    if ($this->deleteDirectory($fileinfo->getPathname())) {
+                        @rmdir($fileinfo->getPathname());
+                    }
+                }
+
+                if ($fileinfo->isFile()) {
+                    @unlink($fileinfo->getPathname());
+                }
+            }
+
+            @rmdir($path);
+        } catch (Exception $e) {
+            return false;
+        }
+
+        return true;
     }
 }
