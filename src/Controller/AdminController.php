@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use Exception;
+use DirectoryIterator;
 use App\Model\DocumentManager;
 use App\Model\BiensManager;
 use App\Model\TypesManager;
@@ -132,6 +133,22 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/modifAnnonce.html.twig', [
             'bien' => $this->biensManager->selectOneById($id),
         ]);
+    }
+
+    public function supprimerAnnonce()
+    {
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+
+        $id = $_GET['id'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $this->biensManager->del($id);
+            $this->deleteDirectory(realpath(__DIR__ . '/../../public/assets/images/annonces/' . $id));
+        }
+
+        return $this->twig->render('Admin/supprimerAnnonce.html.twig');
     }
 
     // ------------------------------------------------------------------------------------
@@ -273,29 +290,41 @@ class AdminController extends AbstractController
 
     public function annonceAjouter()
     {
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+
         return $this->twig->render('Admin/annonceAjouter.html.twig', [
             'id' => $this->biensManager->getLastAdd(),
         ]);
     }
 
-    public function listAnnonce()
+    private function deleteDirectory($path)
     {
+        try {
+            $iterator = new DirectoryIterator($path);
 
-        if (!empty($_GET)) {
-            $besoin = $_GET['besoin'];
-            if ($besoin === 'vente') {
-                return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $this->biensManager->selectAllByCategory(3),
-                ]);
+            foreach ($iterator as $fileinfo) {
+                if ($fileinfo->isDot()) {
+                    continue;
+                }
+
+                if ($fileinfo->isDir()) {
+                    if ($this->deleteDirectory($fileinfo->getPathname())) {
+                        rmdir($fileinfo->getPathname());
+                    }
+                }
+
+                if ($fileinfo->isFile()) {
+                    unlink($fileinfo->getPathname());
+                }
             }
-            if ($besoin === 'location') {
-                return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $this->biensManager->selectAllByCategory(2),
-                ]);
-            }
+
+            rmdir($path);
+        } catch (Exception $e) {
+            return false;
         }
-        return $this->twig->render('Admin/listAnnonce.html.twig', [
-                'biens' => $this->biensManager->selectAll('id', 'DESC'),
-            ]);
+
+        return true;
     }
 }
