@@ -59,4 +59,46 @@ abstract class AbstractController
                 'biens' => $biensManager->selectAll('id', 'DESC'),
             ]);
     }
+
+    public function startSession()
+    {
+        session_start();
+        session_regenerate_id();
+    }
+
+    public function authorizeAccess()
+    {
+        if (!isset($_SESSION['usermail'])) {
+            header('Location: /admin/loggin');
+        }
+    }
+
+    public function logout()
+    {
+        if (!empty($_GET['logout'])) {
+            $_SESSION['logout'] = $_GET['logout'];
+        }
+        if (isset($_SESSION['logout']) && $_SESSION['logout'] === 'true') {
+            session_destroy();
+            header('Location: /admin/loggin');
+        }
+    }
+
+    public function login()
+    {
+        if (isset($_SESSION["usermail"])) {
+            header('Location: /admin/index');
+        }
+        define('EMAIL', 'masteragence@gmail.com');
+        define('PASSWORD', 'test');
+        if (!empty($_POST)) {
+            $usermail = $_POST['usermail'];
+            $password = $_POST['password'];
+
+            if ($usermail === EMAIL && $password === PASSWORD) {
+                $_SESSION['usermail'] = $usermail;
+                header('location: /admin/index');
+            }
+        }
+    }
 }
