@@ -298,25 +298,25 @@ class AdminController extends AbstractController
                 'biens' => $this->biensManager->selectAll('id', 'DESC'),
             ]);
     }
-    public function getImgFolderContent()
+    protected function getImgFolderContent()
     {
         if (!empty($this->uploadDir)) {
             return scandir($this->uploadDir);
         }
     }
 
-    public function setAnnonceId()
+    protected function setAnnonceId()
     {
         if (!empty($_GET)) {
             $this->annonceId = $_GET['id'];
         }
     }
-    public function setImgFolder()
+    protected function setImgFolder()
     {
         $this->uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/";
     }
 
-    public function deleteImg()
+    protected function deleteImg()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['deleteImg'])) {
             unlink($this->uploadDir . "/" . $_POST['deleteImg']);
