@@ -85,4 +85,16 @@ class BiensManager extends AbstractManager
 
         return $statement->execute();
     }
+    /**
+     * Mets à jour la photo par défault d'un bien
+     */
+    public function updateMainPicture(int $idBien, string $pictureName): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET photo_principale = :photo_principale WHERE id = :id;");
+        $statement->bindValue(':id', $idBien, PDO::PARAM_INT);
+        $statement->bindValue(':photo_principale', $pictureName);
+
+        return $statement->execute();
+    }
 }

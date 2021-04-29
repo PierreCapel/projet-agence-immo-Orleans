@@ -223,14 +223,7 @@ class AdminController extends AbstractController
             }
             //recup extension fichier
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
-
-            //set chemin destination fichier
-            if (!empty($_POST['setAsMain'])) {
-                $uploadFile = $this->uploadDir . 'main.' . $extension;
-            } else {
-                $uploadFile = $this->uploadDir . basename($_FILES['pictureUpload']['name']);
-            }
-            $uploadedImgBaseName = basename($uploadFile);
+            $uploadFile = $uploadDir . basename($_FILES['pictureUpload']['name']);
 
             //set liste d'extensions
             $extensionsOk = ['jpg', 'jpeg', 'png'];
@@ -238,6 +231,14 @@ class AdminController extends AbstractController
             //check extension du fichier vs extensions autorisées
             if (!in_array($extension, $extensionsOk)) {
                 throw new Exception('L\'image doit etre de type jpeg, jpg ou png');
+            }
+
+            //set chemin destination fichier
+            if (!empty($_POST['setAsMain'])) {
+                echo $annonceId;
+                echo $_FILES['pictureUpload']['name'];
+                $this->biensManager->updateMainPicture($annonceId, $_FILES['pictureUpload']['name']);
+                echo "it's done!";
             }
 
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
