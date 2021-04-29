@@ -297,7 +297,7 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/listAnnonce.html.twig', [
                 'biens' => $this->biensManager->selectAll('id', 'DESC'),
             ]);
-        }
+    }
     public function getImgFolderContent()
     {
         if (!empty($this->uploadDir)) {
