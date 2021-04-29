@@ -289,11 +289,11 @@ class AdminController extends AbstractController
     }
 
     public function annonceAjouter()
-    {   
+    {
         $this->startSession();
         $this->authorizeAccess();
         $this->logout();
-        
+
         return $this->twig->render('Admin/annonceAjouter.html.twig', [
             'id' => $this->biensManager->getLastAdd(),
         ]);

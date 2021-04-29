@@ -39,18 +39,19 @@ abstract class AbstractController
     }
 
     public function listAnnonce()
-    {   
+    {
         $biensManager = new BiensManager();
+
         if (!empty($_GET)) {
             $besoin = $_GET['besoin'];
             if ($besoin === 'vente') {
                 return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $this->biensManager->selectAllByCategory(3),
+                   'biens' => $biensManager->selectAllByCategory(3),
                 ]);
             }
             if ($besoin === 'location') {
                 return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $this->biensManager->selectAllByCategory(2),
+                   'biens' => $biensManager->selectAllByCategory(2),
                 ]);
             }
         }
