@@ -1,7 +1,7 @@
 <div class="container">
-<div class="row">
-<form method="GET" class= "col-auto border border-primary border-2 rounded-3">
-    <legend>Calculez votre prêt immobilier</legend>
+<div class="row mb-3">
+<form method="GET" class= "col border border-primary border-2 rounded-3">
+    <p class = "h5 mt-2 text-center text-primary">Calculez votre prêt !</p>
     <div class="mb-3">
         <label for="capital">Capital</label>
         <input type="text" id="capital" name="capital" class="form-control">
@@ -14,7 +14,7 @@
         <label for = "rate">Taux</label>
         <input type="text" id="rate" name="rate" placeholder="ex: 2.5" class="form-control">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary mb-3">Submit</button>
 
     {% if result is not empty %}
      
