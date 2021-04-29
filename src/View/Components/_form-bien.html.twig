@@ -1,24 +1,39 @@
 <div class="container mr-5">
-<div class="row mb-3 me-3">
-<form method="GET" class= "col border border-primary border-2 rounded-3">
-    <p class = "h5 mt-2 text-center text-primary">Vous souhaitez visiter ce bien</p>
-    <div class="mb-3">
-        <input type="text" id="nom" name="nom" class="form-control" placeholder="Nom">
-    </div>
-    <div class="mb-3">
-        <input type="number" id="nbYear" name="nbYear" class="form-control" placeholder="Prénom">
-    </div>
-    <div class="mb-3">
-        <input type="tel" id="tel" name="tel" class="form-control" placeholder="N° de téléphone*">
-    </div>
-    <div class = "row">
-      <div class = "col">
-    <button type="submit" class="btn btn-primary mb-3">Appelez-nous</button>
-      </div>
-      <div class = "col">
-    <button type="submit" class="btn btn-primary mb-3">Emailez-nous</button>
-      </div>
-</form>
-<small id="info-tel" class="form-text text-muted">*Vos informations resteront privées.</small>
-</div>
-</div>
+	<div class="row mb-3 me-3 text-center">
+		<form method="GET" class="col border border-primary border-2 rounded-3">
+    <img class = "col-2 mt-2" src="../assets/images/logo-cdimmo.png">
+			<p class="h5 mt-2 text-center text-primary">Vous souhaitez visiter ce bien ?</p>
+			<div class="row text-center">
+				<div
+					class="col">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						Appelez-nous
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">Appelez-nous</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<p>
+										Appelez-nous au 0238 839 940 pour convenir d'un rendez-vous afin d'organiser une visite dans un créneau de votre choix !</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<a class = "text-light btn btn-primary" href ='../Home/contact'>Nous écrire</a>
+				</div>
+			</form>
+			<small id="info-tel" class="form-text text-muted mb-2">*Vos informations resteront privées.</small>
+		</div>
+	</div>
