@@ -34,9 +34,9 @@ class BiensManager extends AbstractManager
 
     public function getLastAdd(): array
     {
-        $query = "SELECT id FROM " . self::TABLE . " WHERE id = :id";
+        $query = "SELECT id FROM " . self::TABLE . " ORDER BY ID DESC LIMIT 0, 1";
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $this->pdo->lastInsertId());
+        $statement->bindValue(':id', $this->pdo->lastInsertId(), PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();
@@ -71,6 +71,17 @@ class BiensManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
 
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function del(int $id)
+    {
+        $query = "DELETE FROM " . self::TABLE . " WHERE id = :id";
+
+        $statement = $this->pdo->prepare($query);
+
+        $statement->bindValue(":id", $id, PDO::PARAM_INT);
 
         return $statement->execute();
     }

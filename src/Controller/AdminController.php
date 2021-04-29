@@ -20,7 +20,7 @@ class AdminController extends AbstractController
     private BiensManager $biensManager;
     private TypesManager $typesManager;
 
-    public function __construct()
+    private function __construct()
     {
         parent::__construct();
         $this->biensManager = new BiensManager();
@@ -132,6 +132,23 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/modifAnnonce.html.twig', [
             'bien' => $this->biensManager->selectOneById($id),
         ]);
+    }
+
+    public function supprimerAnnonce()
+    {
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+
+        $id = $_GET['id'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $this->biensManager->del($id);
+            array_map('unlink', glob("__DIR__" . "/../../public/assets/images/annonces/$id/*"));
+            rmdir("__DIR__" . "/../../public/assets/images/annonces/$id/");
+        }
+
+        return $this->twig->render('Admin/supprimerAnnonce.html.twig');
     }
 
     // ------------------------------------------------------------------------------------
