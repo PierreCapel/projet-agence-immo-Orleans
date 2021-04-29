@@ -21,25 +21,11 @@
     </div>
     <div class="container">
         <div class="row mb-5">
-            {% if besoin.id == 2 %}
-                {% for bien in biens %}          
-                    <div class="col-md-6 col-sd-12 col-lg-4">
-                            {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
-                    </div>
-                {% endfor %}
-            {% elseif besoin.id == 3 %}
-                {% for bien in biens %}          
-                    <div class="col-md-6 col-sd-12 col-lg-4">
-                            {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
-                    </div>
-                {% endfor %}
-            {% else %}
-                {% for bien in biens %}          
-                    <div class="col-md-6 col-sd-12 col-lg-4">
-                            {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
-                    </div>
-                {% endfor %}
-            {% endif %}
+            {% for bien in biens %}          
+                <div class="col-md-6 col-sd-12 col-lg-4">
+                     {% include 'Components/_card.preview.admin.html.twig' with { 'bien': bien } %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>    
