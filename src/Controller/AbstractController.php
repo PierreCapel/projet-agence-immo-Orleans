@@ -46,12 +46,12 @@ abstract class AbstractController
             $besoin = $_GET['besoin'];
             if ($besoin === 'vente') {
                 return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $biensManager->selectAllByCategory(3),
+                   'biens' => $biensManager->selectAllByCategory(2),
                 ]);
             }
             if ($besoin === 'location') {
                 return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $biensManager->selectAllByCategory(2),
+                   'biens' => $biensManager->selectAllByCategory(3),
                 ]);
             }
         }
