@@ -38,7 +38,7 @@
 	</div>
 {% endif %}
 <h2 class="text-primary text-center mt-4 mb-4">Supprimer une image</h2>
-{% for image in imagesList | slice (3,20) %}
+{% for image in imagesList | slice (2,20) %}
 	<form method="post" action="">
 		<div class="form-check">
 			<input class="form-check-input" type="checkbox" value="{{image}}" name="deleteImg">

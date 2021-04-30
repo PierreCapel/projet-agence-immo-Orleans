@@ -22,6 +22,7 @@ class AdminController extends AbstractController
     private TypesManager $typesManager;
     private int $annonceId = 0;
     private string $uploadDir = '';
+    private string $dir = '';
 
     public function __construct()
     {
@@ -188,8 +189,8 @@ class AdminController extends AbstractController
     public function ajoutPhoto()
     {
         $this->setAnnonceId();
+        $this->setMkDir();
         $this->setImgFolder();
-        $this->deleteImg();
         $imageUrl = '';
         $folderContent = $this->getImgFolderContent();
         $imageFolder = "../assets/images/annonces/" . $this->annonceId . "/";
@@ -199,6 +200,7 @@ class AdminController extends AbstractController
         } catch (Exception $e) {
             $error = $e->getMessage();
         }
+        $this->deleteImg();
 
         return $this->twig->render('Admin/ajoutphoto.html.twig', [
             'imageUrl' => $imageUrl,
@@ -217,19 +219,11 @@ class AdminController extends AbstractController
             if (!empty($_GET)) {
                 $this->annonceId = $_GET['id'];
             }
-            //creer dossier pour image si non existant
-            if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId)) {
-                mkdir((__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/"));
-            }
+
             //recup extension fichier
             $extension = pathinfo($_FILES['pictureUpload']['name'], PATHINFO_EXTENSION);
+            $uploadFile = $this->uploadDir . basename($_FILES['pictureUpload']['name']);
 
-            //set chemin destination fichier
-            if (!empty($_POST['setAsMain'])) {
-                $uploadFile = $this->uploadDir . 'main.' . $extension;
-            } else {
-                $uploadFile = $this->uploadDir . basename($_FILES['pictureUpload']['name']);
-            }
             $uploadedImgBaseName = basename($uploadFile);
 
             //set liste d'extensions
@@ -240,51 +234,14 @@ class AdminController extends AbstractController
                 throw new Exception('L\'image doit etre de type jpeg, jpg ou png');
             }
 
+            //set chemin destination fichier
+            if (!empty($_POST['setAsMain'])) {
+                $this->biensManager->updateMainPicture($this->annonceId, $_FILES['pictureUpload']['name']);
+            }
+
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
 
             return $uploadedImgBaseName;
-        }
-    }
-
-    private function startSession()
-    {
-        session_start();
-        session_regenerate_id();
-    }
-
-    private function authorizeAccess()
-    {
-        if (!isset($_SESSION['usermail'])) {
-            header('Location: /admin/loggin');
-        }
-    }
-
-    private function logout()
-    {
-        if (!empty($_GET['logout'])) {
-            $_SESSION['logout'] = $_GET['logout'];
-        }
-        if (isset($_SESSION['logout']) && $_SESSION['logout'] === 'true') {
-            session_destroy();
-            header('Location: /admin/loggin');
-        }
-    }
-
-    private function login()
-    {
-        if (isset($_SESSION["usermail"])) {
-            header('Location: /admin/index');
-        }
-        define('EMAIL', 'masteragence@gmail.com');
-        define('PASSWORD', 'test');
-        if (!empty($_POST)) {
-            $usermail = $_POST['usermail'];
-            $password = $_POST['password'];
-
-            if ($usermail === EMAIL && $password === PASSWORD) {
-                $_SESSION['usermail'] = $usermail;
-                header('location: /admin/index');
-            }
         }
     }
 
@@ -349,6 +306,17 @@ class AdminController extends AbstractController
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['deleteImg'])) {
             unlink($this->uploadDir . "/" . $_POST['deleteImg']);
+        }
+    }
+
+    private function setMkDir()
+    {
+        //creer dossier pour image si non existant
+        if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId)) {
+            $this->dir = (__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/");
+            mkdir($this->dir);
+
+            return $this->dir;
         }
     }
 }
