@@ -2,11 +2,11 @@
     <img src="/../assets/images/annonces/{{bien.id}}/{{bien.photo_principale}}" class="card-img-top" alt="appart exemple" height="300">
     <div class="card-body">
         <p class="card-text">
-            <a class="text-primary"> {{bien.ville }}</a>
+            <a class="text-primary" href="home/annonce?id={{bien.id}}"> {{bien.ville}}</a>
             <h5>{{ bien.titre }}</h5>
         </p>
         <p> {{bien.description | slice(0, 120) ~ "... " }}
-            <a class='text-primary'> en savoir plus</a>
+            <a class='text-primary' href="home/annonce?id={{bien.id}}"> en savoir plus</a>
         </p>
         <p class='float-right'>Prix :
             <a class='text-primary'>
