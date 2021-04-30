@@ -29,9 +29,10 @@ class HomeController extends AbstractController
     {
         $sloganManager = new SloganManager();
         $listSlogans = $sloganManager->selectAll();
+
         return $this->twig->render('Home/index.html.twig', [
             'listSlogans' => $listSlogans,
-            'listeBiens' => $this->biensManager->selectAll('id', 'DESC'),
+            'listeBiens' => $this->biensManager->selectAll('id', 'DESC', 9),
         ]);
     }
 

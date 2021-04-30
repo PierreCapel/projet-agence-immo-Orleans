@@ -41,23 +41,23 @@ abstract class AbstractController
     public function listAnnonce()
     {
         $biensManager = new BiensManager();
+        $biens = $biensManager->selectAll('id', 'DESC');
+        $besoin = isset($_GET['besoin']) ? $_GET['besoin'] : "all";
 
-        if (!empty($_GET)) {
-            $besoin = $_GET['besoin'];
+        if ($besoin) {
             if ($besoin === 'vente') {
-                return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $biensManager->selectAllByCategory(2),
-                ]);
+                $biens = $biensManager->selectAllByCategory(2);
             }
+
             if ($besoin === 'location') {
-                return $this->twig->render('Admin/listAnnonce.html.twig', [
-                   'biens' => $biensManager->selectAllByCategory(3),
-                ]);
+                $biens = $biensManager->selectAllByCategory(3);
             }
         }
+
         return $this->twig->render('Admin/listAnnonce.html.twig', [
-                'biens' => $biensManager->selectAll('id', 'DESC'),
-            ]);
+            'besoin' => $besoin,
+            'biens' => $biens,
+        ]);
     }
 
     public function startSession()

@@ -1,5 +1,6 @@
 <h1 class="text-primary text-center mt-4 mb-4">Gestion des images de l'annonce {{id}}</h1>
 <h2 class="text-primary text-center mt-4 mb-4">Ajouter une image</h2>
+
 {% if imageUrl is not empty %}
 	<div class='container mb-4'>
 		<div class="alert alert-success" role="alert">
@@ -21,6 +22,7 @@
 			{{ error }}
 		</div>
 	{% endif %}
+
 	<div class='container mb-4 shadow p-3 mb-5 bg-white rounded'>
 		<form method="post" enctype="multipart/form-data" action="">
 			<div class="custom-file mb-4 mt-4">
@@ -37,8 +39,10 @@
 		</form>
 	</div>
 {% endif %}
+
 <h2 class="text-primary text-center mt-4 mb-4">Supprimer une image</h2>
-{% for image in imagesList | slice (2,20) %}
+
+{% for image in imagesList %}
 	<form method="post" action="">
 		<div class="form-check">
 			<input class="form-check-input" type="checkbox" value="{{image}}" name="deleteImg">

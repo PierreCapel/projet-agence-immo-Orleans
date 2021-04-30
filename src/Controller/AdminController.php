@@ -151,7 +151,7 @@ class AdminController extends AbstractController
             $this->deleteDirectory(realpath(__DIR__ . '/../../public/assets/images/annonces/' . $id));
         }
 
-        return $this->twig->render('Admin/supprimerAnnonce.html.twig');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     // ------------------------------------------------------------------------------------
@@ -195,11 +195,13 @@ class AdminController extends AbstractController
         $folderContent = $this->getImgFolderContent();
         $imageFolder = "../assets/images/annonces/" . $this->annonceId . "/";
         $error = '';
+
         try {
             $imageUrl = $this->upload();
         } catch (Exception $e) {
             $error = $e->getMessage();
         }
+
         $this->deleteImg();
 
         return $this->twig->render('Admin/ajoutphoto.html.twig', [
@@ -284,11 +286,21 @@ class AdminController extends AbstractController
 
         return true;
     }
-    protected function getImgFolderContent()
+    protected function getImgFolderContent(): array
     {
+        $images = [];
+
         if (!empty($this->uploadDir)) {
-            return scandir($this->uploadDir);
+            foreach(scandir($this->uploadDir) as $image) {
+                if (in_array($image, ['.', '..'])) {
+                    continue;
+                }
+
+                $images[] = $image;
+            }
         }
+
+        return $images;
     }
 
     protected function setAnnonceId()

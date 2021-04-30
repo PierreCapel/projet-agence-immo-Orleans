@@ -2,19 +2,20 @@
     <img src="/../assets/images/annonces/{{bien.id}}/{{bien.photo_principale}}" class="card-img-top" alt="appart exemple" height="300">
     <div class="card-body">
         <p class="card-text">
-            <a class="text-primary" href="home/annonce?id={{bien.id}}"> {{bien.ville}}</a>
+            <a class="text-primary" href="/home/annonce?id={{bien.id}}"> {{bien.ville}}</a>
             <h5>{{ bien.titre }}</h5>
         </p>
         <p> {{bien.description | slice(0, 120) ~ "... " }}
-            <a class='text-primary' href="home/annonce?id={{bien.id}}"> en savoir plus</a>
+            <a class='text-primary' href="/home/annonce?id={{bien.id}}"> en savoir plus</a>
         </p>
-        <p class='float-right'>Prix :
-            <a class='text-primary'>
-            {% if bien.prix != 0 %}
-                {{ bien.prix }} € HAI
-            {% else %}
-                {{ bien.loyer }} € CC
-            {% endif %}
+
+        <p class="m-0 mt-4 text-end">
+            <a href="/home/annonce?id={{bien.id}}" class="btn btn-lg btn-primary">
+                {% if bien.prix != 0 %}
+                    {{ bien.prix|number_format(0, ',', ' ') }} € HAI
+                {% else %}
+                    {{ bien.loyer|number_format(0, ',', ' ') }} € CC
+                {% endif %}
             </a>
         </p>
     </div>

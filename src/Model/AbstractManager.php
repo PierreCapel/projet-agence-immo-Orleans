@@ -31,11 +31,16 @@ abstract class AbstractManager
     /**
      * Get all row from database.
      */
-    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    public function selectAll(string $orderBy = '', string $direction = 'ASC', int $limit = 0): array
     {
         $query = 'SELECT * FROM ' . static::TABLE;
+
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        if ($limit) {
+            $query .= ' LIMIT ' . $limit;
         }
 
         return $this->pdo->query($query)->fetchAll();

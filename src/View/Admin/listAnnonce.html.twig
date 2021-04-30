@@ -4,18 +4,23 @@
 <div>
     <div class="container-fluid">
         <h2>
-            Vos annonces
+            Vos annonces ({{ biens|length }})
         </h2>
+
         <form class="form-control" action="" method="get">
             <div>
                 <div>
-                    <input class="mx-3" type="radio" id="achat" name="besoin" value="vente">
+                    <input class="mx-3" type="radio" id="all" name="besoin" value="all" {% if besoin == 'all' %} checked{% endif %}>
+                    <label for="all">Tous</label>
+
+                    <input class="mx-3" type="radio" id="achat" name="besoin" value="vente" {% if besoin == 'vente' %} checked{% endif %}>
                     <label for="achat">Filtrer par achat</label>
-                    <input class="mx-3" type="radio" id="location" name="besoin" value="location">
-                    <label for="achat">Filtrer par location</label>
+
+                    <input class="mx-3" type="radio" id="location" name="besoin" value="location" {% if besoin == 'location' %} checked{% endif %}>
+                    <label for="location">Filtrer par location</label>
+                    
                     <input type="submit" class="btn btn-primary mx-5" value="Filter">
                 </div>
-                
             </div>
         </form>
     </div>
