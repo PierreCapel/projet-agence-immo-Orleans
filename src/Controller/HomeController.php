@@ -61,8 +61,11 @@ class HomeController extends AbstractController
 
     public function annonce()
     {
+        $annonce = $this->biensManager->selectOneById($_GET['id']);
         $result = $this->getMensualite();
-        return $this->twig->render('Home/annonce.html.twig', ['result' => $result]);
+        return $this->twig->render('Home/annonce.html.twig', [
+        'result' => $result,
+        'bien' => $annonce]);
     }
 
     public function cgu()
@@ -81,7 +84,7 @@ class HomeController extends AbstractController
         $nbYear = 0;
         $rate = 0;
 
-        if (!empty($_GET)) {
+        if (!empty($_GET['capital'])) {
             $capital = intval($_GET["capital"]);
             $nbYear = intval($_GET["nbYear"]);
             $rate = intval($_GET["rate"]);
