@@ -236,10 +236,7 @@ class AdminController extends AbstractController
 
             //set chemin destination fichier
             if (!empty($_POST['setAsMain'])) {
-                echo $this->annonceId;
-                echo $_FILES['pictureUpload']['name'];
                 $this->biensManager->updateMainPicture($this->annonceId, $_FILES['pictureUpload']['name']);
-                echo "it's done!";
             }
 
             move_uploaded_file($_FILES['pictureUpload']['tmp_name'], $uploadFile);
