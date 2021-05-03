@@ -7,11 +7,11 @@
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/assets/images/annonces/{{bien.id}}/{{bien.photo_principale}}" class="d-block w-100" alt="Aperçu non disponible" height="400px">
+                            <img src="/assets/images/annonces/{{bien.id}}/{{bien.photo_principale}}" class="d-block w-100" alt="Aperçu non disponible" height="500px">
                         </div>
                         {% for image in images %}
                         <div class="carousel-item">
-                            <img src="/assets/images/annonces/{{bien.id}}/{{image}}" class="d-block w-100" alt="Aperçu non disponible" height="400px">
+                            <img src="/assets/images/annonces/{{bien.id}}/{{image}}" class="d-block w-100" alt="Aperçu non disponible" height="500px">
                         </div>
                         {% endfor %}    
                     </div>
@@ -43,21 +43,40 @@
             </div>
             <div class="row mt-3 ms-5">
                 <div class="col-6">
-                    <h6 class="text-primary">{{bien.titre}}</h6>
-                        {{bien.ville}}</br>
+
+                    <h6 class="text-primary">
+                        {{bien.titre}}
+                    </h6>
+                    <p>
+                        {{bien.ville}}
+                    </p>
+                    <p>
                         {{bien.adresse}}
-                        {% if bien.complement != '' %}{% endif %}                       
-                        </br>{{bien.complement}}
+                    </p>
+                    {% if bien.complement != '' %}                       
+                        <p>
+                            {{bien.complement}}
+                        </p>
+                    {% endif %}
+
                 </div>
                 {% if bien.besoin == 'Location' %}
                     <div class="col-6">
-                        <h6 class="text-primary">{{bien.loyer}} €/mois</h6>
-                        Libre le {{bien.disponibilite}}
+                        <h6 class="text-primary">
+                            {{bien.loyer}} €/mois
+                        </h6>
+                        <p>
+                            Libre le {{bien.disponibilite}}
+                        </p>
                     </div>
                 {% elseif bien.besoin =='Achat' %}
-                        <div class="col-6">
-                        <h6 class="text-primary">{{bien.prix}} €</h6>
-                        Libre le {{ bien.disponibilite|date("m/d/Y") }}
+                    <div class="col-6">
+                        <h6 class="text-primary">
+                            {{bien.prix}} €
+                        </h6>
+                        <p>
+                            Libre le {{ bien.disponibilite|date("m/d/Y") }}
+                        </p>
                     </div>
                 {% endif %}
                 
@@ -192,7 +211,7 @@
     </div>    
 
     <div class ='container-fluid m-3'>
-        <h4>Documents à fournir</h4>
+        <h4 class="text-primary">Documents à fournir</h4>
         <ul>
         {% for document in documents %}
             <li>
