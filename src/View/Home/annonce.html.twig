@@ -1,7 +1,7 @@
 {% extends 'layout.visiteur.html.twig' %}
 
 {% block content %}
-	<div class="container-fluid">
+	<div class="container-fluid m-3">
 		<div class="row">
 			<div class="container col-8 offset-2">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -54,7 +54,7 @@
                         <h6 class="text-primary">{{bien.loyer}} €/mois</h6>
                         Libre le {{bien.disponibilite}}
                     </div>
-                {% else %}
+                {% elseif bien.besoin =='Achat' %}
                         <div class="col-6">
                         <h6 class="text-primary">{{bien.prix}} €</h6>
                         Libre le {{ bien.disponibilite|date("m/d/Y") }}
@@ -185,7 +185,9 @@
         </div>
         <div class="col-4">
             <div class="row mt-5 mb-5">{% include 'Components/_form-bien.html.twig' %}</div>
-            <div class="row mt-5">{% include 'Components/_calculator.html.twig' %}</div>
+            {% if bien.besoin =='Achat' %}
+                <div class="row mt-5">{% include 'Components/_calculator.html.twig' %}</div>
+            {% endif %}           
         </div>
     </div>
 {% include 'Components/_footerTop.html.twig' %}    
