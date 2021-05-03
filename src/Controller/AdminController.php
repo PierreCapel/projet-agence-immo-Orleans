@@ -291,7 +291,7 @@ class AdminController extends AbstractController
         $images = [];
 
         if (!empty($this->uploadDir)) {
-            foreach(scandir($this->uploadDir) as $image) {
+            foreach (scandir($this->uploadDir) as $image) {
                 if (in_array($image, ['.', '..'])) {
                     continue;
                 }
