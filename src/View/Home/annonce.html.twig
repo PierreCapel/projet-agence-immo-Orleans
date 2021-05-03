@@ -81,7 +81,7 @@
                 <div class="row mb-5">
                     <h5 class="text-primary mb-4">Détails du bien :</h5>
                     <div class='col'>
-                        <h5>Intérieure</h5>
+                        <h5>Intérieur</h5>
                         <p>Meublé : {{bien.est_vide}}</p>
                         <ul>
                         {% if bien.duplex == 'oui' %}
@@ -133,7 +133,7 @@
                     </div>
                     
                     <div class="col">
-                        <h5>Extérieure</h5>
+                        <h5>Extérieur</h5>
                         <p></p>
                         <p>Calme : {{bien.calme}}</p>
                         <p>Ensoleillé : {{bien.ensoleille}}</p>
@@ -189,6 +189,19 @@
                 <div class="row mt-5">{% include 'Components/_calculator.html.twig' %}</div>
             {% endif %}           
         </div>
+    </div>    
+
+    <div class ='container-fluid m-3'>
+        <h4>Documents à fournir</h4>
+        <ul>
+        {% for document in documents %}
+            <li>
+                {{document.justificatifs}}
+            </li>
+        {% endfor %}
+        </ul>
     </div>
-{% include 'Components/_footerTop.html.twig' %}    
+
+{% include 'Components/_footerTop.html.twig' %}
+
 {% endblock %}

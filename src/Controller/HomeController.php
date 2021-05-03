@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Model\SloganManager;
 use App\Model\BiensManager;
+use App\Model\DocumentManager;
 
 class HomeController extends AbstractController
 {
@@ -64,6 +65,7 @@ class HomeController extends AbstractController
     {
         $this->setAnnonceId();
         $this->setImgFolder();
+        $documentManager = new DocumentManager();
 
         $annonce = $this->biensManager->selectAllById($_GET['id']);
         $result = $this->getMensualite();
@@ -72,6 +74,7 @@ class HomeController extends AbstractController
         'result' => $result,
         'bien' => $annonce,
         'images' => $this->getImgFolderContent(),
+        'documents' => $documentManager->selectAll(),
         ]);
     }
 
