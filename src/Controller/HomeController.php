@@ -62,11 +62,17 @@ class HomeController extends AbstractController
 
     public function annonce()
     {
-        $annonce = $this->biensManager->selectOneById($_GET['id']);
+        $this->setAnnonceId();
+        $this->setImgFolder();
+
+        $annonce = $this->biensManager->selectAllById($_GET['id']);
         $result = $this->getMensualite();
+
         return $this->twig->render('Home/annonce.html.twig', [
         'result' => $result,
-        'bien' => $annonce]);
+        'bien' => $annonce,
+        'images' => $this->getImgFolderContent(),
+        ]);
     }
 
     public function cgu()

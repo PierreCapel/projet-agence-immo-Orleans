@@ -1,11 +1,11 @@
 {% extends 'layout.visiteur.html.twig' %}
 
 {% block content %}
-
+{{dump()}}
 	<div class="container-fluid">
 		<div class="row mt-5 me-3 ms-3">
 			<div class="col-6">
-				<img class="img-fluid" src="/assets/images/villa-piscine.jpeg">
+				<img class="img-fluid" src="/assets/images/annonces/{{bien.id}}/{{bien.photo_principale}}">
 			</div>
 			<div class="col-6 d-flex flex-wrap align-items-auto g-0">
 				<div class="row">
@@ -30,30 +30,39 @@
             <div class="row mt-5">
                 <div class="col-2 ms-5">
                     <h3>
-                    <span class="badge badge-secondary bg-secondary text-dark">Maison</span>
+                    <span class="badge badge-secondary bg-secondary text-dark">{{bien.categorie}}</span>
                     </h3>
                 </div>
                 <div class="col-2">
                     <h3>
-                    <span class="badge badge-secondary bg-primary">Location</span>
+                    <span class="badge badge-secondary bg-primary">{{bien.besoin}}</span>
                     </h3>
                 </div>
             </div>
             <div class="row mt-3 ms-5">
                 <div class="col-6">
-                    <h6 class="text-primary">Villa Insolite</h6>
-                        Olivet</br>
-                        Parc Floral De La Source
+                    <h6 class="text-primary">{{bien.titre}}</h6>
+                        {{bien.ville}}</br>
+                        {{bien.adresse}}
                 </div>
-                <div class="col-6">
-                    <h6 class="text-primary">1250€/mois</h6>
-                    Libre le 15/06/2021
-                </div>
+                {% if bien.besoin == 'Location' %}
+                    <div class="col-6">
+                        <h6 class="text-primary">{{bien.loyer}} €/mois</h6>
+                        Libre le {{bien.disponibilite}}
+                    </div>
+                {% else %}
+                        <div class="col-6">
+                        <h6 class="text-primary">{{bien.prix}}</h6>
+                        Libre le {{bien.disponibilite}}
+                    </div>
+                {% endif %}
+                
+                
                 <div class="row bg-secondary mt-5 pt-3 pb-3 mb-5 rounded-3">
                     <img class="col-1 img-fluid" src="/assets/images/house-plan-scale.png">
-                    <span class="col-2 text-primary mt-4">210 m²</span>
+                    <span class="col-2 text-primary mt-4">{{bien.surface}} m²</span>
                     <img class="col-1 img-fluid" src="/assets/images/garage.png">
-                    <span class="col-2 text-primary mt-4">2</span>
+                    <span class="col-2 text-primary mt-4">{{bien.garage}}</span>
                     <img class="col-1 img-fluid" src="/assets/images/shower.png">
                     <span class="col-2 text-primary mt-4">3</span>
                     <img class="col-1 img-fluid" src="/assets/images/toilet.png">
@@ -61,18 +70,15 @@
                 </div>
                 <div class="row">
                     <h5 class="text-primary mb-4">Description du bien :</h5>
-                    <p>Superbe Occasion à saisir, une maison de type T9 avec une suface habitable de 210m2. 
-                    Elle comporte 2 séjours, 2 cuisines, 5 chambres, 3 salles de bain, 3 toilettes (séparées), 
-                    1 piscine ainsi que 2 garages. Le terrain est de 1300m2.
-                    Cette maison est parfaite pour les familles, ou les collocations de type télé-réalité.
-                    N’hésitez pas à nous contacter si le bien vous intéresse.</p>
+                    <p>
+                        {{bien.description}}
+                    </p>
                 </div>
                 <div class="row mb-5">
                     <h5 class="text-primary mb-4">Détails du bien :</h5>
                     <div class="col-6">
-                        <p>Pièce(s) à vivre: 2</p>
-
-                        <p>Chambre(s): 5</p>
+                        <p>Nombre de pièces : {{bien.piece}} </p>
+                        <p>Nombre de chambres : {{bien.chambre}}</p>
                         <p>Salle(s) de bain: 3</p>
                         <p>Toilette(s): 3</p>
                         <p>Garage(s): 2</p>
