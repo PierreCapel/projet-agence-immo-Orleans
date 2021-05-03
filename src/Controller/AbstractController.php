@@ -134,7 +134,7 @@ abstract class AbstractController
 
         if (!empty($this->uploadDir)) {
             foreach (scandir($this->uploadDir) as $image) {
-                if (in_array($image, ['.', '..','main.jpg', 'main.png', 'main.JPG'])) {
+                if (in_array($image, ['.', '..','main.jpg', 'main.png', 'main.jpeg'])) {
                     continue;
                 }
 
