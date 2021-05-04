@@ -156,7 +156,7 @@ class BiensManager extends AbstractManager
         if ($endQueryBySize !== '') {
             $query .= $endQueryBySize;
         }
-        echo $query;
+
         return $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
