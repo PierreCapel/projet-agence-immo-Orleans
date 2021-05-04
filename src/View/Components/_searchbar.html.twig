@@ -41,23 +41,27 @@
 			<div class="col-sm-2 col-lg-auto m-1 m-md-0">
 				<button type="submit" class="btn btn-secondary">Rechercher</button>
 			</div>
-			<div class="row mt-3">
-				<div class="col-12">
-					<div class="collapse" id="criteria">
-								<div class="row align-items-center">
-									<label class="visually-hidden">Prix</label>
-									<input type="text" class="col form-control" placeholder="min" aria-label="Price min" name="prixMin">
-									<input type="text" class="col form-control" placeholder="max" aria-label="Price max" name="prixMax">
-									<label class="visually-hidden">Pièces</label>
-									<input type="text" class="col form-control" placeholder="min" aria-label="Room min" name="roomMin">
-									<input type="text" class="col form-control" placeholder="max" aria-label="Room max" name="roomMax">
-									<label class="visually-hidden">Surface</label>
-									<input type="text" class="col form-control" placeholder="min" aria-label="Surface min" name="sizeMin">
-									<input type="text" class="col form-control" placeholder="max" aria-label="Surface max" name="sizeMax">
-								</div>
-							</div>
-						</div>
-					</form>
+
+			<div class="collapse" id="criteria">
+				<div class="row align-items-center">
+					<div class="col-12 col-md-4">
+						<label class="visually-hidden">Prix</label>
+						<input type="text" class="form-control mt-3" placeholder="Prix min" aria-label="Price min" name="prixMin"/>
+						<input type="text" class="form-control mt-1" placeholder="Prix max" aria-label="Price max" name="prixMax"/>
+					</div>
+					<div class="col-12 col-md-4">
+						<label class="visually-hidden">Pièces</label>
+						<input type="text" class="col form-control mt-3" placeholder="Pièce min" aria-label="Room min" name="roomMin"/>
+						<input type="text" class="col form-control mt-1" placeholder="Pièce max" aria-label="Room max" name="roomMax"/>
+					</div>
+					<div class="col-12 col-md-4">
+						<label class="visually-hidden">Surface</label>
+						<input type="text" class="col form-control mt-3" placeholder="Surface min" aria-label="Surface min" name="sizeMin"/>
+						<input type="text" class="col form-control mt-1" placeholder="Surface max" aria-label="Surface max" name="sizeMax"/>
+					</div>
 				</div>
 			</div>
 
+		</form>
+	</div>
+</div>
