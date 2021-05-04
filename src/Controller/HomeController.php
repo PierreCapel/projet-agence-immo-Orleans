@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Model\SloganManager;
 use App\Model\BiensManager;
+use App\Model\DocumentManager;
 
 class HomeController extends AbstractController
 {
@@ -62,11 +63,19 @@ class HomeController extends AbstractController
 
     public function annonce()
     {
-        $annonce = $this->biensManager->selectOneById($_GET['id']);
+        $this->setAnnonceId();
+        $this->setImgFolder();
+        $documentManager = new DocumentManager();
+
+        $annonce = $this->biensManager->selectAllById($_GET['id']);
         $result = $this->getMensualite();
+
         return $this->twig->render('Home/annonce.html.twig', [
         'result' => $result,
-        'bien' => $annonce]);
+        'bien' => $annonce,
+        'images' => $this->getImgFolderContent(),
+        'documents' => $documentManager->selectAll(),
+        ]);
     }
 
     public function cgu()

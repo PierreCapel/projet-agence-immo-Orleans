@@ -97,4 +97,36 @@ class BiensManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function selectAllById(int $id): array
+    {
+        $query = "SELECT 
+                    b.*, 
+                    type.libelle AS type, 
+                    categorie.libelle AS categorie, 
+                    etat.libelle AS etat,
+                    chauffage.libelle AS chauffage,
+                    cuisine.libelle AS cuisine,
+                    revetement.libelle AS revetement,
+                    besoin.libelle AS besoin
+                FROM biens b 
+                
+                INNER JOIN types type ON b.type_id = type.types_id 
+                INNER JOIN types categorie ON b.categorie_id = categorie.types_id 
+                INNER JOIN types etat ON b.etat_id = etat.types_id
+                INNER JOIN types chauffage ON b.chauffage_id = chauffage.types_id
+                INNER JOIN types cuisine ON b.cuisine_id = cuisine.types_id 
+                INNER JOIN types revetement ON b.revetement_id = revetement.types_id
+                INNER JOIN types besoin ON b.besoin_id = besoin.types_id 
+                
+                WHERE id = :id;";
+
+        $statement = $this->pdo->prepare($query);
+
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }

@@ -22,6 +22,10 @@ abstract class AbstractController
      */
     protected Environment $twig;
 
+    protected int $annonceId = 0;
+    protected string $uploadDir = '';
+    protected string $dir = '';
+
     /**
      *  Initializes this class.
      */
@@ -100,5 +104,44 @@ abstract class AbstractController
                 header('location: /admin/index');
             }
         }
+    }
+
+    protected function setAnnonceId()
+    {
+        if (!empty($_GET)) {
+            $this->annonceId = $_GET['id'];
+        }
+    }
+    protected function setImgFolder()
+    {
+        $this->uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/";
+    }
+
+    protected function setMkDir()
+    {
+        //creer dossier pour image si non existant
+        if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId)) {
+            $this->dir = (__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/");
+            mkdir($this->dir);
+
+            return $this->dir;
+        }
+    }
+
+    public function getImgFolderContent(): array
+    {
+        $images = [];
+
+        if (!empty($this->uploadDir)) {
+            foreach (scandir($this->uploadDir) as $image) {
+                if (in_array($image, ['.', '..','main.jpg', 'main.png', 'main.jpeg'])) {
+                    continue;
+                }
+
+                $images[] = $image;
+            }
+        }
+
+        return $images;
     }
 }
