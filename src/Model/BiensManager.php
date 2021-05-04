@@ -129,41 +129,85 @@ class BiensManager extends AbstractManager
 
         return $statement->fetch();
     }
-    
+
     public function searchByCriteria(array $criteriaUser)
     {
-        $location = !empty($criteriaUser['location']) ? $criteriaUser['location'] : '';
+        $location = $criteriaUser['location'];
+
+        $endQueryByPrice = $this->searchSubcriteriaPrice($criteriaUser);
+        $endQueryByRoom = $this->searchSubcriteriaRoom($criteriaUser);
+        $endQueryBySize = $this->searchSubcriteriaSize($criteriaUser);
 
         $query = "SELECT * FROM " . self::TABLE . " WHERE besoin_id=" . $criteriaUser['besoin'];
         if ($criteriaUser['type'] !== '*') {
             $query .= " AND categorie_id=" . $criteriaUser['type'];
         }
+
         if ($criteriaUser['location'] !== '') {
             $query .= " AND ville LIKE '%$location%'";
         }
-        if ($criteriaUser['prixMin'] !== '' && $criteriaUser['besoin'] == 2) {
-            $query .= " AND prix >= " . $criteriaUser['prixMin'];
-        } elseif ($criteriaUser['prixMin'] !== '' && $criteriaUser['besoin'] == 3) {
-            $query .= " AND loyer >= " . $criteriaUser['prixMin'];
-        }
-        // if ($criteriaUser['prixMax'] !== '' && $criteriaUser['besoin'] == 2) {
-        //     $query .= " AND prix <= " . $criteriaUser['prixMax'];
-        // } elseif ($criteriaUser['prixMax'] !== '' && $criteriaUser['besoin'] == 3) {
-        //     $query .= " AND loyer <= " . $criteriaUser['prixMax'];
-        // }
-        // if ($criteriaUser['roomMin'] !== '') {
-        //     $query .= " AND piece >= " . $criteriaUser['roomMin'];
-        // }
-        // if ($criteriaUser['roomMax'] !== '') {
-        //     $query .= " AND piece <= " . $criteriaUser['roomMax'];
-        // }
-        // if ($criteriaUser['sizeMin'] !== '') {
-        //     $query .= " AND surface >= " . $criteriaUser['sizeMin'];
-        // }
-        // if ($criteriaUser['sizeMax'] !== '') {
-        //     $query .= " AND surface <= " . $criteriaUser['sizeMax'];
-        // }
 
+        if ($endQueryByPrice !== '') {
+            $query .= $endQueryByPrice;
+        }
+        if ($endQueryByRoom !== '') {
+            $query .= $endQueryByRoom;
+        }
+        if ($endQueryBySize !== '') {
+            $query .= $endQueryBySize;
+        }
+        echo $query;
         return $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    private function searchSubcriteriaPrice(array $subcriteria)
+    {
+        $priceCriteria = '';
+
+        if ($subcriteria['prixMin'] !== '') {
+            if ($subcriteria['besoin'] == 2) {
+                $priceCriteria .= " AND prix >= " . $subcriteria['prixMin'];
+            } elseif ($subcriteria['besoin'] == 3) {
+                $priceCriteria .= " AND loyer >= " . $subcriteria['prixMin'];
+            }
+        }
+
+        if ($subcriteria['prixMax'] !== '') {
+            if ($subcriteria['besoin'] == 2) {
+                $priceCriteria .= " AND prix <= " . $subcriteria['prixMax'];
+            } elseif ($subcriteria['besoin'] == 3) {
+                $priceCriteria .= " AND loyer <= " . $subcriteria['prixMax'];
+            }
+        }
+
+        return $priceCriteria;
+    }
+
+    private function searchSubcriteriaRoom(array $subcriteria)
+    {
+        $roomCriteria = '';
+
+        if ($subcriteria['roomMin'] !== '') {
+            $roomCriteria .= " AND piece >= " . $subcriteria['roomMin'];
+        }
+        if ($subcriteria['roomMax'] !== '') {
+            $roomCriteria .= " AND piece <= " . $subcriteria['roomMax'];
+        }
+
+        return $roomCriteria;
+    }
+
+    private function searchSubcriteriaSize(array $subcriteria)
+    {
+        $sizeCriteria = '';
+
+        if ($subcriteria['sizeMin'] !== '') {
+            $sizeCriteria .= " AND surface >= " . $subcriteria['sizeMin'];
+        }
+        if ($subcriteria['sizeMax'] !== '') {
+            $sizeCriteria .= " AND surface <= " . $subcriteria['sizeMax'];
+        }
+
+        return $sizeCriteria;
     }
 }
