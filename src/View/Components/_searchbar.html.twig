@@ -1,33 +1,34 @@
 <div>
 	<div class="container-fluid-md container-lg bg-primary p-3 align-item-center mt-md-5">
-		<form class="row row-cols-lg-auto justify-content-center align-item-center">
+		<form method="GET" action="/Home/search" class="row justify-content-center align-item-center">
 			<div class="col-sm-12 col-md-2 m-1 m-md-0">
-				<label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-				<select class="form-select" id="inlineFormSelectPref">
-					<option selected>Acheter</option>
-					<option value="1">Louer</option>
+				<label class="visually-hidden" for="besoin">Besoin</label>
+				<select class="form-select" id="besoin" name="besoin">
+					{% for besoin in besoins %}
+						<option value={{ besoin.id }}>{{ besoin.libelle }}</option>
+					{% endfor %}
 				</select>
 			</div>
 
 			<div class="col-sm-12 col-md-2 m-1 m-md-0">
-				<label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-				<select class="form-select" id="inlineFormSelectPref">
-					<option selected>- Type de bien -</option>
-					<option value="1">Maison</option>
-					<option value="2">Appartement</option>
-					<option value="3">Terrain</option>
+				<label class="visually-hidden" for="type">Type</label>
+				<select class="form-select" id="type" name="type">
+					<option value="*" selected>- Type de bien -</option>
+					{% for categorie in categories %}
+						<option value={{ categorie.id }}>{{ categorie.libelle }}</option>
+					{% endfor %}
 				</select>
 			</div>
 
 			<div class="col-sm-12 col-md-5 m-1 m-md-0">
-				<label class="visually-hidden" for="inlineFormInputGroupUsername">Localité</label>
+				<label class="visually-hidden" for="location">Localité</label>
 				<div class="input-group">
 					<div class="input-group-text">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
 							<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
 						</svg>
 					</div>
-					<input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Localité">
+					<input type="text" class="form-control" id="location" name="location" placeholder="Localité">
 				</div>
 			</div>
 			<div class="col-sm-1 col-lg-1 m-1 m-md-0">
@@ -40,19 +41,19 @@
 			<div class="col-sm-2 col-lg-auto m-1 m-md-0">
 				<button type="submit" class="btn btn-secondary">Rechercher</button>
 			</div>
-			<div class="row">
+			<div class="row mt-3">
 				<div class="col-12">
 					<div class="collapse" id="criteria">
-								<div class="row mt-3">
-									<label class="col-md-1 text-light">Prix</label>
-									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="min" aria-label="Price min">
-									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="max" aria-label="Price max">
-									<label class="col-md-1 text-light">Pièces</label>
-									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="min" aria-label="Room min">
-									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="max" aria-label="Room max">
-									<label class="col-md-1 text-light">Surface</label>
-									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="min" aria-label="Surface min">
-									<input type="text" class="col-sm-6 col-md-1 form-control" placeholder="max" aria-label="Surface max">
+								<div class="row align-items-center">
+									<label class="visually-hidden">Prix</label>
+									<input type="text" class="col form-control" placeholder="min" aria-label="Price min" name="prixMin">
+									<input type="text" class="col form-control" placeholder="max" aria-label="Price max" name="prixMax">
+									<label class="visually-hidden">Pièces</label>
+									<input type="text" class="col form-control" placeholder="min" aria-label="Room min" name="roomMin">
+									<input type="text" class="col form-control" placeholder="max" aria-label="Room max" name="roomMax">
+									<label class="visually-hidden">Surface</label>
+									<input type="text" class="col form-control" placeholder="min" aria-label="Surface min" name="sizeMin">
+									<input type="text" class="col form-control" placeholder="max" aria-label="Surface max" name="sizeMax">
 								</div>
 							</div>
 						</div>

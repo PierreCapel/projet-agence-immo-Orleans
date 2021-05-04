@@ -12,15 +12,18 @@ namespace App\Controller;
 use App\Model\SloganManager;
 use App\Model\BiensManager;
 use App\Model\DocumentManager;
+use App\Model\TypesManager;
 
 class HomeController extends AbstractController
 {
     private BiensManager $biensManager;
+    private TypesManager $typesManager;
 
     public function __construct()
     {
         parent::__construct();
         $this->biensManager = new BiensManager();
+        $this->typesManager = new TypesManager();
     }
 
     /**
@@ -34,6 +37,19 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', [
             'listSlogans' => $listSlogans,
             'listeBiens' => $this->biensManager->selectAll('id', 'DESC', 9),
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
+        ]);
+    }
+
+    public function search()
+    {
+        $searchResults = $this->biensManager->searchByCriteria($_GET);
+
+        return $this->twig->render('Home/search.result.html.twig', [
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
+            'biens' => $searchResults,
         ]);
     }
 
@@ -41,6 +57,8 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/locations.html.twig', [
             'listeBiens' => $this->biensManager->selectAllByCategory(3),
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
         ]);
     }
 
@@ -48,17 +66,25 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/ventes.html.twig', [
             'listeBiens' => $this->biensManager->selectAllByCategory(2),
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
         ]);
     }
 
     public function agence()
     {
-        return $this->twig->render('Home/agence.html.twig');
+        return $this->twig->render('Home/agence.html.twig', [
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
+        ]);
     }
 
     public function contact()
     {
-        return $this->twig->render('Home/contact.html.twig');
+        return $this->twig->render('Home/contact.html.twig', [
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
+        ]);
     }
 
     public function annonce()
@@ -75,17 +101,25 @@ class HomeController extends AbstractController
         'bien' => $annonce,
         'images' => $this->getImgFolderContent(),
         'documents' => $documentManager->selectAll(),
+        'categories' => $this->typesManager->getByTypes('categorie'),
+        'besoins' => $this->typesManager->getByTypes('besoin'),
         ]);
     }
 
     public function cgu()
     {
-        return $this->twig->render('Home/cgu.html.twig');
+        return $this->twig->render('Home/cgu.html.twig', [
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
+        ]);
     }
 
     public function mentionsLegales()
     {
-        return $this->twig->render('Home/mentionsLegales.html.twig');
+        return $this->twig->render('Home/mentionsLegales.html.twig', [
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
+        ]);
     }
 
     public function getMensualite()
