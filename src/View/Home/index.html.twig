@@ -1,79 +1,66 @@
 {% extends 'layout.visiteur.html.twig' %}
 
 {% block content %}
-<div id="promo">
-    <h1 class="text-primary text-center mt-4">Les coups de coeur de l'agence</h1>  
-    <div class="container">
-        <div id="demo" class="carousel slide mt-3" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="/../assets/images/index/appart-exemple-carroussel.jpg" alt="Carrousel slide 1" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-              <img src="/../assets/images/index/appart-exemple-carroussel2.jpg" alt="Carrousel slide 2" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-              <img src="/../assets/images/index/appart-exemple-carroussel3.jpg" alt="Carrousel slide 3" class="d-block w-100">
-            </div>
-          </div>
-        </div>
+	<div id="promo">
+		<h1 class="text-primary text-center mt-4">Les coups de coeur de l'agence</h1>
+		<div class="container">
+		    <div class="row mb-5">
+			    {% for bien in topAnnonces %}
+				    <div class="col-md-6 col-sd-12 col-lg-4">
+					    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
+                    </div>
+                {% endfor %}
+		    </div>
+	    </div>
     </div>
-    </br>
-</div>
 <div id="slogans">
-    <h1 class="text-primary text-center">Notre agence</h1>
-    <div class="container">
-        <div class="row mt-4 mb-5">
-            <div class='col-12 col-md-6 col-lg-3'>
-                <div class="card bg-secondary pt-4 h-100 shadow-sm">
-                    <img src="/../assets/images/index/experience.svg" class="card-img-top" alt="Experience"
-                        height="100">
-                    <div class="card-body">
-                        <p class="card-text text-center">{{ listSlogans[0]['slogan'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-md-6 col-lg-3'>
-                <div class="card bg-secondary pt-4 h-100 shadow-sm">
-                    <img src="/../assets/images/index/client.svg" class="card-img-top" alt="Client" height="100">
-                    <div class="card-body">
-                        <p class="card-text text-center">{{ listSlogans[1]['slogan'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-md-6 col-lg-3'>
-                <div class="card bg-secondary pt-4 h-100 shadow-sm">
-                    <img src="/../assets/images/index/appointment.svg" class="card-img-top" alt="Appointment"
-                        height="100">
-                    <div class="card-body">
-                        <p class="card-text text-center">{{ listSlogans[2]['slogan'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 col-md-6 col-lg-3'>
-                <div class="card bg-secondary pt-4 h-100 shadow-sm">
-                    <img src="/../assets/images/index/agency-connection.svg" class="card-img-top" alt="Agency"
-                        height="100">
-                    <div class="card-body">
-                        <p class="card-text text-center">{{ listSlogans[3]['slogan'] }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<h1 class="text-primary text-center">Notre agence</h1>
+	<div class="container">
+		<div class="row mt-4 mb-5">
+			<div class='col-12 col-md-6 col-lg-3'>
+				<div class="card bg-secondary pt-4 h-100 shadow-sm">
+					<img src="/../assets/images/index/experience.svg" class="card-img-top" alt="Experience" height="100">
+					<div class="card-body">
+						<p class="card-text text-center">{{ listSlogans[0]['slogan'] }}</p>
+					</div>
+				</div>
+			</div>
+			<div class='col-12 col-md-6 col-lg-3'>
+				<div class="card bg-secondary pt-4 h-100 shadow-sm">
+					<img src="/../assets/images/index/client.svg" class="card-img-top" alt="Client" height="100">
+					<div class="card-body">
+						<p class="card-text text-center">{{ listSlogans[1]['slogan'] }}</p>
+					</div>
+				</div>
+			</div>
+			<div class='col-12 col-md-6 col-lg-3'>
+				<div class="card bg-secondary pt-4 h-100 shadow-sm">
+					<img src="/../assets/images/index/appointment.svg" class="card-img-top" alt="Appointment" height="100">
+					<div class="card-body">
+						<p class="card-text text-center">{{ listSlogans[2]['slogan'] }}</p>
+					</div>
+				</div>
+			</div>
+			<div class='col-12 col-md-6 col-lg-3'>
+				<div class="card bg-secondary pt-4 h-100 shadow-sm">
+					<img src="/../assets/images/index/agency-connection.svg" class="card-img-top" alt="Agency" height="100">
+					<div class="card-body">
+						<p class="card-text text-center">{{ listSlogans[3]['slogan'] }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div id="recents">   
-    <h1 class="text-primary text-center">Nos dernières annonces</h1>
-    <div class="container">
-        <div class="row mb-5">
-            {% for bien in listeBiens %} 
-                <div class="col-md-6 col-sd-12 col-lg-4">
-                    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}  
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-</div>
-{% include 'Components/_footerTop.html.twig' %}
-{% endblock %}
+<div id="recents">
+	<h1 class="text-primary text-center">Nos dernières annonces</h1>
+	<div class="container">
+		<div class="row mb-5">
+			{% for bien in listeBiens %}
+				<div class="col-md-6 col-sd-12 col-lg-4">
+					{% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div></div>{% include 'Components/_footerTop.html.twig' %}{% endblock %}

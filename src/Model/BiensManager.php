@@ -210,4 +210,11 @@ class BiensManager extends AbstractManager
 
         return $sizeCriteria;
     }
+
+    public function getTopAnnonces()
+    {
+        $query = "SELECT photo_principale, id, titre, description, ville, prix, loyer FROM biens WHERE top = 'oui'";
+        $statement = $this->pdo->query($query);
+            return $statement->fetchAll();
+    }
 }
