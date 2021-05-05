@@ -39,6 +39,7 @@ class HomeController extends AbstractController
             'listeBiens' => $this->biensManager->selectAll('id', 'DESC', 9),
             'categories' => $this->typesManager->getByTypes('categorie'),
             'besoins' => $this->typesManager->getByTypes('besoin'),
+            'topAnnonces' => $this->biensManager->getTopAnnonces(),
         ]);
     }
 
