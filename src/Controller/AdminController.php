@@ -146,7 +146,7 @@ class AdminController extends AbstractController
         $id = $_GET['id'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $this->biensManager->del($id);
+            $this->biensManager->delete($id);
             $this->deleteDirectory(realpath(__DIR__ . '/../../public/assets/images/annonces/' . $id));
         }
 

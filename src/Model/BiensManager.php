@@ -51,16 +51,6 @@ class BiensManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function del(int $id)
-    {
-        $query = "DELETE FROM " . self::TABLE . " WHERE id = :id";
-
-        $statement = $this->pdo->prepare($query);
-
-        $statement->bindValue(":id", $id, PDO::PARAM_INT);
-
-        return $statement->execute();
-    }
     /**
      * Mets à jour la photo par défault d'un bien
      */

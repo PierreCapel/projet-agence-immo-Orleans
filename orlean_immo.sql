@@ -111,6 +111,19 @@ CREATE TABLE `types` (
   PRIMARY KEY (`types_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+DROP TABLE IF EXISTS messages;
+CREATE TABLE `messages` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `lastname` varchar(100) DEFAULT NULL,
+  `firstname` varchar(100) DEFAULT NULL,
+  `user_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `phone_number` varchar(100) DEFAULT NULL,
+  `subject` varchar(100) DEFAULT NULL,
+  `message` text,
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 
