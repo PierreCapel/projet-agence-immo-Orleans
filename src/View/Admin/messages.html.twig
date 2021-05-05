@@ -1,0 +1,28 @@
+{% extends 'layout.admin.html.twig' %}
+
+{% block content %}
+<div>
+    <div>
+        {% if messages is empty %}
+            <h1 class='text-center text-primary py-5'>
+                Vous n'avez aucun messages !
+            </h1>
+        {% else %}
+            <h1 class='text-center text-primary py-5'>
+                Vous avez {{ messages|length }} messages !
+            </h1>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <div class="row mb-5">
+            {% for message in messages %}          
+                <div class="col-md-6 col-sd-12 col-lg-4 my-3">
+                     {% include 'Components/_card.message.admin.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

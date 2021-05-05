@@ -89,6 +89,7 @@ class HomeController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = $_POST;
+            $post['date'] = date('Y-m-d G-i');
 
             $this->messagesManager->add($post);
             $done = 'yes';
