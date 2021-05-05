@@ -8,30 +8,6 @@ class BiensManager extends AbstractManager
 {
     public const TABLE = 'biens';
 
-    public function add(array $post)
-    {
-        $fields = array_keys($post);
-        $values = [];
-
-        // Création des colonnes de la requêtes
-        $query = "INSERT INTO " . self::TABLE . " (" . implode(',', $fields) . ") ";
-
-        foreach ($fields as $field) {
-            $values[] = ":$field";
-        }
-
-        // Ajout des valeurs à la requête
-        $query .= "VALUES (" . implode(',', $values) . ")";
-
-        $statement = $this->pdo->prepare($query);
-
-        foreach ($post as $field => $value) {
-            $statement->bindValue(":$field", $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
-        }
-
-        return $statement->execute();
-    }
-
     public function getLastAdd(): array
     {
         $query = "SELECT id FROM " . self::TABLE . " ORDER BY ID DESC LIMIT 0, 1";

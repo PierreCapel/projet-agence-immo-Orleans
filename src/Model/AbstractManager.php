@@ -85,4 +85,28 @@ abstract class AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function add(array $post)
+    {
+        $fields = array_keys($post);
+        $values = [];
+
+        // Création des colonnes de la requêtes
+        $query = "INSERT INTO " . static::TABLE . " (" . implode(',', $fields) . ") ";
+
+        foreach ($fields as $field) {
+            $values[] = ":$field";
+        }
+
+        // Ajout des valeurs à la requête
+        $query .= "VALUES (" . implode(',', $values) . ")";
+
+        $statement = $this->pdo->prepare($query);
+
+        foreach ($post as $field => $value) {
+            $statement->bindValue(":$field", $value, is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR);
+        }
+
+        return $statement->execute();
+    }
 }

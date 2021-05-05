@@ -106,7 +106,6 @@ class AdminController extends AbstractController
         }
 
         return $this->twig->render('Admin/ajoutAnnonce.html.twig', [
-            'nd' => $this->typesManager->getByTypes('nd'),
             'besoins' => $this->typesManager->getByTypes('besoin'),
             'categories' => $this->typesManager->getByTypes('categorie'),
             'types' => $this->typesManager->getByTypes('type'),

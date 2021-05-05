@@ -17,6 +17,14 @@
             </p>
         </div>
     </div>
+
+    {% if done == 'yes' %}
+    <div>
+        <p class='text-center text-success border border-style-solid'>
+            Votre message à bien été envoyé ! Un membre de notre équipe vous contactera dans les plus brefs délais
+        </p>
+    </div>
+    {% endif %}
     
     <div class="row">
 
@@ -38,5 +46,3 @@
     </div>
 </div>
 {% endblock %}
-
-{% block javascript %}<script src="/assets/js/contact.js"></script>{% endblock %}
