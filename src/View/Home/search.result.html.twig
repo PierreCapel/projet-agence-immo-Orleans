@@ -1,0 +1,16 @@
+{% extends 'layout.visiteur.html.twig' %}
+
+{% block content %}
+	<h1 class="text-primary mt-4 text-center">Resultat de recherche ({{ biens | length }})</h1>
+	<div class="container">
+		<div class="row mb-5">
+			{% for bien in biens %}
+				<div class="col-md-6 col-sd-12 col-lg-4">
+					{% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	{% include 'Components/_footerTop.html.twig' %}
+{% endblock %}

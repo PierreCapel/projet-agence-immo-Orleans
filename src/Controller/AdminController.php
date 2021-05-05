@@ -20,9 +20,6 @@ class AdminController extends AbstractController
 {
     private BiensManager $biensManager;
     private TypesManager $typesManager;
-    private int $annonceId = 0;
-    private string $uploadDir = '';
-    private string $dir = '';
 
     public function __construct()
     {
@@ -286,22 +283,6 @@ class AdminController extends AbstractController
 
         return true;
     }
-    protected function getImgFolderContent(): array
-    {
-        $images = [];
-
-        if (!empty($this->uploadDir)) {
-            foreach(scandir($this->uploadDir) as $image) {
-                if (in_array($image, ['.', '..'])) {
-                    continue;
-                }
-
-                $images[] = $image;
-            }
-        }
-
-        return $images;
-    }
 
     protected function setAnnonceId()
     {
@@ -318,17 +299,6 @@ class AdminController extends AbstractController
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['deleteImg'])) {
             unlink($this->uploadDir . "/" . $_POST['deleteImg']);
-        }
-    }
-
-    private function setMkDir()
-    {
-        //creer dossier pour image si non existant
-        if (!is_dir(__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId)) {
-            $this->dir = (__DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/");
-            mkdir($this->dir);
-
-            return $this->dir;
         }
     }
 }
