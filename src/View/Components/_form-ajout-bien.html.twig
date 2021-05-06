@@ -13,7 +13,7 @@
             </div>
             <div class="m-2">
                 <p class="me-3 text-decoration-underline">
-                        Mettre en avant l'annonce sur la page d'accueil du Stationnement :
+                        Mettre en avant l'annonce sur la page d'accueil :
                 </p>
                 <input class="m-2" type="radio" id="oui" name="top" value="oui"></input>
                 <label class="me-3" for="oui">Oui</label>
@@ -67,7 +67,7 @@
                     <input checked type="radio" id"categorie" name="categorie_id" value="1"></input>
                     <label for="categorie">Non renseigné</label>                   
                         {% for type in categories %}
-                            <input class="m-2" type="radio" id"{{type.libelle}}" name="categorie_id" value="{{type.id}}"></input>
+                            <input class="m-2" type="radio" id"{{type.libelle}}" name="categorie_id" value="{{type.types_id}}"></input>
                             <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
                         {% endfor %}
                 </div>
@@ -80,7 +80,7 @@
                     <input checked type="radio" id"type" name="type_id" value="1"></input>
                     <label for="type">Non renseigné</label>                   
                         {% for type in types %}
-                            <input class="m-2" type="radio" id"{{type.libelle}}" name="type_id" value="{{type.id}}"></input>
+                            <input class="m-2" type="radio" id"{{type.libelle}}" name="type_id" value="{{type.types_id}}"></input>
                             <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
                         {% endfor %}
                 </div>
@@ -104,7 +104,7 @@
                     <input checked type="radio" id"etat" name="etat_id" value="1"></input>
                     <label for="etat">Non renseigné</label>                   
                         {% for type in etats %}
-                            <input class="m-2" type="radio" id"{{type.libelle}}" name="etat_id" value="{{type.id}}"></input>
+                            <input class="m-2" type="radio" id"{{type.libelle}}" name="etat_id" value="{{type.types_id}}"></input>
                             <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
                         {% endfor %}
                 </div>
@@ -259,7 +259,7 @@
                     <input class="m-2" checked type="radio" id="none" name="revetement_id" value="1"></input>
                     <label class="me-3" for="none">Non renseigné</label>
                     {% for type in revetements %}
-                        <input class="m-2" type="radio" id="{{type.libelle}}" name="revetement_id" value="{{type.id}}"></input>
+                        <input class="m-2" type="radio" id="{{type.libelle}}" name="revetement_id" value="{{type.types_id}}"></input>
                         <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
                     {% endfor %}
                 </div>
@@ -295,13 +295,13 @@
                 <select class="form-select-sm" name="cuisine_id">
                     <option selected value="1">Type de cuisine</option>
                     {% for type in cuisines %}
-                        <option value="{{type.id}}">{{type.libelle}}</option>
+                        <option value="{{type.types_id}}">{{type.libelle}}</option>
                     {% endfor %}
                 </select>
                 <select class="form-select-sm" name="chauffage_id">
                     <option value="1">Type de chauffage</option>
                     {% for type in chauffages %}
-                        <option value="{{type.id}}">{{type.libelle}}</option>
+                        <option value="{{type.types_id}}">{{type.libelle}}</option>
                     {% endfor %}
                 </select>
             </div>

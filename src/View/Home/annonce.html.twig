@@ -42,9 +42,9 @@
 				</div>
 				<div class="row">
 					<div class="col-6">
-						<h6 class="text-primary">
+						<h4 class="text-primary">
 							{{bien.titre}}
-						</h6>
+						</h4>
 						<p>
 							{{bien.ville}}
 						</p>
@@ -60,12 +60,11 @@
 					{% if bien.besoin == 'Location' %}
 						<div class="col-6">
 							<h6 class="text-primary">
-								{{bien.loyer}}
-								€/mois
+								<p>{{bien.loyer}}€/mois | {{bien.charge}}€ de charges | {{bien.caution}}€ de caution</p>							
 							</h6>
 							<p>
 								Libre le
-								{{bien.disponibilite}}
+								{{bien.disponibilite |date("d/m/Y")}}
 							</p>
 						</div>
 					{% elseif bien.besoin =='Achat' %}

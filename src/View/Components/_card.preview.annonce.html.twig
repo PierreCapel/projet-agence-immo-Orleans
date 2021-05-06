@@ -1,6 +1,21 @@
 <div class="card shadow-lg  mt-3">
     <a href="/home/annonce?id={{bien.id}}"><img src="/../assets/images/annonces/{{bien.id}}/{{bien.photo_principale}}" class="card-img-top" alt="appart exemple" height="300"></a>
-    <div class="card-body">
+    <div class="card-body">        
+		<div class="row">
+			<div class="col-auto">
+                {% if bien.besoin_id == '3' %}
+					<h3>
+						<span class="badge badge-secondary bg-primary text-light">Location</span>
+					</h3>
+                {% endif %}
+                {% if bien.besoin_id == '2' %}
+                     <h3>
+						 <span class="badge badge-secondary bg-secondary text-primary">Vente</span>
+					</h3>                            
+                {% endif %}
+			</div>
+		</div>
+
         <p class="card-text">
             <p class="text-primary" href="/home/annonce?id={{bien.id}}"> {{bien.ville}}</p>
             <a href="/home/annonce?id={{bien.id}}" style="text-decoration:none"><h5>{{ bien.titre }}</h5></a>

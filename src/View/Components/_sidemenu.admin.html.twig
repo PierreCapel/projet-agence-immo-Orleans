@@ -1,60 +1,52 @@
-<div class="col-sm-2 col-lg-3 bg-primary side-menu d-lg-flex flex-column">
-				<div class="row justify-content-center mt-4">
-					<div class="col-10 mb-5">
-						<h5 class="text-light">Firstname Lastname</h5>
-						<p class="text-light">Agent immobilier</p>
-					</div>
-				</div>
-				<div class="row">
-					<ul class="nav">
-						<li class="nav-item">
-							<a href="ajoutAnnonce" class="nav-link text-decoration-none text-light m-1">
-								Ajouter annonce immobilière
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="listAnnonce" class="nav-link text-decoration-none text-light m-1">
-								Modifier ou Supprimer une annonce
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="modifDocument" class="nav-link text-decoration-none text-light m-1">
-								Modifier la liste des documents necessaires
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="modifSlogan" class="nav-link text-decoration-none text-light m-1">
-								Modifier les bulles slogan de la page d'accueil
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="/../Messages/messages" class="nav-link text-decoration-none text-light m-1">
-								Messagerie
-							</a>
-						</li>
-					</ul>
+<div class="col-2 bg-primary side-menu d-flex flex-column">
+	<div class="row justify-content-center mt-4">
+		<div class="col-11 mb-5">
+			<p class="text-light text-wrap">{{ user }}</p>
+			<p class="text-light">{{ role }}</p>
+		</div>
+	</div>
+	<div class="row">
+		<ul class="nav">
+			<li class="col-12 nav-item">
+				<a href="ajoutAnnonce" class="nav-link text-decoration-none text-light m-1">
+					Ajouter annonce
+				</a>
+			</li>
+			<li class="col-12 nav-item">
+				<a href="listAnnonce" class="nav-link text-decoration-none text-light m-1">
+					Mes annonces
+				</a>
+			</li>
+			<li class="col-12 nav-item">
+				<a href="modifDocument" class="nav-link text-decoration-none text-light m-1">
+					Liste des documents
+				</a>
+			</li>
+			<li class="col-12 nav-item">
+				<a href="modifSlogan" class="nav-link text-decoration-none text-light m-1">
+					Modifier textes page d'accueil
+				</a>
+			</li>
+			<li class="col-12 nav-item">
+				<a href="/../Messages/messages" class="nav-link text-decoration-none text-light m-1">
+					Messagerie
+				</a>
+			</li>
+		</ul>
 
-				</div>
-				<div class="row flex-grow-1"></div>
-				<div class="row mb-2">
-				<ul class="nav d-flex flex-column align-items-center">
-						<li class="nav-item">
-							<a href="index" class="nav-link text-decoration-none text-light">Accueil admin</a>
-						</li>
-						<li class="nav-item">
-							<a href="../Home/index" class="nav-link text-decoration-none text-light">Site visiteur</a>
-						</li>
-						<li class="nav-item">
-							<a href="?logout=true" class="nav-link text-decoration-none text-light">
-								Se Déconnecter
-							</a>
-						</li>
-						<li class="nav-item">
-							<img src="../assets/images/logo-cdimmo.png" alt="Le club de l'immo logo" class="cdimmo-logo align-self-center" height="60"/>
-						</li>
-					</ul>
-					
-					
-					
-				</div>
-			</div>
+	</div>
+	<div class="row flex-grow-1"></div>
+	<div class="row mb-2">
+		<ul class="col-12 nav d-flex flex-column align-items-center">
+			<li class="col-12 nav-item">
+				<a href="index" class="nav-link text-decoration-none text-light text-center">Accueil</a>
+			</li>
+			<li class="col-12 nav-item">
+				<a href="../Home/index" class="nav-link text-decoration-none text-light text-center">Site visiteur</a>
+			</li>
+			<li class="col-12 nav-item text-center">
+				<img src="../assets/images/logo-cdimmo.png" alt="Le club de l'immo logo" class="cdimmo-logo" height="60"/>
+			</li>
+		</ul>
+	</div>
+</div>
