@@ -46,7 +46,6 @@ abstract class AbstractController
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logout();
 
         $biensManager = new BiensManager();
         $biens = $biensManager->selectAll('id', 'DESC');
@@ -145,7 +144,7 @@ abstract class AbstractController
 
         if (!empty($this->uploadDir)) {
             foreach (scandir($this->uploadDir) as $image) {
-                if (in_array($image, ['.', '..','main.jpg', 'main.png', 'main.jpeg'])) {
+                if (in_array($image, ['.', '..',])) {
                     continue;
                 }
 

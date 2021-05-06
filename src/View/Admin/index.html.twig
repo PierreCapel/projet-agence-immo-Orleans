@@ -1,13 +1,18 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block content %}
+	<div class="row justify-content-end" >
+		<a href="?logout=true" class="col-auto btn btn-sm btn-danger text-decoration-none text-light text-center mt-3 me-3">
+			Déconnexion
+		</a>
+	</div>
 	<div class="row justify-content-center mt-4 mb-5">
 		<h1 class="text-center">Bienvenue sur page d'<span class="text-primary">administration<span></h1>
 	</div>
 	<div class="row m-2">
 		<h4 class="text-center">Actions concernant les
-			<strong class="text-primary">biens</strong>
-		:</h4>
+			<strong class="text-primary">biens</strong> :
+		</h4>
 	</div>
 	<div class="row mb-3 mb-xl-5 justify-content-center">
 		<div class="col-3 card bg-secondary me-3">
@@ -29,8 +34,8 @@
 	</div>
 	<div class="row m-2">
 		<h4 class="text-center">Administrer le
-			<strong class="text-primary">site</strong>
-		:</h4>
+			<strong class="text-primary">site</strong> :
+		</h4>
 	</div>
 	<div class="row justify-content-center">
 		<div class="col-3 card bg-secondary me-3">
@@ -50,7 +55,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="row m-2">
+	<div class="row m-2 mt-5">
 		<h4 class="text-center">
 			Messagerie :
 		</h4>
@@ -64,6 +69,6 @@
 				</div>
 			</a>
 		</div>
-	</div>
+	</div>	
 {% endblock %}
 

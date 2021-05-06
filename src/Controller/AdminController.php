@@ -62,7 +62,6 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logout();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = $_POST;
@@ -123,13 +122,14 @@ class AdminController extends AbstractController
             "role" => $_SESSION['role'],
         ]);
     }
+
     public function modifAnnonce()
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logout();
 
         $id = $_GET['id'];
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post = $_POST;
@@ -148,9 +148,9 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logout();
 
         $id = $_GET['id'];
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $this->biensManager->delete($id);
@@ -166,7 +166,6 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logout();
 
         $sloganManager = new SloganManager();
 
@@ -191,7 +190,7 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logout();
+
         $documentManager = new DocumentManager();
         $done = false;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -209,6 +208,8 @@ class AdminController extends AbstractController
     }
     public function ajoutPhoto()
     {
+        $this->startSession();
+        $this->authorizeAccess();
         $this->setAnnonceId();
         $this->setMkDir();
         $this->setImgFolder();
@@ -274,7 +275,6 @@ class AdminController extends AbstractController
     {
         $this->startSession();
         $this->authorizeAccess();
-        $this->logout();
 
         return $this->twig->render('Admin/annonceAjouter.html.twig', [
             'id' => $this->biensManager->getLastAdd(),

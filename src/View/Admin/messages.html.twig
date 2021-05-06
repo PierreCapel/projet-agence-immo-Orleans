@@ -5,7 +5,12 @@
     <div>
         {% if messages is empty %}
             <h1 class='text-center text-primary py-5'>
-                Vous n'avez aucun messages !
+                Vous n'avez aucun message !
+            </h1>
+        {% endif %}
+        {% if messages|length == '1' %}
+            <h1 class='text-center text-primary py-5'>
+                Vous avez {{ messages|length }} message !
             </h1>
         {% else %}
             <h1 class='text-center text-primary py-5'>

@@ -39,6 +39,8 @@ class MessagesController extends AdminController
 
         return $this->twig->render('Admin/messages.html.twig', [
             'messages' => $this->messagesManager->selectAll(),
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
         ]);
     }
 
