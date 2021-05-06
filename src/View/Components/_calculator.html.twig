@@ -1,26 +1,29 @@
 <div class="container">
-<div class="row mb-3">
-<form method="GET" class= "col border border-primary border-2 rounded-3">
-    <p class = "h5 mt-2 text-center text-primary">Calculez votre prêt !</p>
-    <div class="mb-3">
-        <label for="capital">Capital</label>
-        <input type="text" id="capital" name="capital" class="form-control" value='{{bien.prix}}'>
-    </div>
-    <div class="mb-3">
-        <label for = "nbYear">Nombre d'années</label>
-        <input type="number" id="nbYear" name="nbYear" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label for = "rate">Taux</label>
-        <input type="text" id="rate" name="rate" placeholder="ex: 2.5" class="form-control">
-    </div>
-    <button type="submit" class="btn btn-primary mb-3">Mensualités</button>
+    <div class="row mb-3">
+        <form method="GET" class= "col border border-primary border-2 rounded-3">
+            <p class = "h5 mt-2 text-center text-primary">Calculez votre prêt !</p>
+            <div class="mb-3">
+                <label for="capital">Capital</label>
+                <input type="text" id="capital" name="capital" class="form-control" value='{{bien.prix}}'>
+            </div>
+            <div class="mb-3">
+                <label for = "nbYear">Nombre d'années</label>
+                <input required type="number" id="nbYear" name="nbYear" placeholder = "20" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for = "rate">Taux</label>
+                <input required type="text" id="rate" name="rate" placeholder="ex: 2.5" class="form-control">
+            </div>
+            
+            <input class="d-none" name="id" type="hidden" value="{{ bien.id }}">
+            
+            <button type="submit" class="btn btn-primary mb-3">Mensualités</button>
 
-    {% if result is not empty %}
+            {% if result is not empty %}
      
-    <p class="mt-3">Vos mensualités seront de {{result}}€.</p>
+            <p class="mt-3">Vos mensualités seront de {{result}}€.</p>
      
-    {% endif %}
-</form>
-</div>
+            {% endif %}
+        </form>
+    </div>
 </div>
