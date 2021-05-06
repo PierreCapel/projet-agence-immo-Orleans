@@ -15,17 +15,20 @@ use App\Model\DocumentManager;
 use App\Model\BiensManager;
 use App\Model\TypesManager;
 use App\Model\SloganManager;
+use App\Model\MessagesManager;
 
 class AdminController extends AbstractController
 {
     private BiensManager $biensManager;
     private TypesManager $typesManager;
+    private MessagesManager $messagesManager;
 
     public function __construct()
     {
         parent::__construct();
         $this->biensManager = new BiensManager();
         $this->typesManager = new TypesManager();
+        $this->messagesManager = new MessagesManager();
     }
     /**
      * Display home page
@@ -106,7 +109,6 @@ class AdminController extends AbstractController
         }
 
         return $this->twig->render('Admin/ajoutAnnonce.html.twig', [
-            'nd' => $this->typesManager->getByTypes('nd'),
             'besoins' => $this->typesManager->getByTypes('besoin'),
             'categories' => $this->typesManager->getByTypes('categorie'),
             'types' => $this->typesManager->getByTypes('type'),
@@ -144,7 +146,7 @@ class AdminController extends AbstractController
         $id = $_GET['id'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $this->biensManager->del($id);
+            $this->biensManager->delete($id);
             $this->deleteDirectory(realpath(__DIR__ . '/../../public/assets/images/annonces/' . $id));
         }
 
@@ -282,17 +284,6 @@ class AdminController extends AbstractController
         }
 
         return true;
-    }
-
-    protected function setAnnonceId()
-    {
-        if (!empty($_GET)) {
-            $this->annonceId = $_GET['id'];
-        }
-    }
-    protected function setImgFolder()
-    {
-        $this->uploadDir = __DIR__ . "/../../public/assets/images/annonces/" . $this->annonceId . "/";
     }
 
     protected function deleteImg()

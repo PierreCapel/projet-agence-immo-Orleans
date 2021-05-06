@@ -64,7 +64,7 @@
                     <p class="me-3 text-decoration-underline">
                             Catégorie du bien :
                     </p>
-                    <input checked type="radio" id"categorie" name="categorie_id" value="{{nd.0.id}}"></input>
+                    <input checked type="radio" id"categorie" name="categorie_id" value="1"></input>
                     <label for="categorie">Non renseigné</label>                   
                         {% for type in categories %}
                             <input class="m-2" type="radio" id"{{type.libelle}}" name="categorie_id" value="{{type.id}}"></input>
@@ -77,7 +77,7 @@
                     <p class="me-3 text-decoration-underline">
                             Type du bien :
                     </p>
-                    <input checked type="radio" id"type" name="type_id" value="{{nd.0.id}}"></input>
+                    <input checked type="radio" id"type" name="type_id" value="1"></input>
                     <label for="type">Non renseigné</label>                   
                         {% for type in types %}
                             <input class="m-2" type="radio" id"{{type.libelle}}" name="type_id" value="{{type.id}}"></input>
@@ -101,7 +101,7 @@
                     <p class="me-3 text-decoration-underline">
                             Etat du bien :
                     </p>
-                    <input checked type="radio" id"etat" name="etat_id" value="{{nd.0.id}}"></input>
+                    <input checked type="radio" id"etat" name="etat_id" value="1"></input>
                     <label for="etat">Non renseigné</label>                   
                         {% for type in etats %}
                             <input class="m-2" type="radio" id"{{type.libelle}}" name="etat_id" value="{{type.id}}"></input>
@@ -140,7 +140,7 @@
                             Achat ou location :
                     </p>               
                         {% for type in besoins %}
-                            <input checked class="m-2" type="radio" id"{{type.libelle}}" name="besoin_id" value="{{type.id}}"></input>
+                            <input checked class="m-2" type="radio" id"{{type.libelle}}" name="besoin_id" value="{{type.types_id}}"></input>
                             <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
                         {% endfor %}
                 </div>
@@ -256,7 +256,7 @@
                     <p class="me-3 text-decoration-underline">
                         Revêtement au sol :
                     </p>                
-                    <input class="m-2" checked type="radio" id="none" name="revetement_id" value="{{nd.0.id}}"></input>
+                    <input class="m-2" checked type="radio" id="none" name="revetement_id" value="1"></input>
                     <label class="me-3" for="none">Non renseigné</label>
                     {% for type in revetements %}
                         <input class="m-2" type="radio" id="{{type.libelle}}" name="revetement_id" value="{{type.id}}"></input>
@@ -293,13 +293,13 @@
             </div> 
             <div class="m-2 mb-3">
                 <select class="form-select-sm" name="cuisine_id">
-                    <option selected value="{{nd.0.id}}">Type de cuisine</option>
+                    <option selected value="1">Type de cuisine</option>
                     {% for type in cuisines %}
                         <option value="{{type.id}}">{{type.libelle}}</option>
                     {% endfor %}
                 </select>
                 <select class="form-select-sm" name="chauffage_id">
-                    <option value="{{nd.0.id}}">Type de chauffage</option>
+                    <option value="1">Type de chauffage</option>
                     {% for type in chauffages %}
                         <option value="{{type.id}}">{{type.libelle}}</option>
                     {% endfor %}

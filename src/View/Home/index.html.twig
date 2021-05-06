@@ -4,7 +4,7 @@
 	<div id="promo">
 		<h1 class="text-primary text-center mt-4">Les coups de coeur de l'agence</h1>
 		<div class="container">
-		    <div class="row mb-5">
+		    <div class="row justify-content-center mb-5">
 			    {% for bien in topAnnonces %}
 				    <div class="col-md-6 col-sd-12 col-lg-4">
 					    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}

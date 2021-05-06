@@ -13,17 +13,20 @@ use App\Model\SloganManager;
 use App\Model\BiensManager;
 use App\Model\DocumentManager;
 use App\Model\TypesManager;
+use App\Model\MessagesManager;
 
 class HomeController extends AbstractController
 {
     private BiensManager $biensManager;
     private TypesManager $typesManager;
+    private MessagesManager $messagesManager;
 
     public function __construct()
     {
         parent::__construct();
         $this->biensManager = new BiensManager();
         $this->typesManager = new TypesManager();
+        $this->messagesManager = new MessagesManager();
     }
 
     /**
@@ -82,9 +85,18 @@ class HomeController extends AbstractController
 
     public function contact()
     {
+        $done = '';
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $post = $_POST;
+            $post['date'] = date('Y-m-d G-i');
+
+            $this->messagesManager->add($post);
+            $done = 'yes';
+        }
+
         return $this->twig->render('Home/contact.html.twig', [
-            'categories' => $this->typesManager->getByTypes('categorie'),
-            'besoins' => $this->typesManager->getByTypes('besoin'),
+            'done' => $done,
         ]);
     }
 
@@ -123,7 +135,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    public function getMensualite()
+    private function getMensualite()
     {
         $capital = 0;
         $nbYear = 0;
