@@ -46,6 +46,21 @@ abstract class AbstractManager
         return $this->pdo->query($query)->fetchAll();
     }
 
+    public function selectAllVisible(string $orderBy = '', string $direction = 'ASC', int $limit = 0): array
+    {
+        $query = "SELECT * FROM " . static::TABLE . " WHERE visible = 'oui'";
+
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        if ($limit) {
+            $query .= ' LIMIT ' . $limit;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
+    }
+
     /**
      * Get one row from database by ID.
      *

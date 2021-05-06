@@ -36,7 +36,7 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Home/index.html.twig', [
             'listSlogans' => $listSlogans,
-            'listeBiens' => $this->biensManager->selectAll('id', 'DESC', 9),
+            'listeBiens' => $this->biensManager->selectAllVisible('id', 'DESC', 9),
             'categories' => $this->typesManager->getByTypes('categorie'),
             'besoins' => $this->typesManager->getByTypes('besoin'),
             'topAnnonces' => $this->biensManager->getTopAnnonces(),

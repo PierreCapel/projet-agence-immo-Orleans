@@ -3,10 +3,12 @@
 <h1 class="text-primary text-center mt-4">Nos biens disponibles à la vente</h1>
 <div class="container">
     <div class="row mb-5">
-        {% for bien in listeBiens %} 
-            <div class="col-md-6 col-sd-12 col-lg-4">
-                {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
-            </div>
+        {% for bien in listeBiens %}
+            {% if bien.visible == 'oui' %}
+                <div class="col-md-6 col-sd-12 col-lg-4">
+                    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
