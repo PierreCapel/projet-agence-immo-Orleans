@@ -1,18 +1,24 @@
 <div class="card" style="width: 18rem;">
-    
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Message de : {{message.firstname}} {{message.lastname}}</li>
-        <li class="list-group-item">Mail : {{message.user_email}}</li>
-        <li class="list-group-item">Téléphone : {{message.phone_number}}</li>
-        <li class="list-group-item">Sujet : {{message.subject}}</li>
-        <li class="list-group-item">Recu le : {{message.date|date('d/m/Y \\à G\\hi')}}</li>
-    </ul>
-    
-    <div class="card-body mb-3">
-        <h5 class="card-title">Message :</h5>
-        <p class="card-text">{{message.message}}</p>
-    </div>
-    <div class="d-flex justify-content-center">
-        <a href="supprimerMessage?id={{message.id}}" class="btn btn-danger m-1">Suprimmer</a>
-    </div>
+
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">Message de :
+			{{message.firstname}}
+			{{message.lastname}}</li>
+		<li class="list-group-item">Mail :
+			{{message.user_email}}</li>
+		<li class="list-group-item">Téléphone :
+			{{message.phone_number}}</li>
+		<li class="list-group-item">Sujet :
+			{{message.subject}}</li>
+		<li class="list-group-item">Reçu le :
+			{{message.date|date('d/m/Y \\à G\\hi')}}</li>
+	</ul>
+
+	<div class="card-body mb-3">
+		<h5 class="card-title">Message :</h5>
+		<p class="card-text">{{message.message}}</p>
+	</div>
+	<div class="d-flex justify-content-center">
+		<a href="supprimerMessage?id={{message.id}}" class="btn btn-danger m-1">Supprimer</a>
+	</div>
 </div>

@@ -107,10 +107,8 @@ class HomeController extends AbstractController
         $documentManager = new DocumentManager();
 
         $annonce = $this->biensManager->selectAllById($_GET['id']);
-        $result = $this->getMensualite();
 
         return $this->twig->render('Home/annonce.html.twig', [
-        'result' => $result,
         'bien' => $annonce,
         'images' => $this->getImgFolderContent(),
         'documents' => $documentManager->selectAll(),
@@ -133,24 +131,5 @@ class HomeController extends AbstractController
             'categories' => $this->typesManager->getByTypes('categorie'),
             'besoins' => $this->typesManager->getByTypes('besoin'),
         ]);
-    }
-
-    private function getMensualite()
-    {
-        $capital = 0;
-        $nbYear = 0;
-        $rate = 0;
-
-        if (!empty($_GET['capital'])) {
-            $capital = intval($_GET["capital"]);
-            $nbYear = intval($_GET["nbYear"]);
-            $rate = intval($_GET["rate"]);
-
-            $month = $nbYear * 12;
-            $interest = ($capital * $rate) / 100;
-
-            $result = ($capital + $interest) / $month;
-            return $result;
-        }
     }
 }

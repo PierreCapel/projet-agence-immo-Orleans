@@ -60,7 +60,9 @@
 					{% if bien.besoin == 'Location' %}
 						<div class="col-6">
 							<h6 class="text-primary">
-								<p>{{bien.loyer}}€/mois | {{bien.charge}}€ de charges | {{bien.caution}}€ de caution</p>							
+								<p>{{bien.loyer}}€/mois |
+									{{bien.charge}}€ de charges |
+									{{bien.caution}}€ de caution</p>
 							</h6>
 							<p>
 								Libre le
@@ -237,5 +239,4 @@
 	</div>
 </div>
 
-{% include 'Components/_footerTop.html.twig' %}
-{% endblock %}
+{% include 'Components/_footerTop.html.twig' %}{% endblock %}

@@ -12,7 +12,6 @@ class BiensManager extends AbstractManager
     {
         $query = "SELECT id FROM " . self::TABLE . " ORDER BY ID DESC LIMIT 0, 1";
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':id', $this->pdo->lastInsertId(), PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();
