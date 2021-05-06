@@ -50,7 +50,10 @@ class AdminController extends AbstractController
         $this->startSession();
         $this->authorizeAccess();
         $this->logout();
-        return $this->twig->render('Admin/index.html.twig');
+        return $this->twig->render('Admin/index.html.twig', [
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
+        ]);
     }
 
     // --------------- Fonctions annonces -----------------------
@@ -116,6 +119,8 @@ class AdminController extends AbstractController
             'chauffages' => $this->typesManager->getByTypes('chauffage'),
             'cuisines' => $this->typesManager->getByTypes('cuisine'),
             'revetements' => $this->typesManager->getByTypes('revetement'),
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
         ]);
     }
     public function modifAnnonce()
@@ -134,6 +139,8 @@ class AdminController extends AbstractController
 
         return $this->twig->render('Admin/modifAnnonce.html.twig', [
             'bien' => $this->biensManager->selectOneById($id),
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
         ]);
     }
 
@@ -163,14 +170,22 @@ class AdminController extends AbstractController
 
         $sloganManager = new SloganManager();
 
+        $done = false;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newlistSlogan = $_POST;
             $sloganManager->modifyListSlogan($newlistSlogan);
+            $done = true;
         }
 
         $listSlogans = $sloganManager->selectAll();
 
-        return $this->twig->render('Admin/modifSlogan.html.twig', ['listSlogans' => $listSlogans]);
+        return $this->twig->render('Admin/modifSlogan.html.twig', [
+            'listSlogans' => $listSlogans,
+            "done" => $done,
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
+            ]);
     }
     public function modifDocument()
     {
@@ -178,12 +193,19 @@ class AdminController extends AbstractController
         $this->authorizeAccess();
         $this->logout();
         $documentManager = new DocumentManager();
+        $done = false;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newlistDoc = $_POST;
             $documentManager->modifyListDoc($newlistDoc);
+            $done = true;
         }
         $listDocs = $documentManager->selectAll();
-        return $this->twig->render('Admin/modifDocument.html.twig', ["lists" => $listDocs]);
+        return $this->twig->render('Admin/modifDocument.html.twig', [
+            "lists" => $listDocs,
+            "done" => $done,
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
+            ]);
     }
     public function ajoutPhoto()
     {
@@ -210,6 +232,8 @@ class AdminController extends AbstractController
             'imagesList' => $folderContent,
             'imagesFolder' => $imageFolder,
             'post' => $_POST,
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
         ]);
     }
     // fonction d'ajout des images par formulaire
@@ -254,6 +278,8 @@ class AdminController extends AbstractController
 
         return $this->twig->render('Admin/annonceAjouter.html.twig', [
             'id' => $this->biensManager->getLastAdd(),
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
         ]);
     }
 
@@ -290,6 +316,7 @@ class AdminController extends AbstractController
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['deleteImg'])) {
             unlink($this->uploadDir . "/" . $_POST['deleteImg']);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
 }

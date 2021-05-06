@@ -28,6 +28,11 @@
 						<button class="col-auto btn btn-primary align-self-end" type="submit">valider</button>
 					</div>
 				</form>
+				{% if done == true %}
+					<div class="alert alert-success mt-4" role="alert">
+						Les textes en page d'accueil ont été mis à jour.
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>

@@ -1,20 +1,40 @@
 <div class="card shadow-lg  mt-3">
     <img src="/../assets/images/annonces/{{bien.id}}/{{bien.photo_principale}}" class="card-img-top" alt="appart exemple" height="300">
     <div class="card-body">
+        <div class="row">
+			<div class="col-auto">
+                {% if bien.besoin_id == '3' %}
+					<h3>
+						<span class="badge badge-secondary bg-primary text-light">Location</span>
+					</h3>
+                {% endif %}
+                {% if bien.besoin_id == '2' %}
+                     <h3>
+						 <span class="badge badge-secondary bg-secondary text-primary">Vente</span>
+					</h3>                            
+                {% endif %}
+			</div>
+		</div>
         <p class="card-text">
             <a class="text-primary"> {{bien.ville }}</a>
             <h5>{{ bien.titre }}</h5>
         </p>
-        <p> {{bien.description | slice(0, 120) ~ "... " }}
-            <a class='text-primary'> en savoir plus</a>
+        <p> 
+            {{bien.description | slice(0, 120) ~ "... " }}
         </p>
         <p class='float-right'>Prix :
-            <a class='text-primary'> {{bien.prix}} € CC</a>
+            <a class='text-primary'>
+                {% if bien.prix != 0 %}
+                    {{ bien.prix|number_format(0, ',', ' ') }} € HAI
+                {% else %}
+                    {{ bien.loyer|number_format(0, ',', ' ') }} € CC
+                {% endif %}
+            </a>
         </p>
         <div class="d-flex justify-content-center">
-            <a class="btn btn-primary m-1" href="modifAnnonce?id={{bien.id}}">Modifier</a>
-            <a class="btn btn-success m-1" href="ajoutPhoto?id={{bien.id}}">Images</a>
-            <a class="btn btn-danger m-1" href="supprimerAnnonce?id={{bien.id}}">Supprimer</a>
+            <a class="btn btn-primary btn-sm m-1" href="modifAnnonce?id={{bien.id}}">Modifier</a>
+            <a class="btn btn-success btn-sm m-1" href="ajoutPhoto?id={{bien.id}}">Images</a>
+            <a class="btn btn-danger btn-sm m-1" href="supprimerAnnonce?id={{bien.id}}">Supprimer</a>
         </div>
     </div>
 </div>

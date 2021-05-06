@@ -44,6 +44,10 @@ abstract class AbstractController
 
     public function listAnnonce()
     {
+        $this->startSession();
+        $this->authorizeAccess();
+        $this->logout();
+
         $biensManager = new BiensManager();
         $biens = $biensManager->selectAll('id', 'DESC');
         $besoin = isset($_GET['besoin']) ? $_GET['besoin'] : "all";
@@ -61,6 +65,9 @@ abstract class AbstractController
         return $this->twig->render('Admin/listAnnonce.html.twig', [
             'besoin' => $besoin,
             'biens' => $biens,
+            "user" => $_SESSION['fullname'],
+            "role" => $_SESSION['role'],
+
         ]);
     }
 
@@ -98,9 +105,13 @@ abstract class AbstractController
         if (!empty($_POST)) {
             $usermail = $_POST['usermail'];
             $password = $_POST['password'];
+            $role = "Directeur Agence";
+            $fullname = "Vincent VAUR";
 
             if ($usermail === EMAIL && $password === PASSWORD) {
+                $_SESSION['fullname'] = $fullname;
                 $_SESSION['usermail'] = $usermail;
+                $_SESSION['role'] = $role;
                 header('location: /admin/index');
             }
         }
