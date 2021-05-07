@@ -46,7 +46,7 @@
                 <input class="form-control" type="text" id"complement" name="complement" placeholder="Complément (si besoin)"></input>
             </div>
             <div class="m-2">
-                <label class="mx-2" for="code_postal">Code postale</label>
+                <label class="mx-2" for="code_postal">Code postal</label>
                 <input required class="form-control" id ="code_postal" type="number" name="code_postal"></input>
                 <label class="mx-2" for="ville">Ville</label>
                 <input required class="form-control" id="ville" type="text" name="ville"></input>
@@ -62,7 +62,7 @@
             <div class="d-flex m-3">
                 <div>
                     <p class="me-3 text-decoration-underline">
-                            Catégorie du bien :
+                        Catégorie du bien :
                     </p>
                     <input checked type="radio" id"categorie" name="categorie_id" value="1"></input>
                     <label for="categorie">Non renseigné</label>                   
@@ -75,7 +75,7 @@
             <div class="d-flex m-3">
                 <div>
                     <p class="me-3 text-decoration-underline">
-                            Type du bien :
+                        Type du bien :
                     </p>
                     <input checked type="radio" id"type" name="type_id" value="1"></input>
                     <label for="type">Non renseigné</label>                   
@@ -88,7 +88,7 @@
             <div class="d-flex m-3 mt-4">
                 <div>
                     <p class="me-3 text-decoration-underline">
-                                Meublement du bien :
+                        Meublement du bien :
                     </p>                    
                     <input type="radio" id="vide" name="est_vide" value="oui" checked>
                     <label for="vide">Vide</label>
@@ -99,7 +99,7 @@
             <div class="d-flex m-3">
                 <div>
                     <p class="me-3 text-decoration-underline">
-                            Etat du bien :
+                        Etat du bien :
                     </p>
                     <input checked type="radio" id"etat" name="etat_id" value="1"></input>
                     <label for="etat">Non renseigné</label>                   
@@ -116,13 +116,13 @@
             <div class="m-3">          
                 <div class="my-2">
                     <p class="me-3 text-decoration-underline">
-                            Surface :
+                        Surface :
                     </p>
                     <input class="mx-2" type="number"name="surface" value="0"></input>
                 </div>
                 <div class="my-2">
                     <p class="me-3 text-decoration-underline">
-                            Disponible à partir du :
+                        Disponible à partir du :
                     </p>
                     <input class="mx-2" type="date" name="disponibilite" value="2021-04-12" min="2018-06-07" max="2050-12-14"></input>
                 </div>
@@ -133,17 +133,17 @@
 
         <div id="tarifs" class="my-3 form-control border border-primary  text-primary">
             <h2 class="mb-4">
-                Tarifs du biens
+                Tarif du bien
             </h2>
             <div>
-                    <p class="me-3 text-decoration-underline">
-                            Achat ou location :
-                    </p>               
-                        {% for type in besoins %}
-                            <input checked class="m-2" type="radio" id"{{type.libelle}}" name="besoin_id" value="{{type.types_id}}"></input>
-                            <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
-                        {% endfor %}
-                </div>
+                <p class="me-3 text-decoration-underline">
+                    Achat ou location :
+                </p>               
+                    {% for type in besoins %}
+                        <input checked class="m-2" type="radio" id"{{type.libelle}}" name="besoin_id" value="{{type.types_id}}"></input>
+                        <label class="me-3" for="{{type.libelle}}">{{type.libelle}}</label>
+                    {% endfor %}
+            </div>
             <div class="m-2">
                 <p class="me-3 text-decoration-underline">
                     Location :
@@ -170,14 +170,14 @@
                 </p>
                 <div>
                     <select class="form-select-sm" name="dpe_c">
-                    <option value="Non renseigné" selected>DPE-Consommation</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="G">G</option>
+                        <option value="Non renseigné" selected>DPE-Consommation</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
                 </select>
                 <select class="form-select-sm" name="dpe_e">
                     <option value="Non renseigné" selected>DPE-Emission</option>
@@ -201,7 +201,7 @@
             </h2>
             <div class="m-2">
                 <p class="me-3 text-decoration-underline">
-                    Généralitées
+                    Généralités
                 </p>
                 <input type="checkbox" id="residence" name="residence" value="oui">
                 <label class="me-3" for="residence">Résidence</label>
@@ -308,7 +308,7 @@
             <div class="m-2">
                 <div class="">
                     <p class="me-3 text-decoration-underline">
-                        extérieur :
+                        Extérieur :
                     </p>                
                     <input class="m-2" type="checkbox" id="terrasse" name="terrasse" value="oui"></input>
                     <label class="me-3" for="terrase">Terrase</label>
@@ -339,7 +339,7 @@
                 
             <div class="m-2 mt-4">
                 <p class="me-3 text-decoration-underline">
-                    Déscription du bien :
+                    Description du bien :
                 </p>
                 <textarea required class="form-control" id="description" name="description"></textarea>
             </div>

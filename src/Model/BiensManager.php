@@ -179,7 +179,7 @@ class BiensManager extends AbstractManager
     public function getTopAnnonces()
     {
         $query = "SELECT photo_principale, id, titre, besoin_id,
-            description, ville, prix, loyer FROM biens WHERE top = 'oui'";
+            description, ville, prix, loyer, visible FROM biens WHERE top = 'oui'";
         $statement = $this->pdo->query($query);
             return $statement->fetchAll();
     }
