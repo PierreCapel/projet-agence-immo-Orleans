@@ -1,18 +1,20 @@
 {% extends 'layout.visiteur.html.twig' %}
 
 {% block content %}
-	<div id="promo">
-		<h1 class="text-primary text-center mt-4">Les coups de coeur de l'agence</h1>
-		<div class="container">
-		    <div class="row justify-content-center mb-5">
-			    {% for bien in topAnnonces %}
-				    <div class="col-md-6 col-sd-12 col-lg-4">
-					    {% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
-                    </div>
-                {% endfor %}
-		    </div>
-	    </div>
-    </div>
+<div id="promo">
+	<h1 class="text-primary text-center mt-4">Les coups de coeur de l'agence</h1>
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+			{% for bien in topAnnonces %}
+				{% if bien.visible == 'oui' %}				
+					<div class="col-md-6 col-sd-12 col-lg-4">
+						{% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}						
+					</div>
+				{% endif %}
+            {% endfor %}
+		</div>
+	</div>
+</div>
 <div id="slogans">
 	<h1 class="text-primary text-center">Notre agence</h1>
 	<div class="container">
@@ -56,13 +58,13 @@
 	<h1 class="text-primary text-center">Nos dernières annonces</h1>
 	<div class="container">
 		<div class="row mb-5">
-				{% for bien in listeBiens %}
-					<div class="col-md-6 col-sd-12 col-lg-4">
-						{% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
-					</div>
-				{% endfor %}
+			{% for bien in listeBiens %}
+				<div class="col-md-6 col-sd-12 col-lg-4">
+					{% include 'Components/_card.preview.annonce.html.twig' with { 'bien': bien } %}
+				</div>
+			{% endfor %}
 		</div>
 	</div>
-</div></div>
+</div>
 {% include 'Components/_footerTop.html.twig' %}
 {% endblock %}

@@ -62,7 +62,8 @@
 							<h6 class="text-primary">
 								<p>{{bien.loyer}}€/mois |
 									{{bien.charge}}€ de charges |
-									{{bien.caution}}€ de caution</p>
+									{{bien.caution}}€ de caution
+								</p>
 							</h6>
 							<p>
 								Libre le
@@ -81,7 +82,7 @@
 							</p>
 						</div>
 					{% endif %}
-					<div class="row bg-secondary rounded-3 d-none d-md-block py-2">
+					<div class="row justify-content-between bg-secondary rounded-3 d-none d-md-flex align-items-center py-2">
 						<img class="col-1 img-fluid" src="/assets/images/house-plan-scale.png">
 						<span class="col-2 text-primary">{{bien.surface}}
 							m²</span>
@@ -106,7 +107,7 @@
 							<h5>Intérieur</h5>
 							<p>Meublé :
 								{{bien.est_vide}}</p>
-							<ul>
+							<ul class="list-unstyled">
 								{% if bien.duplex == 'oui' %}
 									<li>Duplex</li>
 								{% endif %}
@@ -161,7 +162,7 @@
 								{{bien.calme}}</p>
 							<p>Ensoleillé :
 								{{bien.ensoleille}}</p>
-							<ul>
+							<ul class="list-unstyled">
 								{% if bien.piscine == 'oui' %}
 									<li>Piscine</li>
 								{% endif %}
@@ -183,7 +184,6 @@
 								{% if bien.parking == 'oui' %}
 									<li>Parking</li>
 								{% endif %}
-
 							</ul>
 						</div>
 						<div class="col">
@@ -213,6 +213,16 @@
 							{% endif %}
 						</div>
 					</div>
+					<div class="row mb-4">
+						<h4 class="text-primary">Documents à fournir</h4>
+						<ul class="ms-3">
+							{% for document in documents %}
+								<li>
+									{{document.justificatifs}}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="col-3 d-none d-md-block">
@@ -226,17 +236,13 @@
 				{% endif %}
 			</div>
 		</div>
-		<div class="container">
-			<h4 class="text-primary">Documents à fournir</h4>
-			<ul>
-				{% for document in documents %}
-					<li>
-						{{document.justificatifs}}
-					</li>
-				{% endfor %}
-			</ul>
-		</div>
 	</div>
 </div>
 
-{% include 'Components/_footerTop.html.twig' %}{% endblock %}
+{% include 'Components/_footerTop.html.twig' %}
+
+{% endblock %}
+
+{% block javascript %}
+	<script src="/assets/js/calculMonthlyFee.js"></script>
+{% endblock %}

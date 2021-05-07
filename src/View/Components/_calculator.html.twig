@@ -4,15 +4,15 @@
 			<p class="h5 mt-2 text-center text-primary">Calculez votre prêt !</p>
 			<div class="mb-3">
 				<label for="capital">Capital</label>
-				<input type="text" id="capital" name="capital" class="form-control" value='{{bien.prix}}'>
+				<input required="required" type="text" id="capital" name="capital" class="form-control" value='{{bien.prix}}'>
 			</div>
 			<div class="mb-3">
 				<label for="nbYear">Nombre d'années</label>
-				<input type="number" id="nbYear" name="nbYear" class="form-control">
+				<input required="required" type="number" id="nbYear" name="nbYear" class="form-control">
 			</div>
 			<div class="mb-3">
 				<label for="rate">Taux</label>
-				<input type="text" id="rate" name="rate" placeholder="ex: 2.5" class="form-control">
+				<input required="required" type="text" id="rate" name="rate" placeholder="ex: 2.5" class="form-control">
 			</div>
 			<button type="submit" class="btn btn-primary mb-3" id="getMensualites">Mensualités</button>
 

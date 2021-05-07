@@ -97,6 +97,8 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Home/contact.html.twig', [
             'done' => $done,
+            'categories' => $this->typesManager->getByTypes('categorie'),
+            'besoins' => $this->typesManager->getByTypes('besoin'),
         ]);
     }
 

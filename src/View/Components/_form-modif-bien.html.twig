@@ -16,15 +16,15 @@
                         Mettre en avant l'annonce sur la page d'accueil :
                 </p>
                 {% if bien.top == 'oui' %}
-                    <input class="m-2" checked type="radio" id="oui" name="top" value="oui"></input>
-                    <label class="me-3" for="oui">Oui</label>   
-                    <input class="m-2" type="radio" id="non" name="top" value="non"></input>
-                    <label class="me-3" for="non">Non</label>
+                    <input class="m-2" checked type="radio" id="top-oui" name="top" value="oui"></input>
+                    <label class="me-3" for="top-oui">Oui</label>   
+                    <input class="m-2" type="radio" id="top-non" name="top" value="non"></input>
+                    <label class="me-3" for="top-non">Non</label>
                 {% elseif bien.top == 'non' %}
-                    <input class="m-2" type="radio" id="oui" name="top" value="oui"></input>
-                    <label class="me-3" for="oui">Oui</label>   
-                    <input class="m-2" checked type="radio" id="non" name="top" value="non"></input>
-                    <label class="me-3" for="non">Non</label>
+                    <input class="m-2" type="radio" id="top-oui" name="top" value="oui"></input>
+                    <label class="me-3" for="top-oui">Oui</label>   
+                    <input class="m-2" checked type="radio" id="top-non" name="top" value="non"></input>
+                    <label class="me-3" for="top-non">Non</label>
                 {% endif %}
             </div>
             <div class="m-2">
