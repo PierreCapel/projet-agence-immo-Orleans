@@ -20,8 +20,8 @@ Côté administrateur :
 Collaborateurs :
 - [Jérémy GONZALEZ](https://github.com/JeremyGonzalez31)
 - [Emmannuel RODRIGUEZ](https://github.com/Emmanuel-RODRIGUEZ-31)
-- [Pierre-Emmanuel CAPEL](https://github.com/PierreCapel)
 - [Patrick VONGSA](https://github.com/PatrickVongsa)
+- Pierre-Emmanuel CAPEL
 
 Superviseur :
 [Vincent VAUR](https://github.com/vincent-vaur)
